@@ -28,6 +28,7 @@
     box-shadow: 0 0.1875rem 1.5rem rgba(0, 0, 0, 0.2);
     border-radius: 0.375rem;
     overflow: hidden;
+    margin-top: 2rem;
 }
 .card-image {
     transition: opacity 0.3s ease;
@@ -79,10 +80,19 @@
         grid-template-rows: 1fr;
 	}
     @media (min-width: 800px) {
+        .card-container{
+            width: 80%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 1rem;
+            
+        }
         .card {
             grid-template-columns: auto;
             grid-template-rows: 12rem 1fr;
-		}
+        }
+        .card-title{
+            height: 3rem;
+        }
 	}
 }
- 
