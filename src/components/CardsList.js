@@ -12,7 +12,13 @@ class CardsList extends Component {
   state = {
     drinks: '',
     meals: '',
-    movies: ''
+    movies: '',
+    categories: [
+      'cocktail',
+      'movie',
+      'recipe'
+    ]
+
   }
 
   getRandom = () => {
@@ -32,21 +38,23 @@ class CardsList extends Component {
       }))
   }
   render() {
-    const { drinks, meals, movies } = this.state
+    const { drinks, meals, movies, categories } = this.state
 
     return (
       <div>
-        <Button />
+        <Button random={this.getRandom} />
         <Card
           image={drinks.strDrinkThumb}
-          name={drinks.strDrink} />
+          name={drinks.strDrink}
+          categorie={categories[0]} />
         <Card
           image={meals.strMealThumb}
-          name={meals.strMeal} />
+          name={meals.strMeal}
+          categorie={categories[1]} />
         <Card
           image={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`}
           name={movies.title}
-        />
+          categorie={categories[2]} />
       </div>
     )
   }
