@@ -42,7 +42,7 @@ class CardsList extends Component {
 
     return (
       <div>
-        <Button random={this.getRandom} />
+        <Button />
         <Card
           image={drinks.strDrinkThumb}
           name={drinks.strDrink}
