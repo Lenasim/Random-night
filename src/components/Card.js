@@ -4,7 +4,7 @@ import React from 'react';
 export default function Card(props) {
 
     return (
-        <a className="card-link" href="">
+        <a className="card-link" href="\#">
             <div className="card">
                 <img className="card-image" src={props.image} alt={props.name} />
                 <div className="card-details">

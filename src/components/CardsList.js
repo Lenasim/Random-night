@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-
-import './CardsList.css'
+import Card from './Card'
+import './Card.css'
 
 import axios from 'axios'
-import Button from './Button'
-import Card from './Card'
+
 
 const api = process.env.REACT_APP_API_KEY
 class CardsList extends Component {
@@ -41,8 +40,7 @@ class CardsList extends Component {
     const { drinks, meals, movies, categories } = this.state
 
     return (
-      <div>
-        <Button />
+      <div className="card-container">  
         <Card
           image={drinks.strDrinkThumb}
           name={drinks.strDrink}
