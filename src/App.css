@@ -6,3 +6,12 @@
   background-position: bottom;
   min-height: 140vh
 }
+
+.punchline {
+  font-weight: 400;
+  font-style: normal;
+  color: white;
+  font-size: 25px;
+  text-transform: uppercase;
+  margin: 50px 0;
+}
