@@ -1,6 +1,6 @@
 .card-container {
     margin: 2rem;
-    width: 30rem;
+    width: 90%;
     height: 14rem;
     align-items: center;
     margin-left: auto;
@@ -38,6 +38,7 @@
 }
 .card-details {
     padding: 1.5rem;
+    width: 10rem;
 }
 .card-category {
     display: inline-block;
@@ -52,7 +53,7 @@
 }
 .card-title {
     transition: color 0.3s ease;
-    font-size: 1.125rem;
+    font-size: 1.3rem;
     line-height: 1.4;
     color: #121212;
     font-weight: 700;
@@ -79,20 +80,23 @@
         grid-template-columns: 1fr 2fr;
         grid-template-rows: 1fr;
 	}
-    @media (min-width: 800px) {
+    @media (min-width: 768px) {
         .card-container{
             width: 80%;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            grid-gap: 1rem;
-            
+            grid-gap: 1rem; 
         }
         .card {
             grid-template-columns: auto;
-            grid-template-rows: 12rem 1fr;
+            grid-template-rows:  1fr 20rem;
         }
         .card-title{
             height: 3rem;
+        }
+        .card-details {
+            padding: 1.5rem;
+            width: 100%;
         }
 	}
 }
