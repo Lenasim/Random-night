@@ -4,10 +4,10 @@ import './Header.css'
 
 import logo from '../images/logo-RN.svg'
 
-const Header = () => {
+const Header = ({reset}) => {
   return (
     <div>
-      <img src={logo} alt="random night" className="brand" />
+      <img onClick={reset} src={logo} alt="random night" className="brand" />
     </div>
   );
 };
