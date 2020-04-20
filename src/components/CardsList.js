@@ -9,6 +9,7 @@ class CardsList extends Component {
 
   state = {
     loading: false,
+    loaded: false,
     drinks: '',
     meals: '',
     movies: '',
@@ -20,6 +21,7 @@ class CardsList extends Component {
   }
 
   getRandom = () => {
+    this.setState({ loading: true })
     let pageMovie = Math.floor(Math.random() * 501)
     let resultMovie = Math.floor(Math.random() * 19)
     axios.all([
@@ -31,12 +33,10 @@ class CardsList extends Component {
         this.setState({
           drinks: resDrink.data.drinks[0],
           meals: resMeal.data.meals[0],
-          movies: resMovie.data.results[resultMovie],
-          loading: true
+          movies: resMovie.data.results[resultMovie]
+        }, () => {
+          this.setState({ loaded: true, loading: false })
         })
-        setTimeout(() => {
-          this.setState({ loading: false })
-        }, 2000)
       }))
   }
 
@@ -45,7 +45,7 @@ class CardsList extends Component {
   }
 
   render() {
-    const { drinks, meals, movies, categories, loading } = this.state
+    const { drinks, meals, movies, categories, loading, loaded } = this.state
 
     return (
       <div>
@@ -53,7 +53,7 @@ class CardsList extends Component {
           text='Toujours Pas ?'
           loader={loading}
         />
-        {!loading &&
+        {loaded &&
           <div className="card-container">
             <Card
               image={drinks.strDrinkThumb}
