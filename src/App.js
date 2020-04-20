@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component, Fragment } from 'react';
+import Header from './components/Header'
+import CardsList from './components/CardsList'
+import Button from './components/Button'
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  state = {
+    firstClick: false,
+    textButton: 'Laisse toi faire !'
+  }
+
+  handleFirstClick = () => {
+      this.setState({firstClick: true})
+  }
+
+  handleReset = () => {
+      this.setState({firstClick: false})
+    }
+
+  render() {
+    return (
+      <div className="App">
+        <Header reset={this.handleReset}/>
+        <h1 className="punchline">
+          {
+            this.state.firstClick ?
+            'tadaaam !'
+              : 'Tu sais pas quoi faire ce soir ?'
+          }
+        </h1>
+        {this.state.firstClick ? 
+          <Fragment />
+          : <Button 
+            isClicked={this.handleFirstClick}
+            text={this.state.textButton}
+          />
+        }
+        {this.state.firstClick ? <CardsList /> : <Fragment />}
+      </div>
+    );
+  }
 }
 
-export default App;
+export default App
