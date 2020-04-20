@@ -82,7 +82,7 @@
         .card {
             grid-template-columns: auto;
             grid-template-rows:  1fr 20rem;
-            transition: all .7s ease-in-out;
+            transition: all .4s ease-in-out;
         }
         .card-title{
             height: 3rem;
