@@ -1,12 +1,41 @@
-.button{
-	width: 350px;
-	padding: 12px 0;
-	border:none;
+.button {
+	margin: 0.5rem;
 	border-radius:8px;
-	background:#f5f5f5;
-	color: #0D2841;
+	position: relative;
+	width: 370px;
+  height: 60px;
+  background:  #245275 ;
+  border: 1px solid #91C9FF;
+  outline: none;
+  transition: 1s ease-in-out;
+}
+
+svg {
+	border-radius:8px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  fill: none;
+  stroke: #fff;
+  stroke-dasharray: 150 480;
+  stroke-dashoffset: 150;
+  transition: 1s ease-in-out;
+}
+
+.button:hover {
+  transition: 1s ease-in-out;
+  background: #4F95DA;
+}
+
+.button:hover svg {
+  stroke-dashoffset: -480;
+}
+
+.button span {
+  color: white;
 	font-size: 1.5rem;
 	font-weight: 500;
+
   margin: 0.5rem;
 }
 .button:hover{
