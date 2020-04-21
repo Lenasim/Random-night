@@ -8,6 +8,8 @@ import Button from './Button'
 class CardsList extends Component {
 
   state = {
+    loading: false,
+    loaded: false,
     drinks: '',
     meals: '',
     movies: '',
@@ -17,8 +19,9 @@ class CardsList extends Component {
       'recipe'
     ]
   }
-  
+
   getRandom = () => {
+    this.setState({ loading: true })
     let pageMovie = Math.floor(Math.random() * 501)
     let resultMovie = Math.floor(Math.random() * 19)
     axios.all([
@@ -31,6 +34,8 @@ class CardsList extends Component {
           drinks: resDrink.data.drinks[0],
           meals: resMeal.data.meals[0],
           movies: resMovie.data.results[resultMovie]
+        }, () => {
+          this.setState({ loaded: true, loading: false })
         })
       }))
   }
@@ -40,28 +45,31 @@ class CardsList extends Component {
   }
 
   render() {
-    const { drinks, meals, movies, categories } = this.state
+    const { drinks, meals, movies, categories, loading, loaded } = this.state
 
     return (
       <div>
-        <Button isClicked={this.getRandom} 
+        <Button isClicked={this.getRandom}
           text='Toujours Pas ?'
+          loader={loading}
         />
-        <div className="card-container">
-          <Card
-            image={drinks.strDrinkThumb}
-            name={drinks.strDrink}
-            categorie={categories[0]} />
-          <Card
-            image={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`}
-            name={movies.title}
-            categorie={categories[1]} />
-          <Card
-            image={meals.strMealThumb}
-            name={meals.strMeal}
-            categorie={categories[2]} />
-        </div>
-      </div> 
+        {loaded &&
+          <div className="card-container">
+            <Card
+              image={drinks.strDrinkThumb}
+              name={drinks.strDrink}
+              categorie={categories[0]} />
+            <Card
+              image={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`}
+              name={movies.title}
+              categorie={categories[1]} />
+            <Card
+              image={meals.strMealThumb}
+              name={meals.strMeal}
+              categorie={categories[2]} />
+          </div>
+        }
+      </div>
     )
   }
 
