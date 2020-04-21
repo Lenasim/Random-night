@@ -11,15 +11,6 @@
     display: block;
     text-decoration: none;
 }
-.card-link:hover .card-title {
-    transition: color 0.3s ease;
-    font-size: 1.3rem;
-    color: #008CBA;
-}
-.card-link:hover .card-image {
-    transition: opacity 0.3s ease;
-    opacity: 0.9;
-}
 .card {
     display: flex;
     color: #777;
@@ -85,11 +76,13 @@
             width: 80%;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            grid-gap: 1rem; 
+            grid-gap: 2rem;
+            margin: 9rem; 
         }
         .card {
             grid-template-columns: auto;
             grid-template-rows:  1fr 20rem;
+            transition: all .4s ease-in-out;
         }
         .card-title{
             height: 3rem;
@@ -97,6 +90,20 @@
         .card-details {
             padding: 1.5rem;
             width: 100%;
+        }
+        .card:hover .card-title {
+            transition: color 0.3s ease;
+            font-size: 1.3rem;
+            color: #008CBA;
+        }
+        .card:hover .card-image {
+            transition: opacity 0.3s ease;
+            opacity: 0.9;
+        }
+        .card:hover {
+            transform: scale(1.1);
+            box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
+              -5px -5px 30px 15px rgba(0,0,0,0.22);
         }
 	}
 }

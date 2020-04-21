@@ -8,10 +8,12 @@ const Button = ({isClicked, text}) => {
           <polyline points="369,1 369,59 1,59 1,1 369,1" className="bg-line" />
           <polyline points="369,1 369,59 1,59 1,1 369,1" className="hl-line" />
         </svg>
-    <span>{text}</span>
-    
+    <span>      
+      {loader && <i className="fa fa-pulse fa-spinner"></i>}
+      {!loader && text}
+    </span>
     </button>
-    )
+  )
 }
 
 export default Button
