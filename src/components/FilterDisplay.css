@@ -1,7 +1,7 @@
 .FilterDisplay {
   background-color: white;
   width: 80%;
-  height: 200px;
+  padding-bottom: 30px;
   border-radius: 12px;
   margin: 50px auto;
 }
@@ -16,3 +16,4 @@
 .title-box {
   padding: 10px 25px;
 }
+
