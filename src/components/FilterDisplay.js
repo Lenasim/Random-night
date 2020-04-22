@@ -17,8 +17,8 @@ class FilterDisplay extends Component {
     activeId: ''
   }
 
-  handleChangeItem(event) {
-    const buttonId = event
+  handleChangeItem = (event) => {
+    const buttonId = event.target.id
     this.setState({ activeId: buttonId })
   }
 
@@ -44,7 +44,7 @@ class FilterDisplay extends Component {
     return (
       <div className="FilterDisplay">
         <FilterButtons
-          handleChange={() => this.handleChangeItem()}
+          handleChange={this.handleChangeItem}
           activeId={this.state.activeId}
         />
         <div>{this.getItemContent()}</div>
@@ -52,6 +52,5 @@ class FilterDisplay extends Component {
     );
   }
 }
-
 
 export default FilterDisplay;

@@ -7,27 +7,21 @@ const FilterButtons = ({ handleChange, activeId }) => {
     <div className="FilterButtons">
       <button
         id="drink"
-        onClick={(event) => {
-          handleChange(event.target.id)
-        }}
+        onClick={handleChange}
         className={activeId === "drink" ? "active" : ""}
       >
         Ta boisson
       </button>
       <button
         id="movie"
-        onClick={(event) => {
-          handleChange(event.target.id)
-        }}
+        onClick={handleChange}
         className={activeId === "movie" ? "active" : ""}
       >
         Ton film
       </button>
       <button
         id="recipe"
-        onClick={(event) => {
-          handleChange(event.target.id)
-        }}
+        onClick={handleChange}
         className={activeId === "recipe" ? "active" : ""}
       >
         Ta recette
