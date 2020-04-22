@@ -1,15 +1,10 @@
 .App {
   text-align: center;
   background-image: url(./images/pop-corn.png);
-  background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100%;
   background-position: bottom;
-<<<<<<< HEAD
-  min-height: 150vh;
-=======
-  min-height: 150vh
->>>>>>> ee3b865ae02bef2131abd2e4213539d89474ce90
+  min-height: 180vh;
 }
 
 .punchline {
@@ -23,6 +18,6 @@
 
 @media (min-width: 800px) {
   .App{
-    min-height: 120vh;
+    min-height: 110vh;
   }
 }
