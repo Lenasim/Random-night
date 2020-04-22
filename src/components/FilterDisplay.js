@@ -27,7 +27,6 @@ class FilterDisplay extends Component {
   }
 
   getItemContent() {
-    console.log(this.state.activeId)
     switch (this.state.activeId) {
       case "drink":
         return <FilterDrink />;
