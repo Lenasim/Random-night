@@ -2,9 +2,10 @@
   text-align: center;
   background-image: url(./images/pop-corn.png);
   background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: 100%;
   background-position: bottom;
-  min-height: 130vh
+  min-height: 150vh;
 }
 
 .punchline {
