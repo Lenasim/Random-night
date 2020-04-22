@@ -57,7 +57,7 @@ class App extends Component {
         />
         }
         {this.state.firstClick && <CardsList />}
-        {this.state.showFilterButton &&
+        {!this.state.filterClick && this.state.showFilterButton &&
           <Button
             isClicked={this.handleFilterClick}
             text={this.state.textFilterButton}
