@@ -1,0 +1,19 @@
+.FilterDisplay {
+  background-color: white;
+  width: 90%;
+  padding-bottom: 30px;
+  border-radius: 12px;
+  margin: 50px auto;
+}
+
+.top-box {
+  margin-left: 25px;
+  text-align: left !important;
+  display: flex;
+  font-size: 20px;
+}
+
+.title-box {
+  padding: 10px 25px;
+}
+
