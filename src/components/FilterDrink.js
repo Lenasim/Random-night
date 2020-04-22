@@ -22,11 +22,11 @@ class FilterDrink extends Component {
           </select>
           <div className="checkbox">
             <div className="checkbox-group">
-              <input className="checkbox-item" type="checkbox" id="alcool" />
+              <input className="checkbox-box" type="checkbox" id="alcool" />
               <label className="checkbox-item" htmlFor="alcool">Avec alcool</label>
             </div>
             <div className="checkbox-group">
-              <input className="checkbox-item" type="checkbox" id="soft" />
+              <input className="checkbox-box" type="checkbox" id="soft" />
               <label className="checkbox-item" htmlFor="soft">Sans alcool</label>
             </div>
           </div>
