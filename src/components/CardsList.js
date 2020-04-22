@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
+import axios from 'axios'
+
 import Card from './Card'
+import Button from './Button'
+import Modal from './Modal'
+
 import './Card.css'
 
-import axios from 'axios'
-import Button from './Button'
 
 class CardsList extends Component {
 
@@ -17,7 +20,8 @@ class CardsList extends Component {
       'cocktail',
       'movie',
       'recipe'
-    ]
+    ],
+    modal: false
   }
 
   getRandom = () => {
@@ -44,6 +48,10 @@ class CardsList extends Component {
     this.getRandom()
   }
 
+  toggleModal = () => {
+    this.setState({ modal: !this.state.modal })
+  }
+
   render() {
     const { drinks, meals, movies, categories, loading, loaded } = this.state
 
@@ -58,17 +66,23 @@ class CardsList extends Component {
             <Card
               image={drinks.strDrinkThumb}
               name={drinks.strDrink}
-              categorie={categories[0]} />
+              categorie={categories[0]}
+              onClick={this.toggleModal}  />
             <Card
               image={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`}
               name={movies.title}
-              categorie={categories[1]} />
+              categorie={categories[1]}
+              onClick={this.toggleModal} />
             <Card
               image={meals.strMealThumb}
               name={meals.strMeal}
-              categorie={categories[2]} />
+              categorie={categories[2]}
+              onClick={this.toggleModal} />
           </div>
         }
+        <Modal
+          show={this.state.modal}
+          handleClose={this.toggleModal} />
       </div>
     )
   }
