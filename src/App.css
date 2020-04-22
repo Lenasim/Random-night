@@ -4,7 +4,7 @@
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: bottom;
-  min-height: 140vh
+  min-height: 180vh;
 }
 
 .punchline {
@@ -14,4 +14,10 @@
   font-size: 25px;
   text-transform: uppercase;
   margin: 2rem 0;
+}
+
+@media (min-width: 800px) {
+  .App{
+    min-height: 110vh;
+  }
 }

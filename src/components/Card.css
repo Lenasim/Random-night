@@ -77,12 +77,12 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-gap: 2rem;
-            margin: 9rem; 
         }
         .card {
             grid-template-columns: auto;
             grid-template-rows:  1fr 20rem;
             transition: all .4s ease-in-out;
+            margin-top: 15rem;
         }
         .card-title{
             height: 3rem;
