@@ -1,33 +1,39 @@
 import React, { Component } from 'react';
+import axios from 'axios'
+
 
 import './FilterDrink.css'
 class FilterDrink extends Component {
+  state = {
+    categories: [],
+    nonAlcohol: true
+  }
+
+  getCategoriesDrink = () => {
+    axios.get('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list')
+      .then(res => this.setState({ categories: res.data.drinks.map(c => c.strCategory) }))
+
+  }
+  componentDidMount = () => {
+    this.getCategoriesDrink()
+  }
+
+  selectAlcohol = () => {
+    this.setState({ nonAlcohol: !this.state.nonAlcohol })
+  }
   render() {
     return (
       <div className="FilterDrink">
         <select name="categories" id="drink-categories">
           <option className="option" value="categories">Catégories</option>
-          <option className="option" value="Cocktail">Cocktail</option>
-          <option className="option" value="Milk / Float / Shake">Milk / Float / Shake</option>
-          <option className="option" value="Ordinary Drink">Ordinary Drink</option>
-          <option className="option" value="Cocoa">Cocoa</option>
-        </select>
-        <select name="ingredients" id="drink-ingredients">
-          <option className="option" value="ingredients">Ingrédients</option>
-          <option className="option" value="Cocktail">Cocktail</option>
-          <option className="option" value="Milk / Float / Shake">Milk / Float / Shake</option>
-          <option className="option" value="Ordinary Drink">Ordinary Drink</option>
-          <option className="option" value="Cocoa">Cocoa</option>
+          {this.state.categories.map(cat => (<option className="option" value={cat} key={cat}>{cat}</option>))}
         </select>
         <div className="checkbox">
-          <div className="checkbox-group">
-            <input className="checkbox-box" type="checkbox" id="alcool" />
-            <label className="checkbox-item" htmlFor="alcool">Avec alcool</label>
-          </div>
-          <div className="checkbox-group">
-            <input className="checkbox-box" type="checkbox" id="soft" />
-            <label className="checkbox-item" htmlFor="soft">Sans alcool</label>
-          </div>
+          <p>Sans alcool </p>
+          <label className="switch">
+            <input type="checkbox" value={this.state.nonAlcohol} onChange={this.selectAlcohol} />
+            <span className="slider round" />
+          </label>
         </div>
         <button className="form-btn">Chercher</button>
       </div>
