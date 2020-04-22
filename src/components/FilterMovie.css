@@ -1,4 +1,4 @@
-.FilterDrink {
+.FilterMovie {
   display: flex;
   margin-top: 25px;
   padding: 10px;
@@ -35,7 +35,7 @@ select {
   padding: 10px;
 }
 
-.FilterDrink button {
+.FilterMovie button {
   background: #245275;
   color: white;
   width: 20%;
@@ -45,7 +45,7 @@ select {
 }
 
 @media screen and (max-width: 800px) {
-  .FilterDrink {
+  .FilterMovie {
     flex-direction: column;
   }
 
@@ -66,7 +66,7 @@ select {
     margin: 10px 0;
   }
 
-  .FilterDrink button {
+  .FilterMovie button {
     width: 100%;
   }
 }
