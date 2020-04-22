@@ -35,24 +35,25 @@ select {
   padding: 10px;
 }
 
-/* .form-btn {
-   align-self: right;
-} */
-
 @media screen and (max-width: 800px) {
-  .FilterDrink{
+  .form-group{
     flex-direction: column;
   }
 
   select {
     width: 90%;
+    margin: 10px auto;
   }
 
   .checkbox-group {
-    display: inline;
+    font-size: 12px;
+  }
+
+  .checkbox-item {
+    padding: 6px;
   }
 
   .checkbox {
-    margin: 0 15px;
+    margin: 10px 0;
   }
 }
