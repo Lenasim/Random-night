@@ -18,6 +18,8 @@
 
 button {
   outline: transparent;
+}
+
 @media (min-width: 800px) {
   .App{
     min-height: 110vh;
