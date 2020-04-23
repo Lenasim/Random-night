@@ -12,8 +12,8 @@ class FilterDrink extends Component {
   getCategoriesDrink = () => {
     axios.get('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list')
       .then(res => this.setState({ categories: res.data.drinks.map(c => c.strCategory) }))
-
   }
+  
   componentDidMount = () => {
     this.getCategoriesDrink()
   }
