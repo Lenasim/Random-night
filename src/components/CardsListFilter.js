@@ -29,26 +29,30 @@ class CardsListFilter extends Component {
     const {drinkAlcohol, drinkCategory} = this.props
     const pageMovie = Math.floor(Math.random() * 501)
     const resultMovie = Math.floor(Math.random() * 19)
-    const resultDrink = Math.floor(Math.random() * 5)
+    // const resultDrink = Math.floor(Math.random() * 5)
+
 
     axios.all([
-      axios.get(
-        (drinkCategory === 'categories') ? 
+      axios.get( 
+        (drinkCategory === 'all' || undefined) ? 
         `https://www.thecocktaildb.com/api/json/v1/1/filter.php?${drinkAlcohol? "a=Non_Alcoholic" : "a=Alcoholic" }`
         : `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}${drinkAlcohol? "&a=Non_Alcoholic" : "&a=Alcoholic" }`
       ),
-      axios.get('https://www.themealdb.com/api/json/v1/1/random.php'),
+      axios.get('https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood'),
       axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=${pageMovie}`)
     ])
       .then(axios.spread((resDrink, resMeal, resMovie) => {
-        console.log(resDrink)
+        // console.log(resDrink)
+        let randomNum = Math.floor(Math.random() * resDrink.data.drinks.length)
+
         this.setState({
-          drinks: resDrink.data.drinks[resultDrink],
+          drinks: resDrink.data.drinks[randomNum],
           meals: resMeal.data.meals[0],
           movies: resMovie.data.results[resultMovie]
         }, () => {
           this.setState({ loaded: true, loading: false })
         })
+        console.log(randomNum, resDrink.data.drinks[randomNum])
       }))
   }
 
