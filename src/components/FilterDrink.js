@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-
-
 import './FilterDrink.css'
+
 class FilterDrink extends Component {
   state = {
     categories: [],
-    nonAlcohol: true
+    // selectedCategory: '',
+    nonAlcohol: false
   }
 
   getCategoriesDrink = () => {
@@ -18,24 +18,29 @@ class FilterDrink extends Component {
     this.getCategoriesDrink()
   }
 
-  selectAlcohol = () => {
+  filterAlcohol = () => {
     this.setState({ nonAlcohol: !this.state.nonAlcohol })
+    this.props.handleAlcoholChange(this.state.nonAlcohol)
   }
+
+  filterCategory = (event) => {
+    this.props.handleCategoryChange(event.target.value)
+  }
+
   render() {
     return (
       <div className="FilterDrink">
-        <select name="categories" id="drink-categories">
-          <option className="option" value="categories">Catégories</option>
+        <select name="selectedCategory" id="drink-categories" value={this.state.value} onChange={this.filterCategory}>
+          <option className="option" value="categories">All categories</option>
           {this.state.categories.map(cat => (<option className="option" value={cat} key={cat}>{cat}</option>))}
         </select>
         <div className="checkbox">
-          <p>Sans alcool </p>
+          <p>Sans alcool</p>
           <label className="switch">
-            <input type="checkbox" value={this.state.nonAlcohol} onChange={this.selectAlcohol} />
+            <input name="nonAlcohol" type="checkbox" value={this.state.nonAlcohol} onChange={this.filterAlcohol} />
             <span className="slider round" />
           </label>
         </div>
-        <button className="form-btn">Chercher</button>
       </div>
     );
   }

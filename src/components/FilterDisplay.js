@@ -3,6 +3,8 @@ import FilterButtons from './FilterButtons'
 import FilterDrink from './FilterDrink'
 import FilterMovie from './FilterMovie'
 import FilterRecipe from './FilterRecipe'
+import CardsListFilter from './CardsListFilter';
+import Button from './Button'
 
 import './FilterDisplay.css'
 
@@ -14,7 +16,14 @@ const Error = () => (
 
 class FilterDisplay extends Component {
   state = {
-    activeId: ''
+    activeId: '',
+    isClicked: false,
+    selectedCategory: '',
+    nonAlcohol: false
+  }
+
+  handleFirstClick = () => {
+    this.setState({ firstClick: true })
   }
 
   handleChangeItem = (event) => {
@@ -25,11 +34,17 @@ class FilterDisplay extends Component {
   componentDidMount() {
     this.setState({ activeId: "drink" })
   }
+  handleDrinkAlcohol = (nonAlcohol) => {
+    this.setState({ nonAlcohol })
+  }
+  handleDrinkCategory = (selectedCategory) => {
+    this.setState({ selectedCategory })
+  }
 
   getItemContent() {
     switch (this.state.activeId) {
       case "drink":
-        return <FilterDrink />;
+        return <FilterDrink handleCategoryChange={this.handleDrinkCategory} handleAlcoholChange={this.handleDrinkAlcohol} />;
       case "movie":
         return <FilterMovie />;
       case "recipe":
@@ -41,12 +56,20 @@ class FilterDisplay extends Component {
 
   render() {
     return (
-      <div className="FilterDisplay">
-        <FilterButtons
-          handleChange={this.handleChangeItem}
-          activeId={this.state.activeId}
-        />
-        <div>{this.getItemContent()}</div>
+      <div>
+        {!this.state.firstClick && <Button text="Get your own" isClicked={this.handleFirstClick} />}
+        <div className="FilterDisplay">
+          <FilterButtons
+            handleChange={this.handleChangeItem}
+            activeId={this.state.activeId}
+          />
+          <div>{this.getItemContent()}</div>
+        </div>
+        {this.state.firstClick &&
+          <CardsListFilter
+            drinkCategory={this.state.selectedCategory}
+            drinkAlcohol={this.state.nonAlcohol}
+          />}
       </div>
     );
   }
