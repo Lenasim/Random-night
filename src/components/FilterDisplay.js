@@ -18,7 +18,7 @@ class FilterDisplay extends Component {
   state = {
     activeId: '',
     isClicked: false,
-    selectedCategory: '',
+    selectedCategory: 'categories',
     nonAlcohol: false
   }
 
