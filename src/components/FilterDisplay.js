@@ -18,11 +18,11 @@ class FilterDisplay extends Component {
   state = {
     activeId: '',
     isClicked: false,
-    drinkCat: 'all',
+    drinkCat: '',
     nonAlcohol: false,
-    mealCat: 'all',
-    mealIngr: 'all',
-    mealAreas: 'all'
+    mealCat: '',
+    mealIngr: '',
+    mealAreas: ''
   }
 
   handleFirstClick = () => {
