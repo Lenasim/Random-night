@@ -3,6 +3,8 @@ import FilterButtons from './FilterButtons'
 import FilterDrink from './FilterDrink'
 import FilterMovie from './FilterMovie'
 import FilterRecipe from './FilterRecipe'
+import CardsListFilter from './CardsListFilter';
+import Button from './Button'
 
 import './FilterDisplay.css'
 
@@ -14,33 +16,58 @@ const Error = () => (
 
 class FilterDisplay extends Component {
   state = {
-    activeId: ''
+    activeId: '',
+    isClicked: false,
+    drinkCat: '',
+    nonAlcohol: false,
+    mealCat: '',
+    mealIngr: '',
+    mealAreas: ''
+  }
+
+  handleFirstClick = () => {
+    this.setState({ firstClick: true })
   }
 
   handleChangeItem = (event) => {
-    const buttonId = event.target.id
-    this.setState({ activeId: buttonId })
+    const buttonId = event.target.id;
+    this.setState({ activeId: buttonId });
   }
 
   componentDidMount() {
-    this.setState({ activeId: "drink" })
+    this.setState({ activeId: "drink" });
+  }
+  handleDrinkAlcohol = (nonAlcohol) => {
+    this.setState({ nonAlcohol });
+  }
+  handleDrinkCategory = (drinkCat) => {
+    this.setState({ drinkCat });
   }
 
-  getItemContent() {
-    switch (this.state.activeId) {
-      case "drink":
-        return <FilterDrink />;
-      case "movie":
-        return <FilterMovie />;
-      case "recipe":
-        return <FilterRecipe />;
-      default:
-        return <Error />;
-    }
+  handleMealCategory = (name, value) => {
+    this.setState({ [name]: value });
   }
 
-  render() {
-    return (
+    getItemContent() {
+  switch (this.state.activeId) {
+    case "drink":
+      return <FilterDrink
+        handleCategoryChange={this.handleDrinkCategory}
+        handleAlcoholChange={this.handleDrinkAlcohol} />;
+    case "movie":
+      return <FilterMovie />;
+    case "recipe":
+      return <FilterRecipe
+        handleCategoryChange={this.handleMealCategory} />;
+    default:
+      return <Error />;
+  }
+}
+
+render() {
+  return (
+    <div>
+      {!this.state.firstClick && <Button text="Get your own" isClicked={this.handleFirstClick} />}
       <div className="FilterDisplay">
         <FilterButtons
           handleChange={this.handleChangeItem}
@@ -48,8 +75,17 @@ class FilterDisplay extends Component {
         />
         <div>{this.getItemContent()}</div>
       </div>
-    );
-  }
+      {this.state.firstClick &&
+        <CardsListFilter
+          drinkCategory={this.state.drinkCat}
+          drinkAlcohol={this.state.nonAlcohol}
+          mealCat={this.state.mealCat}
+          mealIngr={this.state.mealIngr}
+          mealAreas={this.state.mealAreas}
+        />}
+    </div>
+  );
+}
 }
 
 export default FilterDisplay;
