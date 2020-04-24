@@ -5,8 +5,7 @@ import './FilterMovie.css'
 class FilterMovie extends Component {
   state = {
     genres: [],
-    genresResult: '',
-    // movieResult: ''
+    genresResult: ''
   }
 
   getGenres = () => {
@@ -18,27 +17,28 @@ class FilterMovie extends Component {
   componentDidMount = () => {
     this.getGenres()
   }
+
+  filterGenre = (event) => {
+    this.props.handleGenreChange(event.target.value)
+  }
   render() {
-    const { genresResult, genres } = this.state
     return (
-      <div>
         <div className="FilterMovie">
           <select
-            name="genres"
+            name="genresResult"
             id="movie-genres"
-            value={genresResult}
-            onChange={this.handleChangeGenre}
+            value={this.state.value}
+            onChange={this.filterGenre}
           >
             <option className="option" value="genre">
               Genres
           </option>
             {
-              genres.map((g) =>
-                <option value={g.id} key={g.id}>{g.name}</option>)
+              this.state.genres.map(g =>
+                (<option value={g.id} key={g.id}>{g.name}</option>))
             }
           </select>
         </div>
-      </div>
     );
   }
 }

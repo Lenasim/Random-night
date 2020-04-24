@@ -71,7 +71,7 @@ class CardsListFilter extends Component {
               : `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}${drinkAlcohol ? "&a=Non_Alcoholic" : "&a=Alcoholic"}`
           ),
           axios.get(this.getUrlMeals()),
-          axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=${pageMovie}`)
+          axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=${pageMovie}&with_genres=${this.props.movieGenre}`)
         ])
           .then(axios.spread((resDrink, resMeal, resMovie) => {
             console.log(resMeal)
