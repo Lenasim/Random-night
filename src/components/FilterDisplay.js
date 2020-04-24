@@ -79,7 +79,9 @@ render() {
         <CardsListFilter
           drinkCategory={this.state.drinkCat}
           drinkAlcohol={this.state.nonAlcohol}
-          
+          mealCat={this.state.mealCat}
+          mealIngr={this.state.mealIngr}
+          mealAreas={this.state.mealAreas}
         />}
     </div>
   );

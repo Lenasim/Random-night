@@ -24,13 +24,25 @@ class CardsListFilter extends Component {
     modal: false
   }
 
+
+  getUrlMeals = () => {
+    const { categoriesResult, areasResult } = this.props
+    if (categoriesResult && areasResult) {
+      return `https://www.themealdb.com/api/json/v1/1/filter.php?c=$%7BcategoriesResult%7D&a=$%7BareasResult%7D%60`
+    } else if (categoriesResult && !areasResult) {
+      return `https://www.themealdb.com/api/json/v1/1/filter.php?c=${categoriesResult}`
+    } else if (!categoriesResult && areasResult) {
+      return `https://www.themealdb.com/api/json/v1/1/filter.php?a=${areasResult}`
+    } else {
+      return 'https://www.themealdb.com/api/json/v1/1/random.php'
+    }
+  }
+
   getRandomFiltered = () => {
     this.setState({ loading: true })
     const {drinkAlcohol, drinkCategory} = this.props
     const pageMovie = Math.floor(Math.random() * 501)
     const resultMovie = Math.floor(Math.random() * 19)
-    // const resultDrink = Math.floor(Math.random() * 5)
-
 
     axios.all([
       axios.get( 
@@ -42,22 +54,26 @@ class CardsListFilter extends Component {
       axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=${pageMovie}`)
     ])
       .then(axios.spread((resDrink, resMeal, resMovie) => {
-        // console.log(resDrink)
-        let randomNum = Math.floor(Math.random() * resDrink.data.drinks.length)
-
+        console.log(resMeal)
+        let randomNumD = Math.floor(Math.random() * resDrink.data.drinks.length)
+        let randomNumR = Math.floor(Math.random() * resMeal.data.meals.length)
         this.setState({
-          drinks: resDrink.data.drinks[randomNum],
-          meals: resMeal.data.meals[0],
+          drinks: resDrink.data.drinks[randomNumD],
+          meals: resMeal.data.meals[randomNumR],
           movies: resMovie.data.results[resultMovie]
         }, () => {
           this.setState({ loaded: true, loading: false })
         })
-        console.log(randomNum, resDrink.data.drinks[randomNum])
+        // console.log(randomNum, resDrink.data.drinks[randomNum])
       }))
   }
 
   componentDidMount = () => {
     this.getRandomFiltered()
+  }
+
+  toggleModal = () => {
+    this.setState({ modal: !this.state.modal })
   }
 
   render() {
