@@ -64,6 +64,10 @@ class CardsList extends Component {
     this.getRandom()
   }
 
+  toggleModal = () => {
+    this.setState({ modal: !this.state.modal })
+  }
+
   isFavDrink = () => {
     this.setState({ isFavDrink: !this.state.isFavDrink })
     this.setState({ favDrink: this.state.drinks })

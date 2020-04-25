@@ -7,7 +7,6 @@ import Modal from './Modal'
 
 import './Card.css'
 
-
 class CardsListFilter extends Component {
 
   state = {
@@ -21,7 +20,13 @@ class CardsListFilter extends Component {
       'movie',
       'recipe'
     ],
-    modal: false
+    isFavDrink: false,
+    favDrink: '',
+    isFavRecipe: false,
+    favRecipe: '',
+    isFavMovie: false,
+    favMovie: '',
+    ingListDrink: []
   }
 
   componentDidMount = () => {
@@ -111,11 +116,50 @@ class CardsListFilter extends Component {
     this.setState({ modal: !this.state.modal })
   }
 
+  isFavDrink = () => {
+    this.setState({ isFavDrink: !this.state.isFavDrink })
+    this.setState({ favDrink: this.state.drinks })
+  }
+
+  isFavRecipe = () => {
+    this.setState({ isFavRecipe: !this.state.isFavRecipe })
+    this.setState({ favRecipe: this.state.meals })
+  }
+
+  isFavMovie = () => {
+    this.setState({ isFavMovie: !this.state.isFavMovie })
+    this.setState({ favMovie: this.state.movies })
+  }
+
+  getRandom = () => {
+    const { isFavDrink, isFavMovie, isFavRecipe } = this.state
+    if (isFavDrink === false && isFavRecipe === false && isFavMovie === false) {
+      this.getCocktailFiltered()
+      this.getMealFiltered()
+      this.getMovieFiltered()
+    } else if (isFavDrink === true && isFavRecipe === true && isFavMovie === false) {
+      this.getMovieFiltered()
+    } else if (isFavDrink === true && isFavRecipe === false && isFavMovie === true) {
+      this.getMealFiltered()
+    } else if (isFavDrink === false && isFavRecipe === true && isFavMovie === true) {
+      this.getCocktailFiltered()
+    } else if (isFavDrink === true && isFavRecipe === false && isFavMovie === false) {
+      this.getMealFiltered()
+      this.getMovieFiltered()
+    } else if (isFavDrink === false && isFavRecipe === false && isFavMovie === true) {
+      this.getCocktailFiltered()
+      this.getMealFiltered()
+    } else if (isFavDrink === false && isFavRecipe === true && isFavMovie === false) {
+      this.getCocktailFiltered()
+      this.getMovieFiltered()
+    }
+  }
+
   render() {
     const { drinks, meals, movies, categories, loading, loaded } = this.state
     return (
       <div>
-        <Button isClicked={this.getRandomFiltered}
+        <Button isClicked={this.getRandom}
           text='Toujours Pas ?'
           loader={loading}
         />
@@ -125,17 +169,26 @@ class CardsListFilter extends Component {
               image={drinks.strDrinkThumb}
               name={drinks.strDrink}
               categorie={categories[0]}
-              onClick={this.toggleModal} />
+              onClick={this.toggleModalDrink}
+              isFav={this.isFavDrink}
+              class={this.state.isFavDrink ? "fas fa-star" : "far fa-star"}
+            />
             <Card
               image={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`}
               name={movies.title}
               categorie={categories[1]}
-              onClick={this.toggleModal} />
+              onClick={this.toggleModalMovie}
+              isFav={this.isFavMovie}
+              class={this.state.isFavMovie ? "fas fa-star" : "far fa-star"}
+            />
             <Card
               image={meals.strMealThumb}
               name={meals.strMeal}
               categorie={categories[2]}
-              onClick={this.toggleModal} />
+              onClick={this.toggleModalRecipe}
+              isFav={this.isFavRecipe}
+              class={this.state.isFavRecipe ? "fas fa-star" : "far fa-star"}
+            />
           </div>
         }
         <Modal
