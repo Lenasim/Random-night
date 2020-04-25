@@ -14,8 +14,8 @@
     box-shadow: 0 0.1875rem 1.5rem rgba(0, 0, 0, 0.2);
     border-radius: 0.375rem;
     overflow: hidden;
-    margin: 15rem 0 2rem 0;
     position: relative;
+    margin: 2rem 0;
 }
 .card-image {
     transition: opacity 0.3s ease;
@@ -89,6 +89,7 @@
             grid-template-columns: auto;
             grid-template-rows:  1fr 20rem;
             transition: all .4s ease-in-out;
+            margin: 15rem 0 2rem 0;
         }
         .card-title{
             height: 3rem;
