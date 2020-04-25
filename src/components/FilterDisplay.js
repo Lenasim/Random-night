@@ -22,7 +22,8 @@ class FilterDisplay extends Component {
     nonAlcohol: false,
     mealCat: '',
     mealIngr: '',
-    mealAreas: ''
+    mealAreas: '',
+    genresResult: ''
   }
 
   handleFirstClick = () => {
@@ -48,6 +49,10 @@ class FilterDisplay extends Component {
     this.setState({ [name]: value });
   }
 
+  handleGenreChange = (genresResult) => {
+    this.setState({ genresResult });
+  }
+
     getItemContent() {
   switch (this.state.activeId) {
     case "drink":
@@ -55,7 +60,7 @@ class FilterDisplay extends Component {
         handleCategoryChange={this.handleDrinkCategory}
         handleAlcoholChange={this.handleDrinkAlcohol} />;
     case "movie":
-      return <FilterMovie />;
+      return <FilterMovie handleGenreChange={this.handleGenreChange}/>;
     case "recipe":
       return <FilterRecipe
         handleCategoryChange={this.handleMealCategory} />;
@@ -82,6 +87,7 @@ render() {
           mealCat={this.state.mealCat}
           mealIngr={this.state.mealIngr}
           mealAreas={this.state.mealAreas}
+          movieGenre={this.state.genresResult}
         />}
     </div>
   );
