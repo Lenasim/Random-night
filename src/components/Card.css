@@ -49,8 +49,7 @@
 
 .fa-lock-open, .fa-lock {
     color: #06182e;
-    font-size: 20px;
-    padding-right: 10px;
+    font-size: 15px;
     position: absolute;
     top: 15px;
     left: 15px;
@@ -83,6 +82,11 @@
         .card-details {
             padding: 1.5rem;
             width: 100%;
+        }
+        .fa-lock-open, .fa-lock {
+            font-size: 20px;
+            top: 15px;
+            left: 15px;
         }
 	}
 }
