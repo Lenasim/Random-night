@@ -47,8 +47,13 @@
     margin: 0 0 0.5rem 0;
 }
 
-.fa-star {
-    color: rgb(255, 208, 0);
+.fa-lock-open, .fa-lock {
+    color: #06182e;
+    font-size: 20px;
+    padding-right: 10px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
 }
 
 @supports (display: grid) {
