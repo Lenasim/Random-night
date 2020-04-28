@@ -47,6 +47,14 @@
     margin: 0 0 0.5rem 0;
 }
 
+
+.fa-lock-open, .fa-lock {
+    color: #06182e;
+    font-size: 15px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+
 .plus {
     position: relative;
     bottom: 8px;
@@ -95,6 +103,11 @@
             width: 100%;
         }
 
+        .fa-lock-open, .fa-lock {
+            font-size: 20px;
+            top: 15px;
+            left: 15px;
+      }
         .more:hover {
             transition-timing-function: ease-in;
             transition: 0.2s;

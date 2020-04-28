@@ -4,6 +4,7 @@ function Card(props) {
     return (
         <div>
             <div className="card"  >
+                <i onClick={props.isFav} className={props.class}></i>
                 <div className="card-details">
                     <h4 className="card-category">{props.categorie}</h4>
                     <h3 className="card-title"> {props.name}</h3>
