@@ -122,7 +122,7 @@ class CardsList extends Component {
               image={drinks.strDrinkThumb}
               name={drinks.strDrink}
               categorie={categories[0]}
-              onClick={this.toggleModalDrink}
+              onClick={this.toggleModal}
               isFav={this.isFavDrink}
               class={this.state.isFavDrink ? "fas fa-lock" : "fas fa-lock-open"}
             />
@@ -130,7 +130,7 @@ class CardsList extends Component {
               image={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`}
               name={movies.title}
               categorie={categories[1]}
-              onClick={this.toggleModalMovie}
+              onClick={this.toggleModal}
               isFav={this.isFavMovie}
               class={this.state.isFavMovie ? "fas fa-lock" : "fas fa-lock-open"}
             />
@@ -138,7 +138,7 @@ class CardsList extends Component {
               image={meals.strMealThumb}
               name={meals.strMeal}
               categorie={categories[2]}
-              onClick={this.toggleModalRecipe}
+              onClick={this.toggleModal}
               isFav={this.isFavRecipe}
               class={this.state.isFavRecipe ? "fas fa-lock" : "fas fa-lock-open"}
             />
