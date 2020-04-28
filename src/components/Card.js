@@ -10,9 +10,11 @@ function Card(props) {
                     <h3 className="card-title"> {props.name}</h3>
                 </div>
                 <img className="card-image" src={props.image} alt={props.name} />
+                <div onClick={props.onClick} className="more">
+                    <span className="plus">+</span>
+                </div>
             </div>
         </div>
-
     )
 }
 

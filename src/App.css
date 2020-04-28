@@ -1,10 +1,5 @@
 .App {
   text-align: center;
-  background-image: url(./images/pop-corn.png);
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: bottom;
-  min-height: 250vh;
 }
 
 .punchline {
@@ -14,14 +9,9 @@
   font-size: 25px;
   text-transform: uppercase;
   margin: 2rem 0;
+  
 }
 
 button {
   outline: transparent;
-}
-
-@media (min-width: 800px) {
-  .App{
-    min-height: 140vh;
-  }
 }
