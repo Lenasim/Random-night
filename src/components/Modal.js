@@ -1,5 +1,5 @@
 import React from 'react'
-// import React, { Fragment } from 'react'
+
 import './Modal.css'
 
 function Modal(props) {
@@ -15,23 +15,18 @@ function Modal(props) {
                 <div className="modal-body">
                     <div className='left'>
                         <section className='modal-title'>
-                            <h2>Imperial Cocktail</h2>
+                            <h2>{props.name}</h2>
                         </section>
-                        <img className='modal-img' src="https://www.thecocktaildb.com/images/media/drink/bcsj2e1487603625.jpg" alt="" />
+                        <img className='modal-img' src={props.image} alt="" />
                     </div>
-
                     <div className='right'>
-                        {/* {props.genres
-                            ? <div className='modal-detail'>
-                            <h3>GENRES</h3>
-                            <ul className="modal-lists">
-                                <li>action</li>
-                                <li>drama</li>
-                                <li>S.F.</li>
-                            </ul>
+                        <div>
+                            <p>{props.genre}</p>
+                            <p>{props.alcoholic}</p>
+                            <p>{props.glassType}</p>
+                            <p>{props.date}</p>
+                            <p>{props.rating}</p>
                         </div>
-                            : <Fragment />
-                        } */}
                         <div className='modal-detail'>
                             <h3>INGREDIENTS</h3>
                             <ul className="modal-lists">
@@ -42,9 +37,8 @@ function Modal(props) {
                         </div>
                         <section className='modal-detail'>
                             <h3>HOW TO MAKE</h3>
-                            <p>
-                                Shake with ice and strain into cocktail glass.
-                        </p>
+                            <p>{props.instructions}</p>
+                            <p>{props.overview}</p>
                         </section>
                     </div>
                 </div>
