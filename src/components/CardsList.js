@@ -7,7 +7,6 @@ import Modal from './Modal'
 
 import './Card.css'
 
-
 class CardsList extends Component {
 
   state = {
@@ -28,7 +27,10 @@ class CardsList extends Component {
     isFavRecipe: false,
     favRecipe: '',
     isFavMovie: false,
-    favMovie: ''
+    favMovie: '',
+    modalDrink: false,
+    modalMeal: false,
+    modalMovie: false
   }
 
   getRandomDrink = () => {
@@ -64,8 +66,16 @@ class CardsList extends Component {
     this.getRandom()
   }
 
-  toggleModal = () => {
-    this.setState({ modal: !this.state.modal })
+  toggleModalDrink = () => {
+    this.setState({ modalDrink: !this.state.modalDrink })
+  }
+
+  toggleModalMovie = () => {
+    this.setState({ modalMovie: !this.state.modalMovie })
+  }
+
+  toggleModalMeal = () => {
+    this.setState({ modalMeal: !this.state.modalMeal })
   }
 
   isFavDrink = () => {
@@ -121,36 +131,58 @@ class CardsList extends Component {
             <Card
               image={drinks.strDrinkThumb}
               name={drinks.strDrink}
-              categorie={categories[0]}
-              onClick={this.toggleModal}
+              category={categories[0]}
+              onClick={this.toggleModalDrink}
               isFav={this.isFavDrink}
               class={this.state.isFavDrink ? "fas fa-lock" : "fas fa-lock-open"}
             />
             <Card
               image={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`}
               name={movies.title}
-              categorie={categories[1]}
-              onClick={this.toggleModal}
+              category={categories[1]}
+              onClick={this.toggleModalMovie}
               isFav={this.isFavMovie}
               class={this.state.isFavMovie ? "fas fa-lock" : "fas fa-lock-open"}
             />
             <Card
               image={meals.strMealThumb}
               name={meals.strMeal}
-              categorie={categories[2]}
-              onClick={this.toggleModal}
+              category={categories[2]}
+              onClick={this.toggleModalMeal}
               isFav={this.isFavRecipe}
               class={this.state.isFavRecipe ? "fas fa-lock" : "fas fa-lock-open"}
             />
           </div>
         }
         <Modal
-          show={this.state.modal}
-          handleClose={this.toggleModal} />
+          show={this.state.modalDrink}
+          handleClose={this.toggleModalDrink}
+          name={drinks.strDrink} 
+          image={drinks.strDrinkThumb}
+          genre={drinks.strCategory}
+          alcoholic={drinks.strAlcoholic}
+          glassType={drinks.strGlass}
+          instructions={drinks.strInstructions}/>
+        <Modal
+          show={this.state.modalMovie}
+          handleClose={this.toggleModalMovie}
+          name={movies.title}
+          image={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`}
+          rating={movies.vote_average}
+          overview={movies.overview}
+          date={movies.release_date}/>
+        <Modal
+          show={this.state.modalMeal}
+          handleClose={this.toggleModalMeal}
+          name={meals.strMeal}
+          image={meals.strMealThumb}
+          genre={meals.strCategory}
+          instructions={meals.strInstructions} />
       </div>
     )
   }
 
 }
+
 
 export default CardsList
