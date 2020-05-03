@@ -72,23 +72,23 @@ class FilterDisplay extends Component {
 render() {
   return (
     <div>
-      {!this.state.firstClick && <Button text="Get your own" isClicked={this.handleFirstClick} />}
       <div className="FilterDisplay">
         <FilterButtons
           handleChange={this.handleChangeItem}
           activeId={this.state.activeId}
-        />
+          />
         <div>{this.getItemContent()}</div>
       </div>
       {this.state.firstClick &&
         <CardsListFilter
-          drinkCategory={this.state.drinkCat}
-          drinkAlcohol={this.state.nonAlcohol}
-          mealCat={this.state.mealCat}
-          mealIngr={this.state.mealIngr}
-          mealAreas={this.state.mealAreas}
-          movieGenre={this.state.genresResult}
+        drinkCategory={this.state.drinkCat}
+        drinkAlcohol={this.state.nonAlcohol}
+        mealCat={this.state.mealCat}
+        mealIngr={this.state.mealIngr}
+        mealAreas={this.state.mealAreas}
+        movieGenre={this.state.genresResult}
         />}
+        {!this.state.firstClick && <Button text="Get your own" isClicked={this.handleFirstClick} />}
     </div>
   );
 }
