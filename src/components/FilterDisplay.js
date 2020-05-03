@@ -39,7 +39,7 @@ class FilterDisplay extends Component {
     this.setState({ activeId: "drink" });
   }
   handleDrinkAlcohol = (nonAlcohol) => {
-    this.setState({ nonAlcohol });
+    this.setState({ nonAlcohol: !nonAlcohol });
   }
   handleDrinkCategory = (drinkCat) => {
     this.setState({ drinkCat });
@@ -58,7 +58,8 @@ class FilterDisplay extends Component {
     case "drink":
       return <FilterDrink
         handleCategoryChange={this.handleDrinkCategory}
-        handleAlcoholChange={this.handleDrinkAlcohol} />;
+        handleAlcoholChange={this.handleDrinkAlcohol}
+        nonAlcohol={this.state.nonAlcohol} />;
     case "movie":
       return <FilterMovie handleGenreChange={this.handleGenreChange}/>;
     case "recipe":
