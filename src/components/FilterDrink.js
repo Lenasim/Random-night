@@ -4,9 +4,7 @@ import './FilterDrink.css'
 
 class FilterDrink extends Component {
   state = {
-    categories: [],
-    // selectedCategory: '',
-    nonAlcohol: false
+    categories: []
   }
 
   getCategoriesDrink = () => {
@@ -19,8 +17,7 @@ class FilterDrink extends Component {
   }
 
   filterAlcohol = () => {
-    this.setState({ nonAlcohol: !this.state.nonAlcohol })
-    this.props.handleAlcoholChange(this.state.nonAlcohol)
+    this.props.handleAlcoholChange(this.props.nonAlcohol)
   }
 
   filterCategory = (event) => {
@@ -37,7 +34,7 @@ class FilterDrink extends Component {
         <div className="checkbox">
           <p>Sans alcool</p>
           <label className="switch">
-            <input name="nonAlcohol" type="checkbox" value={this.state.nonAlcohol} onChange={this.filterAlcohol} />
+            <input name="nonAlcohol" type="checkbox" value={this.props.nonAlcohol} onChange={this.filterAlcohol} />
             <span className="slider round" />
           </label>
         </div>
