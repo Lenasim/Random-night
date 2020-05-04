@@ -31,7 +31,18 @@ class CardsListFilter extends Component {
     modalMeal: false,
     modalMovie: false,
     detailsDrink: '',
-    detailsMeal:'',
+    detailsMeal: '',
+    ingDrink: [],
+    measuresDrink: [],
+    video: '',
+    ingMeal: [],
+    measuresMeal: [],
+    date: '',
+    genresList: '',
+    genresMovie: [],
+    actors: [],
+    directors: [],
+    trailer: ''
   }
 
   componentDidMount = () => {
@@ -43,30 +54,67 @@ class CardsListFilter extends Component {
     await this.getCocktailFiltered()
     await this.getMealFiltered()
     await this.getMovieFiltered()
+    await this.getGenresList()
     this.setState({ loaded: true, loading: false })
   }
 
   getDetailsDrink = () => {
     const { idDrink } = this.state.drinks
-      axios
+    axios
       .get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${idDrink}`)
-      .then(res => this.setState({detailsDrink: res.data.drinks[0]}))
+      .then(res => {
+        let listMeasures = []
+        let listIng = []
+        let drink = res.data.drinks[0]
+        Object
+          .keys(drink)
+          .filter((measure) => /Measure/.test(measure))
+          .forEach(measure => listMeasures.push(drink[measure]))
+        Object
+          .keys(drink)
+          .filter((ing) => /Ingredient/.test(ing))
+          .forEach(ing => listIng.push(drink[ing]))
+        this.setState({
+          measuresDrink: listMeasures,
+          ingDrink: listIng,
+          detailsDrink: res.data.drinks[0]
+        })
+      })
   }
 
   getDetailsMeal = () => {
-    const {idMeal} = this.state.meals
+    const { idMeal } = this.state.meals
     axios
       .get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`)
-      .then(res => this.setState({detailsMeal: res.data.meals[0]}))
+      .then(res => {
+        let listMeasures = []
+        let listIng = []
+        let meal = res.data.meals[0]
+        Object
+          .keys(meal)
+          .filter((measure) => /Measure/.test(measure))
+          .forEach(measure => listMeasures.push(meal[measure]))
+        Object
+          .keys(meal)
+          .filter((ing) => /Ingredient/.test(ing))
+          .forEach(ing => listIng.push(meal[ing]))
+        this.setState({
+          measuresMeal: listMeasures,
+          ingMeal: listIng,
+          detailsMeal: res.data.meals[0],
+          video: res.data.meals[0].strYoutube.replace('watch?v=', 'embed/')
+        })
+      })
   }
 
   getCocktailFiltered = () => {
     const { drinkAlcohol, drinkCategory } = this.props
-    axios.get(
-      (!drinkCategory) ?
-        `https://www.thecocktaildb.com/api/json/v1/1/filter.php?${drinkAlcohol ? "a=Non_Alcoholic" : "a=Alcoholic"}`
-        : `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}${drinkAlcohol ? "&a=Non_Alcoholic" : "&a=Alcoholic"}`
-    )
+    axios
+      .get(
+        !drinkCategory ?
+          `https://www.thecocktaildb.com/api/json/v1/1/filter.php?${drinkAlcohol ? "a=Non_Alcoholic" : "a=Alcoholic"}`
+          : `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}${drinkAlcohol ? "&a=Non_Alcoholic" : "&a=Alcoholic"}`
+      )
       .then(resDrink => {
         let randomNumD = Math.floor(Math.random() * resDrink.data.drinks.length)
         this.setState({ drinks: resDrink.data.drinks[randomNumD] })
@@ -74,7 +122,8 @@ class CardsListFilter extends Component {
   }
 
   getMealFiltered = () => {
-    axios.get(this.getUrlMeals())
+    axios
+      .get(this.getUrlMeals())
       .then(resMeal => {
         let randomNumR = Math.floor(Math.random() * resMeal.data.meals.length)
         this.setState({ meals: resMeal.data.meals[randomNumR] })
@@ -88,7 +137,7 @@ class CardsListFilter extends Component {
         if (mealAreas === '') {
           return 'https://www.themealdb.com/api/json/v1/1/random.php'
         } else {
-          return `https://www.themealdb.com/api/json/vhttp://localhost:3000/1/1/filter.php?a=${mealAreas}`
+          return `https://www.themealdb.com/api/json/v1/1/filter.php?a=${mealAreas}`
         }
       } else {
         if (mealAreas === '') {
@@ -117,17 +166,47 @@ class CardsListFilter extends Component {
   getMovieFiltered = () => {
     const pageMovie = Math.floor(Math.random() * 501)
     const resultMovie = Math.floor(Math.random() * 19)
-    axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=${pageMovie}&with_genres=${this.props.movieGenre}`)
+    axios
+      .get(`https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=${pageMovie}&with_genres=${this.props.movieGenre}`)
       .then(resMovie => {
         this.setState({ movies: resMovie.data.results[resultMovie] })
-        this.catchEmptyMovie()
       })
+      .catch(() => this.getMovieFiltered())
   }
 
-  catchEmptyMovie = () => {
-    if (!this.state.movies.poster_path) {
-      this.getMovieFiltered()
-    }
+  getDate = () => {
+    let date = this.state.movies.release_date
+    this.setState({ date: new Date(date).toLocaleDateString() })
+  }
+
+  getGenresList = () => {
+    axios.get('https://api.themoviedb.org/3/genre/movie/list?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US')
+      .then(res => this.setState({ genresList: res.data.genres.map(c => c) }))
+  }
+
+  getGenresMovie = () => {
+    const { movies, genresList } = this.state
+    let genres = []
+    genresList.map(g => movies.genre_ids.map(i => i === g.id && genres.push(g.name)))
+    this.setState({ genresMovie: genres })
+  }
+
+  getCredits = () => {
+    const { movies } = this.state
+    axios
+      .get(`https://api.themoviedb.org/3/movie/${movies.id}/credits?api_key=439ba5790e4522ad15e0c6a3574cd795`)
+      .then(res => this.setState({
+        actors: res.data.cast.map(c => c.name),
+        directors: res.data.crew.map(j => j.job === "Director" && j.name)
+      }))
+  }
+
+  getTrailer = () => {
+    const { movies } = this.state
+    axios
+      .get(`https://api.themoviedb.org/3/movie/${movies.id}/videos?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US`)
+      .then(res => this.setState({ trailer: `https://www.youtube.com/embed/${res.data.results[0].key}` }))
+      .catch(() => this.setState({ trailer: false }))
   }
 
   toggleModalDrink = () => {
@@ -137,6 +216,10 @@ class CardsListFilter extends Component {
 
   toggleModalMovie = () => {
     this.setState({ modalMovie: !this.state.modalMovie })
+    this.getDate()
+    this.getGenresMovie()
+    this.getCredits()
+    this.getTrailer()
   }
 
   toggleModalMeal = () => {
@@ -184,7 +267,7 @@ class CardsListFilter extends Component {
   }
 
   render() {
-    const { drinks, meals, movies, categories, loading, loaded, detailsDrink, detailsMeal } = this.state
+    const { drinks, meals, movies, categories, loading, loaded, detailsDrink, detailsMeal, ingDrink, measuresDrink, ingMeal, measuresMeal, video, date, genresMovie, actors, directors, trailer } = this.state
     return (
       <div>
         <Button isClicked={this.getRandom}
@@ -219,15 +302,17 @@ class CardsListFilter extends Component {
             />
           </div>
         }
-       <Modal
+        <Modal
           show={this.state.modalDrink}
           handleClose={this.toggleModalDrink}
-          name={detailsDrink.strDrink} 
+          name={detailsDrink.strDrink}
           image={detailsDrink.strDrinkThumb}
           genre={detailsDrink.strCategory}
           alcoholic={detailsDrink.strAlcoholic}
           glassType={detailsDrink.strGlass}
-          instructions={detailsDrink.strInstructions}/>
+          instructions={detailsDrink.strInstructions}
+          ingredients={ingDrink}
+          measures={measuresDrink} />
         <Modal
           show={this.state.modalMovie}
           handleClose={this.toggleModalMovie}
@@ -235,18 +320,26 @@ class CardsListFilter extends Component {
           image={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`}
           rating={movies.vote_average}
           overview={movies.overview}
-          date={movies.release_date}/>
+          genre={genresMovie}
+          date={date}
+          actors={actors}
+          directors={directors}
+          trailer={trailer} />
         <Modal
           show={this.state.modalMeal}
           handleClose={this.toggleModalMeal}
           name={detailsMeal.strMeal}
           image={detailsMeal.strMealThumb}
           genre={detailsMeal.strCategory}
-          instructions={detailsMeal.strInstructions} />
+          area={detailsMeal.strArea}
+          instructions={detailsMeal.strInstructions}
+          ingredients={ingMeal}
+          measures={measuresMeal}
+          video={video}
+          tags={detailsMeal.strTags} />
       </div>
     )
   }
-
 }
 
 export default CardsListFilter
