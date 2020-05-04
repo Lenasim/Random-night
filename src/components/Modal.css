@@ -53,15 +53,19 @@
   width: 100%;
 }
 .modal-title {
-  margin-top: 1rem;
-  margin-right: auto;
-  margin-left: auto;
-}
-.modal-title h2 {
+  margin: 1rem auto;
   font-weight: 600;
   font-size: 2rem;
   margin-bottom: 2rem;
+  
 }
+
+.modal-video {
+  margin: 1em auto;
+  width: 90%;
+  height: 100%;
+}
+
 .modal-img{
   width: 90%;
   height: auto;
@@ -72,13 +76,13 @@
 
 .right {
   border-radius: 0 6px 6px 0;
+  margin: auto 0 ;
 }
 .modal-detail {
   font-family: "futura-pt", sans-serif;
   font-weight: 500;
   line-height: 22px;
   height: auto;
-  
   background-color: white;
   border-bottom: 1px solid #eee;
   margin: 2rem 1rem;
@@ -90,16 +94,21 @@
   color: #008CBA;
   border-bottom: 1px solid #eee;
   font-family: "ff-tisa-web-pro";
-  display: block;
   width: 100%;
   font-size: 18px;
   margin: 0px 0px 10px;
   padding-bottom: 10px;
 }
+
 .modal-detail p {
-  display: block;
   padding: 0px;
   font-size: 14px;
+}
+
+.modal-group-list {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: justify;
 }
 
 .modal-lists {
@@ -115,6 +124,15 @@
     line-height: 22px;
   }
 
+  .modal-types {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .li-title {
+    font-weight: 900 !important;
+    text-decoration: underline;
+  }
 
   @media (min-width: 768px) {
     .modal {
