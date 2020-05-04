@@ -167,30 +167,24 @@ class CardsListFilter extends Component {
     const pageMovie = Math.floor(Math.random() * 501)
     const resultMovie = Math.floor(Math.random() * 19)
     axios
-      .get(`https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=${pageMovie}&with_genres=${this.props.movieGenre}`)
+      .get(`https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&pag${pageMovie}&with_genres=${this.props.movieGenre}`)
       .then(resMovie => {
+        console.log(resMovie)
+        const totalPage = resMovie.data.total_pages
+        console.log(totalPage)
         this.setState({ movies: resMovie.data.results[resultMovie] })
+        this.catchEmptyMovie()
+        const catchEmptyPage = () => {
+          (totalPage < pageMovie) && this.getMovieFiltered()
+        }
+        catchEmptyPage()
       })
-      .catch(() => this.getMovieFiltered())
   }
 
-  getDate = () => {
-    let date = this.state.movies.release_date
-    this.setState({ date: new Date(date).toLocaleDateString() })
-  }
-
-  getGenresList = () => {
-    axios.get('https://api.themoviedb.org/3/genre/movie/list?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US')
-      .then(res => this.setState({ genresList: res.data.genres.map(c => c) }))
-  }
-
-  getGenresMovie = () => {
-    const { movies, genresList } = this.state
-    let genres = []
-    genresList.map(g => movies.genre_ids.map(i => i === g.id && genres.push(g.name)))
-    this.setState({ genresMovie: genres })
-  }
-
+  catchEmptyMovie = () => {
+    if (!this.state.movies.poster_path) {
+      this.getMovieFiltered()
+    }
   getCredits = () => {
     const { movies } = this.state
     axios
