@@ -60,14 +60,33 @@ class CardsListFilter extends Component {
       .then(res => this.setState({detailsMeal: res.data.meals[0]}))
   }
 
-  getCocktailFiltered = () => {
+  getUrlDrinks = () => {
     const { drinkAlcohol, drinkCategory } = this.props
+    if(!drinkCategory) {
+      if (drinkAlcohol === "nonAlcohol") {
+        return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic'
+      } else if (drinkAlcohol === "alcohol") {
+        return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic'
+      } else {
+        return 'https://www.thecocktaildb.com/api/json/v1/1/random.php'
+      }
+    } else {
+      if (drinkAlcohol === "nonAlcohol") {
+        return `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}&a=Non_Alcoholic`
+      } else if (drinkAlcohol === "alcohol") {
+        return `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}&a=Alcoholic`
+      } else {
+        return `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}`
+      }
+  }
+}
+
+  getCocktailFiltered = () => {
     axios.get(
-      (!drinkCategory) ?
-        `https://www.thecocktaildb.com/api/json/v1/1/filter.php?${drinkAlcohol ? "a=Non_Alcoholic" : "a=Alcoholic"}`
-        : `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}${drinkAlcohol ? "&a=Non_Alcoholic" : "&a=Alcoholic"}`
+     this.getUrlDrinks()
     )
       .then(resDrink => {
+        console.log(resDrink)
         let randomNumD = Math.floor(Math.random() * resDrink.data.drinks.length)
         this.setState({ drinks: resDrink.data.drinks[randomNumD] })
       })
