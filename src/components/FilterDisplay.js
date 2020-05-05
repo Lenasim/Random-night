@@ -23,7 +23,9 @@ class FilterDisplay extends Component {
     mealCat: '',
     mealIngr: '',
     mealAreas: '',
-    genresResult: ''
+    genresResult: '',
+    queryCast: '',
+    queryCrew: ''
   }
 
   handleFirstClick = () => {
@@ -53,46 +55,59 @@ class FilterDisplay extends Component {
     this.setState({ genresResult });
   }
 
-    getItemContent() {
-  switch (this.state.activeId) {
-    case "drink":
-      return <FilterDrink
-        handleCategoryChange={this.handleDrinkCategory}
-        handleAlcoholChange={this.handleDrinkAlcohol}
-        nonAlcohol={this.state.nonAlcohol} />;
-    case "movie":
-      return <FilterMovie handleGenreChange={this.handleGenreChange}/>;
-    case "recipe":
-      return <FilterRecipe
-        handleCategoryChange={this.handleMealCategory} />;
-    default:
-      return <Error />;
+  handleCastChange = (queryCast) => {
+    this.setState({ queryCast })
   }
-}
 
-render() {
-  return (
-    <div>
-      <div className="FilterDisplay">
-        <FilterButtons
-          handleChange={this.handleChangeItem}
-          activeId={this.state.activeId}
+  handleCrewChange = (queryCrew) => {
+    this.setState({ queryCrew })
+  }
+
+  getItemContent() {
+    switch (this.state.activeId) {
+      case "drink":
+        return <FilterDrink
+          handleCategoryChange={this.handleDrinkCategory}
+          handleAlcoholChange={this.handleDrinkAlcohol}
+          nonAlcohol={this.state.nonAlcohol} />;
+      case "movie":
+        return <FilterMovie
+          handleGenreChange={this.handleGenreChange}
+          handleCastChange={this.handleCastChange}
+          handleCrewChange={this.handleCrewChange} />
+      case "recipe":
+        return <FilterRecipe
+          handleCategoryChange={this.handleMealCategory} />;
+      default:
+        return <Error />;
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="FilterDisplay">
+          <FilterButtons
+            handleChange={this.handleChangeItem}
+            activeId={this.state.activeId}
           />
-        <div>{this.getItemContent()}</div>
-      </div>
-      {this.state.firstClick &&
-        <CardsListFilter
-        drinkCategory={this.state.drinkCat}
-        drinkAlcohol={this.state.nonAlcohol}
-        mealCat={this.state.mealCat}
-        mealIngr={this.state.mealIngr}
-        mealAreas={this.state.mealAreas}
-        movieGenre={this.state.genresResult}
-        />}
+          <div>{this.getItemContent()}</div>
+        </div>
+        {this.state.firstClick &&
+          <CardsListFilter
+            drinkCategory={this.state.drinkCat}
+            drinkAlcohol={this.state.nonAlcohol}
+            mealCat={this.state.mealCat}
+            mealIngr={this.state.mealIngr}
+            mealAreas={this.state.mealAreas}
+            movieGenre={this.state.genresResult}
+            cast={this.state.queryCast}
+            crew={this.state.queryCrew}
+          />}
         {!this.state.firstClick && <Button text="Get your own" isClicked={this.handleFirstClick} />}
-    </div>
-  );
-}
+      </div>
+    );
+  }
 }
 
 export default FilterDisplay;
