@@ -1,26 +1,72 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import Header from './components/Header'
+import CardsList from './components/CardsList'
+import Button from './components/Button'
+import FilterDisplay from './components/FilterDisplay'
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  state = {
+    firstClick: false,
+    textButton: 'Laisse toi faire !',
+    showButton: true,
+    filterClick: false,
+    textFilterButton: 'Personnaliser',
+    showFilterButton: true
+  }
+
+  handleFirstClick = () => {
+    this.setState({
+      firstClick: true,
+      showFilterButton: false
+    })
+  }
+
+  handleFilterClick = () => {
+    this.setState({
+      filterClick: true,
+      showButton: false
+    })
+  }
+
+  handleReset = () => {
+    this.setState({
+      firstClick: false,
+      filterClick: false,
+      showButton: true,
+      showFilterButton: true
+    })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Header reset={this.handleReset} />
+        <h1 className="punchline">
+          {
+            this.state.firstClick ?
+              'tadaaam !'
+              : 'Tu sais pas quoi faire ce soir ?'
+          }
+        </h1>
+        {!this.state.firstClick && this.state.showButton && <Button
+          isClicked={this.handleFirstClick}
+          text={this.state.textButton}
+        />
+        }
+        {this.state.firstClick && <CardsList />}
+        {!this.state.filterClick && this.state.showFilterButton &&
+          <Button
+            isClicked={this.handleFilterClick}
+            text={this.state.textFilterButton}
+          />
+        }
+        {this.state.filterClick && <FilterDisplay />}
+      </div>
+    );
+  }
 }
 
-export default App;
+export default App
