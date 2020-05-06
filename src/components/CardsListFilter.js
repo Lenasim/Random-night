@@ -45,7 +45,9 @@ class CardsListFilter extends Component {
     trailer: '',
     castId: '',
     crewId: '',
-    totalPages: ''
+    totalPages: '',
+    drinkCategoryIdList: [],
+    drinkAlcoholIdList: []
   }
 
   componentDidMount = () => {
@@ -112,16 +114,19 @@ class CardsListFilter extends Component {
 
   getCocktailFiltered = () => {
     const { drinkAlcohol, drinkCategory } = this.props
+
     axios
-      .get(
-        !drinkCategory ?
-          `https://www.thecocktaildb.com/api/json/v1/1/filter.php?${drinkAlcohol ? "a=Non_Alcoholic" : "a=Alcoholic"}`
-          : `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}${drinkAlcohol ? "&a=Non_Alcoholic" : "&a=Alcoholic"}`
-      )
-      .then(resDrink => {
-        let randomNumD = Math.floor(Math.random() * resDrink.data.drinks.length)
-        this.setState({ drinks: resDrink.data.drinks[randomNumD] })
+      .get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}`)
+      .then(res => {
+        this.setState({ drinkCategoryIdList: res.data.drinks.map(c => c.idDrink) })
       })
+
+    // axios
+    //   .get(this.getUrlDrinks())
+    //   .then(resDrink => {
+    //     let randomNumD = Math.floor(Math.random() * resDrink.data.drinks.length)
+    //     this.setState({ drinks: resDrink.data.drinks[randomNumD] })
+    //   })
   }
 
   getMealFiltered = () => {
@@ -133,6 +138,27 @@ class CardsListFilter extends Component {
       })
   }
 
+
+  getUrlDrinks = () => {
+    const { drinkAlcohol, drinkCategory } = this.props
+    if (!drinkCategory) {
+      if (drinkAlcohol === "nonAlcohol") {
+        return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic'
+      } else if (drinkAlcohol === "alcohol") {
+        return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic'
+      } else {
+        return 'https://www.thecocktaildb.com/api/json/v1/1/random.php'
+      }
+    } else {
+      if (drinkAlcohol === "nonAlcohol") {
+        return `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}&a=Non_Alcoholic`
+      } else if (drinkAlcohol === "alcohol") {
+        return `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}&a=Alcoholic`
+      } else {
+        return `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}`
+      }
+    }
+  }
   getUrlMeals = () => {
     const { mealCat, mealIngr, mealAreas } = this.props
     if (mealCat === '' || !mealCat) {

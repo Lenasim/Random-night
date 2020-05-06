@@ -19,7 +19,7 @@ class FilterDisplay extends Component {
     activeId: '',
     isClicked: false,
     drinkCat: '',
-    nonAlcohol: false,
+    isAlcohol: '',
     mealCat: '',
     mealIngr: '',
     mealAreas: '',
@@ -40,8 +40,8 @@ class FilterDisplay extends Component {
   componentDidMount() {
     this.setState({ activeId: "drink" });
   }
-  handleDrinkAlcohol = (nonAlcohol) => {
-    this.setState({ nonAlcohol: !nonAlcohol });
+  handleDrinkAlcohol = (isAlcohol) => {
+    this.setState({ isAlcohol: isAlcohol });
   }
   handleDrinkCategory = (drinkCat) => {
     this.setState({ drinkCat });
@@ -68,8 +68,7 @@ class FilterDisplay extends Component {
       case "drink":
         return <FilterDrink
           handleCategoryChange={this.handleDrinkCategory}
-          handleAlcoholChange={this.handleDrinkAlcohol}
-          nonAlcohol={this.state.nonAlcohol} />;
+          handleAlcoholChange={this.handleDrinkAlcohol} />;
       case "movie":
         return <FilterMovie
           handleGenreChange={this.handleGenreChange}
@@ -96,7 +95,7 @@ class FilterDisplay extends Component {
         {this.state.firstClick &&
           <CardsListFilter
             drinkCategory={this.state.drinkCat}
-            drinkAlcohol={this.state.nonAlcohol}
+            drinkAlcohol={this.state.isAlcohol}
             mealCat={this.state.mealCat}
             mealIngr={this.state.mealIngr}
             mealAreas={this.state.mealAreas}
