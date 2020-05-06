@@ -45,7 +45,8 @@ class CardsListFilter extends Component {
     trailer: '',
     castId: '',
     crewId: '',
-    totalPages: ''
+    totalPages: '',
+    imageDefault: 'https://images.unsplash.com/photo-1524245510371-a10ac6be9ec9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1275&q=80'
   }
 
   componentDidMount = () => {
@@ -166,7 +167,7 @@ class CardsListFilter extends Component {
     }
   }
 
-  getUrlMovie = () => {
+  getUrlMovie = (r) => {
     this.props.cast && this.getMovieByCast()
     this.props.crew && this.getMovieByCrew()
     let pageMovie = ''
@@ -198,9 +199,7 @@ class CardsListFilter extends Component {
       .get(this.getUrlMovie())
       .then(resMovie => {
         let randomresult = Math.floor(Math.random() * resMovie.data.results.length)
-        resMovie.data.results[randomresult].poster_path !== null ?
-          this.setState({ movies: resMovie.data.results[randomresult] })
-          : this.getMovieFiltered()
+        this.setState({ movies: resMovie.data.results[randomresult] })
       })
       .catch(err => {
         alert("Pas de résultat avec ces choix")
@@ -317,7 +316,7 @@ class CardsListFilter extends Component {
   }
 
   render() {
-    const { drinks, meals, movies, categories, loading, loaded, detailsDrink, detailsMeal, ingDrink, measuresDrink, ingMeal, measuresMeal, video, date, genresMovie, actors, directors, trailer } = this.state
+    const { drinks, meals, movies, categories, loading, loaded, detailsDrink, detailsMeal, ingDrink, measuresDrink, ingMeal, measuresMeal, video, date, genresMovie, actors, directors, trailer, imageDefault } = this.state
     return (
       <div>
         <Button isClicked={this.getRandom}
@@ -335,7 +334,7 @@ class CardsListFilter extends Component {
               class={this.state.isFavDrink ? "fas fa-lock" : "fas fa-lock-open"}
             />
             <Card
-              image={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`}
+              image={movies.poster_path === null ? imageDefault : `https://image.tmdb.org/t/p/w500/${movies.poster_path}`}
               name={movies.title}
               categorie={categories[1]}
               onClick={this.toggleModalMovie}
@@ -367,7 +366,7 @@ class CardsListFilter extends Component {
           show={this.state.modalMovie}
           handleClose={this.toggleModalMovie}
           name={movies.title}
-          image={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`}
+          image={movies.poster_path === null ? imageDefault : `https://image.tmdb.org/t/p/w500/${movies.poster_path}`}
           rating={movies.vote_average}
           overview={movies.overview}
           genre={genresMovie}

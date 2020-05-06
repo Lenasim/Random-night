@@ -66,7 +66,8 @@ function Modal(props) {
                             <>
                                 <div className='left'>
                                     <h2 className='modal-title'>{props.name}</h2>
-                                    <img className='modal-img' src={props.image} alt={props.name} />
+                                    <img className='modal-img'
+                                        src={props.image} alt={props.name} />
                                 </div>
                                 <div className='right'>
                                     <div className='modal-types'>
@@ -122,7 +123,6 @@ function Modal(props) {
                                             </iframe>
                                         </div>
                                     }
-
                                 </div>
                             </>
                     }
