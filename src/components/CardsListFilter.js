@@ -166,7 +166,7 @@ class CardsListFilter extends Component {
     }
   }
 
-  getUrlMovie = (r) => {
+  getUrlMovie = () => {
     this.props.cast && this.getMovieByCast()
     this.props.crew && this.getMovieByCrew()
     let pageMovie = ''
