@@ -97,18 +97,19 @@ class CardsList extends Component {
 
   getRandomMovie = () => {
     this.setState({ loading: true })
-    let pageMovie = Math.floor(Math.random() * 501)
-    let resultMovie = Math.floor(Math.random() * 19)
+    let pageMovie = Math.floor(Math.random() * 500)
     axios
       .get(`https://api.themoviedb.org/3/movie/popular?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=${pageMovie}`)
-      .then(res => this.setState({ movies: res.data.results[resultMovie] }, () => {
-        this.setState({ loaded: true, loading: false })
-      }))
+      .then(res => {
+        let resultMovie = Math.floor(Math.random() * res.data.results.length)
+        this.setState({ movies: res.data.results[resultMovie] }, () => {
+          this.setState({ loaded: true, loading: false })
+        })
+      })
   }
 
   getDate = () => {
-    let date = this.state.movies.release_date
-    this.setState({ date: new Date(date).toLocaleDateString() })
+    this.setState({ date: new Date(this.state.movies.release_date).toLocaleDateString() })
   }
 
   getGenresList = () => {
