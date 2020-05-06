@@ -198,7 +198,9 @@ class CardsListFilter extends Component {
       .get(this.getUrlMovie())
       .then(resMovie => {
         let randomresult = Math.floor(Math.random() * resMovie.data.results.length)
-        this.setState({ movies: resMovie.data.results[randomresult] })
+        resMovie.data.results[randomresult].poster_path !== null ?
+          this.setState({ movies: resMovie.data.results[randomresult] })
+          : this.getMovieFiltered()
       })
       .catch(err => {
         alert("Pas de résultat avec ces choix")
