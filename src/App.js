@@ -1,7 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Header from './components/Header'
 import CardsList from './components/CardsList'
 import Button from './components/Button'
+import FilterDisplay from './components/FilterDisplay'
 
 import './App.css';
 
@@ -9,36 +10,60 @@ import './App.css';
 class App extends Component {
   state = {
     firstClick: false,
-    textButton: 'Laisse toi faire !'
+    textButton: 'Laisse toi faire !',
+    showButton: true,
+    filterClick: false,
+    textFilterButton: 'Personnaliser',
+    showFilterButton: true
   }
 
   handleFirstClick = () => {
-      this.setState({firstClick: true})
+    this.setState({
+      firstClick: true,
+      showFilterButton: false
+    })
+  }
+
+  handleFilterClick = () => {
+    this.setState({
+      filterClick: true,
+      showButton: false
+    })
   }
 
   handleReset = () => {
-      this.setState({firstClick: false})
-    }
+    this.setState({
+      firstClick: false,
+      filterClick: false,
+      showButton: true,
+      showFilterButton: true
+    })
+  }
 
   render() {
     return (
       <div className="App">
-        <Header reset={this.handleReset}/>
+        <Header reset={this.handleReset} />
         <h1 className="punchline">
           {
             this.state.firstClick ?
-            'tadaaam !'
+              'tadaaam !'
               : 'Tu sais pas quoi faire ce soir ?'
           }
         </h1>
-        {this.state.firstClick ? 
-          <Fragment />
-          : <Button 
-            isClicked={this.handleFirstClick}
-            text={this.state.textButton}
+        {!this.state.firstClick && this.state.showButton && <Button
+          isClicked={this.handleFirstClick}
+          text={this.state.textButton}
+        />
+        }
+        {this.state.firstClick && <CardsList />}
+        {!this.state.filterClick && this.state.showFilterButton &&
+          <Button
+            isClicked={this.handleFilterClick}
+            text={this.state.textFilterButton}
           />
         }
-        {this.state.firstClick ? <CardsList /> : <Fragment />}
+        {this.state.filterClick && <FilterDisplay />}
       </div>
     );
   }
