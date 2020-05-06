@@ -1,22 +1,10 @@
-@import url("https://use.typekit.net/obx8smn.css");
-
-* {
-  margin: 0;
-  box-sizing: border-box;
-  font-family: adelle-sans, sans-serif;
-}
-
-html {
-  height: 100%;
-}
-
 body {
-  background-image: url(./images/pop-corn.png), linear-gradient(to top, #245275 0%, #06182e 100%);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: bottom; 
-  background-size: cover;
-  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 code {
