@@ -113,20 +113,40 @@ class CardsListFilter extends Component {
   }
 
   getCocktailFiltered = () => {
-    const { drinkAlcohol, drinkCategory } = this.props
-
+    this.getCocktailFilteredId()
     axios
-      .get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}`)
-      .then(res => {
-        this.setState({ drinkCategoryIdList: res.data.drinks.map(c => c.idDrink) })
+      .get(this.getUrlDrinks())
+      .then(resDrink => {
+        let randomNumD = Math.floor(Math.random() * resDrink.data.drinks.length)
+        this.setState({ drinks: resDrink.data.drinks[randomNumD] })
       })
+  }
 
-    // axios
-    //   .get(this.getUrlDrinks())
-    //   .then(resDrink => {
-    //     let randomNumD = Math.floor(Math.random() * resDrink.data.drinks.length)
-    //     this.setState({ drinks: resDrink.data.drinks[randomNumD] })
-    //   })
+  getCocktailFilteredId = () => {
+    const { drinkCategory, drinkAlcohol } = this.props
+    if (drinkCategory === "") {
+      this.setState({ drinkCategoryIdList: [] })
+    } else {
+      axios
+        .get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}`)
+        .then(res => {
+          this.setState({ drinkCategoryIdList: res.data.drinks.map(c => c.idDrink) })
+        })
+    }
+    const url = () => {
+      if(drinkAlcohol === "alcohol"){
+        return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic'
+      } else if(drinkAlcohol === "nonAlcohol"){
+        return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic'
+      } else {
+        return 'https://www.thecocktaildb.com/api/json/v1/1/random.php'
+      }
+    }
+    axios
+      .get(url())
+        .then(res => {
+          this.setState({ drinkAlcoholIdList: res.data.drinks.map(c => c.idDrink) })
+      })
   }
 
   getMealFiltered = () => {
