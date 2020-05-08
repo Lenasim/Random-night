@@ -45,7 +45,12 @@ class CardsListFilter extends Component {
     trailer: '',
     castId: '',
     crewId: '',
-    totalPages: ''
+    totalPages: '',
+    allMealsByCat: [],
+    allMealsByArea: [],
+    filteredMealCat: '',
+    filteredMealArea: '',
+    mealsFiltered: ''
   }
 
   componentDidMount = () => {
@@ -124,45 +129,69 @@ class CardsListFilter extends Component {
       })
   }
 
-  getMealFiltered = () => {
-    axios
-      .get(this.getUrlMeals())
-      .then(resMeal => {
-        let randomNumR = Math.floor(Math.random() * resMeal.data.meals.length)
-        this.setState({ meals: resMeal.data.meals[randomNumR] })
-      })
-  }
-
-  getUrlMeals = () => {
-    const { mealCat, mealIngr, mealAreas } = this.props
-    if (mealCat === '' || !mealCat) {
-      if (mealIngr === '') {
-        if (mealAreas === '') {
-          return 'https://www.themealdb.com/api/json/v1/1/random.php'
-        } else {
-          return `https://www.themealdb.com/api/json/v1/1/filter.php?a=${mealAreas}`
-        }
-      } else {
-        if (mealAreas === '') {
-          return `https://www.themealdb.com/api/json/v1/1/filter.php?i=${mealIngr}`
-        } else {
-          return `https://www.themealdb.com/api/json/v1/1/filter.php?a=${mealAreas}&i=${mealIngr}`
-        }
-      }
+  getMealFiltered = async () => {
+    const { mealCat, mealAreas } = this.props
+    if (this.props.mealAreas && this.props.mealCat) {
+      await axios
+        .get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${mealCat}`)
+        .then(res => this.setState({ allMealsByCat: res.data.meals.map(meal => meal.idMeal) }))
+        .catch(err => {
+          this.notify()
+        })
+      await axios
+        .get(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${mealAreas}`)
+        .then(res => this.setState({ allMealsByArea: res.data.meals.map(meal => meal.idMeal) }))
+        .catch(err => {
+          this.notify()
+        })
+      let idFilteredMeal = []
+      this.state.allMealsByCat.map(idCat => this.state.allMealsByArea.map(idA => idCat === idA && idFilteredMeal.push(idCat)))
+      this.setState({ mealsFiltered: idFilteredMeal })
+      let randomMeal = Math.floor(Math.random() * this.state.mealsFiltered.length)
+      await axios
+        .get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${this.state.mealsFiltered[randomMeal]}`)
+        .then(res => this.setState({ meals: res.data.meals[0] }))
+        .catch(err => {
+          this.notify()
+        })
+    } else if (this.props.mealAreas && !this.props.mealCat) {
+      await axios
+        .get(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${mealAreas}`)
+        .then(res => this.setState({ allMealsByArea: res.data.meals.map(meal => meal.idMeal) }))
+        .catch(err => {
+          this.notify()
+        })
+      let randomMeal = Math.floor(Math.random() * this.state.allMealsByArea.length)
+      await axios
+        .get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${this.state.allMealsByArea[randomMeal]}`)
+        .then(res => this.setState({ meals: res.data.meals[0] }))
+        .catch(err => {
+          this.notify()
+        })
+    } else if (!this.props.mealAreas && this.props.mealCat) {
+      await axios
+        .get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${mealCat}`)
+        .then(res => this.setState({ allMealsByCat: res.data.meals.map(meal => meal.idMeal) }))
+        .catch(err => {
+          this.notify()
+        })
+      let randomMeal = Math.floor(Math.random() * this.state.allMealsByCat.length)
+      await axios
+        .get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${this.state.allMealsByCat[randomMeal]}`)
+        .then(res => this.setState({ meals: res.data.meals[0] }))
+        .catch(err => {
+          this.notify()
+        })
     } else {
-      if (mealIngr === '') {
-        if (mealAreas === '') {
-          return `https://www.themealdb.com/api/json/v1/1/filter.php?c=${mealCat}`
-        } else {
-          return `https://www.themealdb.com/api/json/v1/1/filter.php?c=${mealCat}&a=${mealAreas}`
-        }
-      } else {
-        if (mealAreas === '') {
-          return `https://www.themealdb.com/api/json/v1/1/filter.php?c=${mealCat}&i=${mealIngr}`
-        } else {
-          return `https://www.themealdb.com/api/json/v1/1/filter.php?c=${mealCat}&a=${mealAreas}&i=${mealIngr}`
-        }
-      }
+      axios
+        .get('https://www.themealdb.com/api/json/v1/1/random.php')
+        .then(resMeal => {
+          let randomNumR = Math.floor(Math.random() * resMeal.data.meals.length)
+          this.setState({ meals: resMeal.data.meals[randomNumR] })
+        })
+        .catch(err => {
+          this.notify()
+        })
     }
   }
 
