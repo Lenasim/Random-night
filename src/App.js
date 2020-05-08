@@ -44,13 +44,15 @@ class App extends Component {
     return (
       <div className="App">
         <Header reset={this.handleReset} />
-        <h1 className="punchline">
-          {
-            this.state.firstClick ?
-              'tadaaam !'
-              : 'Tu sais pas quoi faire ce soir ?'
-          }
-        </h1>
+        <div className="container-punch">
+          <h1 className="punchline">
+            {
+              this.state.firstClick ?
+                'tadaaam !'
+                : 'Tu sais pas quoi faire ce soir ?'
+            }
+          </h1>
+        </div>
         {!this.state.firstClick && this.state.showButton && <Button
           isClicked={this.handleFirstClick}
           text={this.state.textButton}
