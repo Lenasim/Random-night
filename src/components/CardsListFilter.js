@@ -299,6 +299,10 @@ class CardsListFilter extends Component {
     this.setState({ favMovie: this.state.movies })
   }
 
+  notifyAllFav = () => {
+    toast.warn("Toutes les cartes sont sélectionnées", { position: toast.POSITION.BOTTOM_RIGHT })
+  }
+
   getRandom = () => {
     const { isFavDrink, isFavMovie, isFavRecipe } = this.state
     if (isFavDrink === false && isFavRecipe === false && isFavMovie === false) {
@@ -320,6 +324,8 @@ class CardsListFilter extends Component {
     } else if (isFavDrink === false && isFavRecipe === true && isFavMovie === false) {
       this.getCocktailFiltered()
       this.getMovieFiltered()
+    } else if (isFavDrink === true && isFavRecipe === true && isFavMovie === true) {
+      this.notifyAllFav()
     }
   }
 
