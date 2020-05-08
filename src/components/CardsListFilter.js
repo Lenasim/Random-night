@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 import Card from './Card'
 import Button from './Button'
@@ -7,6 +9,7 @@ import Modal from './Modal'
 
 import './Card.css'
 
+toast.configure()
 class CardsListFilter extends Component {
 
   state = {
@@ -190,6 +193,10 @@ class CardsListFilter extends Component {
     }
   }
 
+  notify = () => {
+    toast.error("Il n'y a pas de résultat avec ces choix", { position: toast.POSITION.BOTTOM_RIGHT })
+  }
+
   getMovieFiltered = async () => {
     await axios
       .get(this.getUrlMovie())
@@ -203,7 +210,7 @@ class CardsListFilter extends Component {
           : this.getMovieFiltered()
       })
       .catch(err => {
-        alert("Pas de résultat avec ces choix")
+        this.notify()
       })
   }
 
@@ -212,7 +219,7 @@ class CardsListFilter extends Component {
       .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.cast}&page=1&include_adult=false`)
       .then(res => this.setState({ castId: res.data.results[0].id }))
       .catch(err => {
-        alert("Cet acteur n'existe pas")
+        this.notify()
       })
   }
 
@@ -221,7 +228,7 @@ class CardsListFilter extends Component {
       .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.crew}&page=1&include_adult=false`)
       .then(res => this.setState({ crewId: res.data.results[0].id }))
       .catch(err => {
-        alert("Ce réalisateur n'existe pas")
+        this.notify()
       })
   }
 
