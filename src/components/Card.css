@@ -56,6 +56,14 @@
     left: 15px;
 }
 
+.fa-lock-open {
+    color: #474d53;
+}
+
+.fa-lock {
+    color: #1d5fb1;
+}
+
 .plus {
     position: relative;
     bottom: 8px;
