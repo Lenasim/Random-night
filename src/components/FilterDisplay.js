@@ -18,14 +18,14 @@ class FilterDisplay extends Component {
   state = {
     activeId: '',
     isClicked: false,
-    drinkCat: '',
-    isAlcohol: '',
+    drinkCat: 'categories',
+    isAlcohol: 'all',
     mealCat: '',
     mealIngr: '',
     mealAreas: '',
     genresResult: '',
     queryCast: '',
-    queryCrew: ''
+    queryCrew: '',
   }
 
   handleFirstClick = () => {
@@ -81,6 +81,7 @@ class FilterDisplay extends Component {
         return <Error />;
     }
   }
+
 
   render() {
     return (

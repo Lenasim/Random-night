@@ -17,7 +17,6 @@ class FilterDrink extends Component {
     this.getCategoriesDrink()
   }
 
-
   filterAlcohol = (e) => {
     this.setState ({ isAlcohol: e.target.value })
     const isAlcohol = e.target.value

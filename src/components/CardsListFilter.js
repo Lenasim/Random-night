@@ -46,20 +46,22 @@ class CardsListFilter extends Component {
     castId: '',
     crewId: '',
     totalPages: '',
-    drinkCategoryIdList: [],
-    drinkAlcoholIdList: []
+    drinksFilteredByCat: [],
+    drinksFilteredByAlc: [],
+    drinkFilteredList: []
   }
 
   componentDidMount = () => {
     this.getRandomFiltered()
+
   }
 
   getRandomFiltered = async () => {
-    await this.setState({ loading: true })
+    this.setState({ loading: true })
     await this.getCocktailFiltered()
-    await this.getMealFiltered()
+    this.getMealFiltered()
     await this.getMovieFiltered()
-    await this.getGenresList()
+    this.getGenresList()
     this.setState({ loaded: true, loading: false })
   }
 
@@ -112,41 +114,72 @@ class CardsListFilter extends Component {
       })
   }
 
-  getCocktailFiltered = () => {
-    this.getCocktailFilteredId()
-    axios
-      .get(this.getUrlDrinks())
-      .then(resDrink => {
-        let randomNumD = Math.floor(Math.random() * resDrink.data.drinks.length)
-        this.setState({ drinks: resDrink.data.drinks[randomNumD] })
-      })
-  }
-
-  getCocktailFilteredId = () => {
+  getCocktailFiltered = async () => {
     const { drinkCategory, drinkAlcohol } = this.props
-    if (drinkCategory === "") {
-      this.setState({ drinkCategoryIdList: [] })
-    } else {
+    if (drinkAlcohol !== "all" && drinkCategory !== "categories") {
+          const url = () => {
+            if (drinkAlcohol === "alcohol") {
+              return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic'
+            } else {
+              return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic'
+            }
+          }
+          await axios
+            .get(url())
+            .then(res => {
+              this.setState({ drinksFilteredByAlc: res.data.drinks.map(c => c.idDrink) })
+            })
+            .catch(err => console.log(err.config))
+          await axios
+            .get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}`)
+            .then(res => {
+              this.setState({ drinksFilteredByCat: res.data.drinks.map(c => c.idDrink) })
+            })
+            .catch(err => console.log(err.config))
+          let idFiltered = []
+          this.state.drinksFilteredByCat.map(idCat => this.state.drinksFilteredByAlc.map(idAlc => idCat === idAlc && idFiltered.push(idCat)))
+          this.setState({ drinkFilteredList: idFiltered })
+          let randomNumId = Math.floor(Math.random() * this.state.drinkFilteredList.length)
+          await axios
+            .get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${this.state.drinkFilteredList[randomNumId]}`)
+            .then(res => this.setState({ drinks: res.data.drinks[0] }))
+            .catch(err => console.log(err.config))
+
+    } else if (drinkAlcohol !== "all" && drinkCategory === "categories") {
+      const url = () => {
+        if (drinkAlcohol === "alcohol") {
+          return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic'
+        } else if (drinkAlcohol === "nonAlcohol") {
+          return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic'
+        } else {
+          return 'https://www.thecocktaildb.com/api/json/v1/1/random.php'
+        }
+      }
+      axios
+        .get(url())
+        .then(resDrink => {
+          let randomNumD = Math.floor(Math.random() * resDrink.data.drinks.length)
+          this.setState({ drinks: resDrink.data.drinks[randomNumD] })
+        })
+        .catch(err => console.log(err.config))
+    } else if (drinkAlcohol === "all" && drinkCategory !== "categories") {
       axios
         .get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}`)
-        .then(res => {
-          this.setState({ drinkCategoryIdList: res.data.drinks.map(c => c.idDrink) })
+        .then(resDrink => {
+          let randomNumD = Math.floor(Math.random() * resDrink.data.drinks.length)
+          this.setState({ drinks: resDrink.data.drinks[randomNumD] })
         })
+        .catch(err => console.log(err.config))
+    } else {
+      axios
+        .get(this.getUrlDrinks())
+        .then(resDrink => {
+          let randomNumD = Math.floor(Math.random() * resDrink.data.drinks.length)
+          this.setState({ drinks: resDrink.data.drinks[randomNumD] })
+        })
+        .catch(err => console.log(err.config))
     }
-    const url = () => {
-      if(drinkAlcohol === "alcohol"){
-        return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic'
-      } else if(drinkAlcohol === "nonAlcohol"){
-        return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic'
-      } else {
-        return 'https://www.thecocktaildb.com/api/json/v1/1/random.php'
-      }
-    }
-    axios
-      .get(url())
-        .then(res => {
-          this.setState({ drinkAlcoholIdList: res.data.drinks.map(c => c.idDrink) })
-      })
+
   }
 
   getMealFiltered = () => {
@@ -158,27 +191,6 @@ class CardsListFilter extends Component {
       })
   }
 
-
-  getUrlDrinks = () => {
-    const { drinkAlcohol, drinkCategory } = this.props
-    if (!drinkCategory) {
-      if (drinkAlcohol === "nonAlcohol") {
-        return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic'
-      } else if (drinkAlcohol === "alcohol") {
-        return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic'
-      } else {
-        return 'https://www.thecocktaildb.com/api/json/v1/1/random.php'
-      }
-    } else {
-      if (drinkAlcohol === "nonAlcohol") {
-        return `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}&a=Non_Alcoholic`
-      } else if (drinkAlcohol === "alcohol") {
-        return `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}&a=Alcoholic`
-      } else {
-        return `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}`
-      }
-    }
-  }
   getUrlMeals = () => {
     const { mealCat, mealIngr, mealAreas } = this.props
     if (mealCat === '' || !mealCat) {
