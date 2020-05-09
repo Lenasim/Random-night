@@ -57,7 +57,7 @@ class FilterMovie extends Component {
             id="queryCast"
             name="queryCast"
             onChange={this.handleCastChange}
-            value={this.queryCast}
+            value={this.props.cast}
           />
         </div>
         <div className="search-movies">
@@ -68,7 +68,7 @@ class FilterMovie extends Component {
             id="queryCrew"
             name="queryCrew"
             onChange={this.handleCrewChange}
-            value={this.queryCrew}
+            value={this.props.crew}
           />
         </div>
       </div>
