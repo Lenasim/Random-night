@@ -4,6 +4,7 @@
 }
 
 .FilterButtons button {
+  color:  rgb(7, 7, 105);
   border: none;
   padding: 20px 25px 10px 25px;
   font-size: 20px;
@@ -15,8 +16,6 @@
   border: none;
   padding: 10px 25px;
   font-size: 20px;
-  /* border-bottom: 2px solid rgb(7, 7, 105, 0.3); */
-  background-color:  rgba(255, 255, 255, 0.1);
 }
 .active {
   border-bottom: 2px solid rgb(7, 7, 105) !important;
