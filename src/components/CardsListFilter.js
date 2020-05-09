@@ -137,13 +137,13 @@ class CardsListFilter extends Component {
         .then(res => {
           this.setState({ drinksFilteredByAlc: res.data.drinks.map(c => c.idDrink) })
         })
-        .catch(err => console.log(err.config))
+        .catch(err => this.notify())
       await axios
         .get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}`)
         .then(res => {
           this.setState({ drinksFilteredByCat: res.data.drinks.map(c => c.idDrink) })
         })
-        .catch(err => console.log(err.config))
+        .catch(err => this.notify())
       let idFiltered = []
       this.state.drinksFilteredByCat.map(idCat => this.state.drinksFilteredByAlc.map(idAlc => idCat === idAlc && idFiltered.push(idCat)))
       this.setState({ drinkFilteredList: idFiltered })
@@ -151,8 +151,7 @@ class CardsListFilter extends Component {
       await axios
         .get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${this.state.drinkFilteredList[randomNumId]}`)
         .then(res => this.setState({ drinks: res.data.drinks[0] }))
-        .catch(err => console.log(err.config))
-
+        .catch(err => this.notify())
     } else if (drinkAlcohol !== "all" && drinkCategory === "categories") {
       const url = () => {
         if (drinkAlcohol === "alcohol") {
@@ -169,7 +168,7 @@ class CardsListFilter extends Component {
           let randomNumD = Math.floor(Math.random() * resDrink.data.drinks.length)
           this.setState({ drinks: resDrink.data.drinks[randomNumD] })
         })
-        .catch(err => console.log(err.config))
+        .catch(err => this.notify())
     } else if (drinkAlcohol === "all" && drinkCategory !== "categories") {
       axios
         .get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}`)
@@ -177,7 +176,7 @@ class CardsListFilter extends Component {
           let randomNumD = Math.floor(Math.random() * resDrink.data.drinks.length)
           this.setState({ drinks: resDrink.data.drinks[randomNumD] })
         })
-        .catch(err => console.log(err.config))
+        .catch(err => this.notify())
     } else {
       axios
         .get('https://www.thecocktaildb.com/api/json/v1/1/random.php')
@@ -185,7 +184,7 @@ class CardsListFilter extends Component {
           let randomNumD = Math.floor(Math.random() * resDrink.data.drinks.length)
           this.setState({ drinks: resDrink.data.drinks[randomNumD] })
         })
-        .catch(err => console.log(err.config))
+        .catch(err => this.notify())
     }
   }
 
@@ -305,7 +304,7 @@ class CardsListFilter extends Component {
       .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.cast}&page=1&include_adult=false`)
       .then(res => this.setState({ castId: res.data.results[0].id }))
       .catch(err => {
-        this.notify()
+        console.log(err)
       })
   }
 
@@ -314,7 +313,7 @@ class CardsListFilter extends Component {
       .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.crew}&page=1&include_adult=false`)
       .then(res => this.setState({ crewId: res.data.results[0].id }))
       .catch(err => {
-        this.notify()
+        console.log(err)
       })
   }
 
