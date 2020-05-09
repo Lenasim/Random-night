@@ -137,13 +137,19 @@ class CardsListFilter extends Component {
         .then(res => {
           this.setState({ drinksFilteredByAlc: res.data.drinks.map(c => c.idDrink) })
         })
-        .catch(err => this.notifyDrink())
+        .catch(err => {
+          this.notifyDrink()
+          this.getRandomDrink()
+        })
       await axios
         .get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}`)
         .then(res => {
           this.setState({ drinksFilteredByCat: res.data.drinks.map(c => c.idDrink) })
         })
-        .catch(err => this.notifyDrink())
+        .catch(err => {
+          this.notifyDrink()
+          this.getRandomDrink()
+        })
       let idFiltered = []
       this.state.drinksFilteredByCat.map(idCat => this.state.drinksFilteredByAlc.map(idAlc => idCat === idAlc && idFiltered.push(idCat)))
       this.setState({ drinkFilteredList: idFiltered })
@@ -151,7 +157,10 @@ class CardsListFilter extends Component {
       await axios
         .get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${this.state.drinkFilteredList[randomNumId]}`)
         .then(res => this.setState({ drinks: res.data.drinks[0] }))
-        .catch(err => this.notifyDrink())
+        .catch(err => {
+          this.notifyDrink()
+          this.getRandomDrink()
+        })
     } else if (drinkAlcohol !== "all" && drinkCategory === "categories") {
       const url = () => {
         if (drinkAlcohol === "alcohol") {
@@ -168,7 +177,10 @@ class CardsListFilter extends Component {
           let randomNumD = Math.floor(Math.random() * resDrink.data.drinks.length)
           this.setState({ drinks: resDrink.data.drinks[randomNumD] })
         })
-        .catch(err => this.notifyDrink())
+        .catch(err => {
+          this.notifyDrink()
+          this.getRandomDrink()
+        })
     } else if (drinkAlcohol === "all" && drinkCategory !== "categories") {
       axios
         .get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}`)
@@ -176,16 +188,23 @@ class CardsListFilter extends Component {
           let randomNumD = Math.floor(Math.random() * resDrink.data.drinks.length)
           this.setState({ drinks: resDrink.data.drinks[randomNumD] })
         })
-        .catch(err => this.notifyDrink())
-    } else {
-      axios
-        .get('https://www.thecocktaildb.com/api/json/v1/1/random.php')
-        .then(resDrink => {
-          let randomNumD = Math.floor(Math.random() * resDrink.data.drinks.length)
-          this.setState({ drinks: resDrink.data.drinks[randomNumD] })
+        .catch(err => {
+          this.notifyDrink()
+          this.getRandomDrink()
         })
-        .catch(err => this.notifyDrink())
+    } else {
+      this.getRandomDrink()
     }
+  }
+
+  getRandomDrink = () => {
+    axios
+      .get('https://www.thecocktaildb.com/api/json/v1/1/random.php')
+      .then(resDrink => {
+        let randomNumD = Math.floor(Math.random() * resDrink.data.drinks.length)
+        this.setState({ drinks: resDrink.data.drinks[randomNumD] })
+      })
+      .catch(err => this.notifyDrink())
   }
 
   getMealFiltered = async () => {
@@ -196,12 +215,14 @@ class CardsListFilter extends Component {
         .then(res => this.setState({ allMealsByCat: res.data.meals.map(meal => meal.idMeal) }))
         .catch(err => {
           this.notifyMeal()
+          this.getRandomMeal()
         })
       await axios
         .get(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${mealAreas}`)
         .then(res => this.setState({ allMealsByArea: res.data.meals.map(meal => meal.idMeal) }))
         .catch(err => {
           this.notifyMeal()
+          this.getRandomMeal()
         })
       let idFilteredMeal = []
       this.state.allMealsByCat.map(idCat => this.state.allMealsByArea.map(idA => idCat === idA && idFilteredMeal.push(idCat)))
@@ -212,6 +233,7 @@ class CardsListFilter extends Component {
         .then(res => this.setState({ meals: res.data.meals[0] }))
         .catch(err => {
           this.notifyMeal()
+          this.getRandomMeal()
         })
     } else if (this.props.mealAreas && !this.props.mealCat) {
       await axios
@@ -219,6 +241,7 @@ class CardsListFilter extends Component {
         .then(res => this.setState({ allMealsByArea: res.data.meals.map(meal => meal.idMeal) }))
         .catch(err => {
           this.notifyMeal()
+          this.getRandomMeal()
         })
       let randomMeal = Math.floor(Math.random() * this.state.allMealsByArea.length)
       await axios
@@ -226,6 +249,7 @@ class CardsListFilter extends Component {
         .then(res => this.setState({ meals: res.data.meals[0] }))
         .catch(err => {
           this.notifyMeal()
+          this.getRandomMeal()
         })
     } else if (!this.props.mealAreas && this.props.mealCat) {
       await axios
@@ -233,6 +257,7 @@ class CardsListFilter extends Component {
         .then(res => this.setState({ allMealsByCat: res.data.meals.map(meal => meal.idMeal) }))
         .catch(err => {
           this.notifyMeal()
+          this.getRandomMeal()
         })
       let randomMeal = Math.floor(Math.random() * this.state.allMealsByCat.length)
       await axios
@@ -240,18 +265,23 @@ class CardsListFilter extends Component {
         .then(res => this.setState({ meals: res.data.meals[0] }))
         .catch(err => {
           this.notifyMeal()
+          this.getRandomMeal()
         })
     } else {
-      axios
-        .get('https://www.themealdb.com/api/json/v1/1/random.php')
-        .then(resMeal => {
-          let randomNumR = Math.floor(Math.random() * resMeal.data.meals.length)
-          this.setState({ meals: resMeal.data.meals[randomNumR] })
-        })
-        .catch(err => {
-          this.notifyMeal()
-        })
+      this.getRandomMeal()
     }
+  }
+
+  getRandomMeal = () => {
+    axios
+      .get('https://www.themealdb.com/api/json/v1/1/random.php')
+      .then(resMeal => {
+        let randomNumR = Math.floor(Math.random() * resMeal.data.meals.length)
+        this.setState({ meals: resMeal.data.meals[randomNumR] })
+      })
+      .catch(err => {
+        this.notifyMeal()
+      })
   }
 
   getMovieFiltered = async () => {
@@ -392,15 +422,15 @@ class CardsListFilter extends Component {
   }
 
   notifyMovie = () => {
-    toast.error("Il n'y a pas de film avec ces choix", { position: toast.POSITION.BOTTOM_RIGHT })
+    toast.warn("Il n'y a pas de film avec ces choix, tu as eu une propositon aléatoire.", { position: toast.POSITION.BOTTOM_RIGHT })
   }
 
   notifyMeal = () => {
-    toast.error("Il n'y a pas de recette avec ces choix", { position: toast.POSITION.BOTTOM_RIGHT })
+    toast.warn("Il n'y a pas de recette avec ces choix, tu as eu une propositon aléatoire.", { position: toast.POSITION.BOTTOM_RIGHT })
   }
 
   notifyDrink = () => {
-    toast.error("Il n'y a pas de boisson avec ces choix", { position: toast.POSITION.BOTTOM_RIGHT })
+    toast.warn("Il n'y a pas de boisson avec ces choix, tu as eu une propositon aléatoire.", { position: toast.POSITION.BOTTOM_RIGHT })
   }
 
   getDate = () => {
@@ -471,7 +501,7 @@ class CardsListFilter extends Component {
   }
 
   notifyAllFav = () => {
-    toast.warn("Toutes les cartes sont sélectionnées", { position: toast.POSITION.BOTTOM_RIGHT })
+    toast.warn("Toutes les cartes sont sélectionnées.", { position: toast.POSITION.BOTTOM_RIGHT })
   }
 
   getRandom = () => {
