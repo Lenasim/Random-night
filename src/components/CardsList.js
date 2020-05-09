@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 import Card from './Card'
 import Button from './Button'
@@ -178,6 +180,10 @@ class CardsList extends Component {
     this.setState({ favMovie: this.state.movies })
   }
 
+  notifyAllFav = () => {
+    toast.warn("Toutes les cartes sont sélectionnées", { position: toast.POSITION.BOTTOM_RIGHT })
+  }
+
   getRandom = () => {
     const { isFavDrink, isFavMovie, isFavRecipe } = this.state
     if (isFavDrink === false && isFavRecipe === false && isFavMovie === false) {
@@ -199,6 +205,8 @@ class CardsList extends Component {
     } else if (isFavDrink === false && isFavRecipe === true && isFavMovie === false) {
       this.getRandomDrink()
       this.getRandomMovie()
+    } else if (isFavDrink === true && isFavRecipe === true && isFavMovie === true) {
+      this.notifyAllFav()
     }
   }
 
