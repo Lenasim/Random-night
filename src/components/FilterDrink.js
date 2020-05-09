@@ -37,11 +37,11 @@ class FilterDrink extends Component {
 
         <div className="switch-field">
           <input type="radio" name="nonAlcohol" value="all" id="all" onChange={this.filterAlcohol} checked={this.state.isAlcohol === 'all'} />
-          <label htmlFor="all" >I don't care</label>
+          <label htmlFor="all" className="radio-label">All types</label>
           <input type="radio" name="nonAlcohol" value="alcohol" id="alcohol"  onChange={this.filterAlcohol} checked={this.state.isAlcohol === 'alcohol'} />
-          <label htmlFor="alcohol">Alcoholic</label>
+          <label htmlFor="alcohol" className="radio-label">Alcoholic</label>
           <input type="radio" name="nonAlcohol" value="nonAlcohol" id="nonAlcohol"  onChange={this.filterAlcohol} checked={this.state.isAlcohol === 'nonAlcohol'}/>
-          <label htmlFor="nonAlcohol">Non alcoholic</label>
+          <label htmlFor="nonAlcohol" className="radio-label">Non alcoholic</label>
         </div>
       </div>
     );
