@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from './components/Header'
-import CardsList from './components/CardsList'
+import CardsListFilter from './components/CardsListFilter'
 import FilterDisplay from './components/FilterDisplay'
 import Button from './components/Button'
 
@@ -48,19 +48,19 @@ class App extends Component {
         <Header reset={this.handleReset} />
           <> 
           <div className='notice-text'>
-            <h1>What's the game plan tonight ?</h1>
+            <h1>What's your game plan tonight ?</h1>
           </div>
           <div className="notice-button">
             <div onClick={this.handleFirstClick} >
               <Button text={!this.state.firstClick ? "Get your plan" : "Try again?"} />
             </div>
             <div onClick={this.handleFilterClick} >
-              <button className="button-filter"><i class="fas fa-sliders-h"></i></button>
+              <button className="button-filter"><i className="fas fa-sliders-h"></i></button>
             </div>
           </div>
           </>
         
-        {this.state.firstClick && <CardsList />}
+        {this.state.firstClick && <CardsListFilter />}
         {this.state.filterClick && <FilterDisplay />}
       </div>
     );

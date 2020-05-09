@@ -124,7 +124,9 @@ class CardsListFilter extends Component {
 
   getCocktailFiltered = async () => {
     const { drinkCategory, drinkAlcohol } = this.props
-    if (drinkAlcohol !== "all" && drinkCategory !== "categories") {
+    if (!drinkCategory && !drinkAlcohol){
+      this.getRandomDrink()
+    }else if(drinkAlcohol !== "all" && drinkCategory !== "categories") {
       const url = () => {
         if (drinkAlcohol === "alcohol") {
           return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic'

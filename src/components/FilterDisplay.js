@@ -4,7 +4,6 @@ import FilterDrink from './FilterDrink'
 import FilterMovie from './FilterMovie'
 import FilterRecipe from './FilterRecipe'
 import CardsListFilter from './CardsListFilter';
-import Button from './Button'
 
 import './FilterDisplay.css'
 
@@ -104,7 +103,7 @@ class FilterDisplay extends Component {
             cast={this.state.queryCast}
             crew={this.state.queryCrew}
           />}
-        {!this.state.firstClick && <Button text="Get your own" isClicked={this.handleFirstClick} />}
+        {/* {!this.state.firstClick && <Button text="Get your own" isClicked={this.handleFirstClick} />} */}
       </div>
     );
   }
