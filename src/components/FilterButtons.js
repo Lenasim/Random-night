@@ -10,21 +10,21 @@ const FilterButtons = ({ handleChange, activeId }) => {
         onClick={handleChange}
         className={activeId === "drink" ? "active" : ""}
       >
-        Ta boisson
+        Your Cocktail
       </button>
       <button
         id="movie"
         onClick={handleChange}
         className={activeId === "movie" ? "active" : ""}
       >
-        Ton film
+        Your Movie
       </button>
       <button
         id="recipe"
         onClick={handleChange}
         className={activeId === "recipe" ? "active" : ""}
       >
-        Ta recette
+        Your Recipe
       </button>
     </div>
   );

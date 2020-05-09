@@ -6,19 +6,17 @@
   justify-content: space-around;
 }
 
-select {
-  margin: 25px;
-  width:20%;
-  padding:12px;
-  margin-top:8px;
+.FilterMovie select {
+  margin: 1.2rem;
+  margin-top:0.5rem;
+  width:24%;
+  padding: 0.8rem;
   line-height:1;
   border-radius: 10px;
   background-color: white;
   color: black;
   border: none;
   font-size:16px;
-  -webkit-box-shadow: 10px 10px 33px -2px rgba(0,0,0,0.44);
-  -moz-box-shadow: 10px 10px 33px -2px rgba(0,0,0,0.44);
   box-shadow: 10px 10px 33px -2px rgba(0,0,0,0.44);
   outline:none
 }
@@ -35,19 +33,10 @@ select {
   padding: 10px;
 }
 
-.FilterMovie button {
-  background: #245275;
-  color: white;
-  width: 20%;
-  border-radius: 12px;
-  padding: 10px 0;
-  font-size: 15px;
-}
-
 .input-movies {
   border-radius: 0 13px 13px 0;
   border: 1px solid #245275;
-  height: 30px;
+  height: 45px;
   width: 150px;
   font-size: 16px;
   padding-left: 10px;
@@ -59,7 +48,7 @@ select {
   border: 3px solid #245275;
   background-color: #245275;
   color: white;
-  padding: 0 10px 1px 10px;
+  padding: 8px 10px 8px 10px;
 }
 
 @media screen and (max-width: 800px) {
@@ -71,8 +60,8 @@ select {
     margin: 10px auto;
   }
 
-  select {
-    width: 90%;
+  .FilterMovie select {
+    width: 80%;
     margin: 10px auto;
   }
 
