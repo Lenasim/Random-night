@@ -48,19 +48,23 @@ class CardsListFilter extends Component {
     trailer: '',
     castId: '',
     crewId: '',
-    totalPages: ''
+    totalPages: '',
+    drinksFilteredByCat: [],
+    drinksFilteredByAlc: [],
+    drinkFilteredList: []
   }
 
   componentDidMount = () => {
     this.getRandomFiltered()
+
   }
 
   getRandomFiltered = async () => {
-    await this.setState({ loading: true })
+    this.setState({ loading: true })
     await this.getCocktailFiltered()
-    await this.getMealFiltered()
+    this.getMealFiltered()
     await this.getMovieFiltered()
-    await this.getGenresList()
+    this.getGenresList()
     this.setState({ loaded: true, loading: false })
   }
 
@@ -113,18 +117,72 @@ class CardsListFilter extends Component {
       })
   }
 
-  getCocktailFiltered = () => {
-    const { drinkAlcohol, drinkCategory } = this.props
-    axios
-      .get(
-        !drinkCategory ?
-          `https://www.thecocktaildb.com/api/json/v1/1/filter.php?${drinkAlcohol ? "a=Non_Alcoholic" : "a=Alcoholic"}`
-          : `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}${drinkAlcohol ? "&a=Non_Alcoholic" : "&a=Alcoholic"}`
-      )
-      .then(resDrink => {
-        let randomNumD = Math.floor(Math.random() * resDrink.data.drinks.length)
-        this.setState({ drinks: resDrink.data.drinks[randomNumD] })
-      })
+  getCocktailFiltered = async () => {
+    const { drinkCategory, drinkAlcohol } = this.props
+    if (drinkAlcohol !== "all" && drinkCategory !== "categories") {
+          const url = () => {
+            if (drinkAlcohol === "alcohol") {
+              return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic'
+            } else {
+              return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic'
+            }
+          }
+          await axios
+            .get(url())
+            .then(res => {
+              this.setState({ drinksFilteredByAlc: res.data.drinks.map(c => c.idDrink) })
+            })
+            .catch(err => console.log(err.config))
+          await axios
+            .get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}`)
+            .then(res => {
+              this.setState({ drinksFilteredByCat: res.data.drinks.map(c => c.idDrink) })
+            })
+            .catch(err => console.log(err.config))
+          let idFiltered = []
+          this.state.drinksFilteredByCat.map(idCat => this.state.drinksFilteredByAlc.map(idAlc => idCat === idAlc && idFiltered.push(idCat)))
+          this.setState({ drinkFilteredList: idFiltered })
+          let randomNumId = Math.floor(Math.random() * this.state.drinkFilteredList.length)
+          await axios
+            .get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${this.state.drinkFilteredList[randomNumId]}`)
+            .then(res => this.setState({ drinks: res.data.drinks[0] }))
+            .catch(err => console.log(err.config))
+
+    } else if (drinkAlcohol !== "all" && drinkCategory === "categories") {
+      const url = () => {
+        if (drinkAlcohol === "alcohol") {
+          return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic'
+        } else if (drinkAlcohol === "nonAlcohol") {
+          return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic'
+        } else {
+          return 'https://www.thecocktaildb.com/api/json/v1/1/random.php'
+        }
+      }
+      axios
+        .get(url())
+        .then(resDrink => {
+          let randomNumD = Math.floor(Math.random() * resDrink.data.drinks.length)
+          this.setState({ drinks: resDrink.data.drinks[randomNumD] })
+        })
+        .catch(err => console.log(err.config))
+    } else if (drinkAlcohol === "all" && drinkCategory !== "categories") {
+      axios
+        .get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkCategory}`)
+        .then(resDrink => {
+          let randomNumD = Math.floor(Math.random() * resDrink.data.drinks.length)
+          this.setState({ drinks: resDrink.data.drinks[randomNumD] })
+        })
+        .catch(err => console.log(err.config))
+    } else {
+      axios
+        .get('https://www.thecocktaildb.com/api/json/v1/1/random.php')
+        .then(resDrink => {
+          let randomNumD = Math.floor(Math.random() * resDrink.data.drinks.length)
+          this.setState({ drinks: resDrink.data.drinks[randomNumD] })
+        })
+        .catch(err => console.log(err.config))
+    }
+
   }
 
   getMealFiltered = () => {
