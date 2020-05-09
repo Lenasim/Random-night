@@ -117,9 +117,12 @@ function Modal(props) {
                                         props.trailer &&
                                         <div className='modal-detail'>
                                             <h3>TRAILER</h3>
-                                            <iframe className='modal-video' title={props.name}
-                                                src={props.trailer} frameBorder="0" allow="encrypted-media" allowFullScreen>
-                                            </iframe>
+                                            {
+                                                props.show &&
+                                                <iframe className='modal-video' title={props.name}
+                                                    src={props.trailer} frameBorder="0" allow="encrypted-media" allowFullScreen>
+                                                </iframe>
+                                            }
                                         </div>
                                     }
 

@@ -13,6 +13,7 @@ html {
 
 body {
   background-image: url(./images/jr-korpa-stwHyPWNtbI-unsplash.jpg);
+  /* background-image: linear-gradient(to top, #1c6caa 0%, #040c16 100%); */
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: bottom; 

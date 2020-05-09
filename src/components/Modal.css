@@ -16,10 +16,8 @@
 /* Modal Content */
 .modal-content {
   background-color: #fefefe;
-  padding: 0 2rem 3rem 2rem;
   border: 1px solid #888;
   width: 100%;
-
   display: flex;
   flex-direction: column;
 }
@@ -31,12 +29,7 @@
 }
 
 /* Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 3rem;
-  font-weight: bold;
-}
+
 .close:hover,
 .close:focus {
   color: #000;
@@ -51,6 +44,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  padding: 20px;
 }
 .modal-title {
   margin: 1rem auto;
@@ -79,7 +73,6 @@
   margin: auto 0 ;
 }
 .modal-detail {
-  font-family: "futura-pt", sans-serif;
   font-weight: 500;
   line-height: 22px;
   height: auto;
@@ -93,7 +86,6 @@
 .modal-detail h3 {
   color: #008CBA;
   border-bottom: 1px solid #eee;
-  font-family: "ff-tisa-web-pro";
   width: 100%;
   font-size: 18px;
   margin: 0px 0px 10px;
@@ -132,6 +124,21 @@
   .li-title {
     font-weight: 900 !important;
     text-decoration: underline;
+  }
+
+  @media (max-width: 780px) {
+    .close {
+      color: #aaaaaa;
+      font-size: 3rem;
+      font-weight: bold;
+      position: fixed;
+      background-color: rgb(10, 10, 116);
+      border-radius: 0 0 0 5px;
+      width: 30px;
+      height: 75px;
+      top: 0;
+      bottom: 0;
+    }
   }
 
   @media (min-width: 768px) {
