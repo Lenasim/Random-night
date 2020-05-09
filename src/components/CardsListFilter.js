@@ -254,67 +254,157 @@ class CardsListFilter extends Component {
     }
   }
 
-  getUrlMovie = () => {
-    this.props.cast && this.getMovieByCast()
-    this.props.crew && this.getMovieByCrew()
-    let pageMovie = ''
-    this.state.totalPages ? pageMovie = Math.floor(Math.random() * this.state.totalPages) : pageMovie = 1
+  getMovieFiltered = async () => {
+    let pageMovie = Math.floor(Math.random() * 500)
     if (this.props.movieGenre && this.props.cast && this.props.crew) {
-      return `https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=${pageMovie}&with_genres=${this.props.movieGenre}&with_crew=${this.state.crewId}&with_cast=${this.state.castId}`
+      await axios
+        .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.cast}&page=1&include_adult=false`)
+        .then(res => this.setState({ castId: res.data.results[0].id }))
+        .catch(err => {
+          this.notify()
+        })
+      await axios
+        .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.crew}&page=1&include_adult=false`)
+        .then(res => this.setState({ crewId: res.data.results[0].id }))
+        .catch(err => {
+          this.notify()
+        })
+      await axios
+        .get(`https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=1&with_genres=${this.props.movieGenre}&with_crew=${this.state.crewId}&with_cast=${this.state.castId}`)
+        .then(resMovie => {
+          let randomresult = Math.floor(Math.random() * resMovie.data.results.length)
+          resMovie.data.results[randomresult].poster_path !== null ?
+            this.setState({ movies: resMovie.data.results[randomresult] })
+            : this.getMovieFiltered()
+        })
+        .catch(err => {
+          this.notify()
+        })
     } else if (this.props.movieGenre && !this.props.crew && !this.props.cast) {
-      return `https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=${pageMovie}&with_genres=${this.props.movieGenre}`
+      axios
+        .get(`https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=${pageMovie}&with_genres=${this.props.movieGenre}`)
+        .then(resMovie => {
+          let randomresult = Math.floor(Math.random() * resMovie.data.results.length)
+          resMovie.data.results[randomresult].poster_path !== null ?
+            this.setState({ movies: resMovie.data.results[randomresult] })
+            : this.getMovieFiltered()
+        })
+        .catch(err => {
+          this.notify()
+        })
     } else if (this.props.movieGenre && !this.props.crew && this.props.cast) {
-      return `https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=${pageMovie}&with_genres=${this.props.movieGenre}&with_cast=${this.state.castId}`
+      await axios
+        .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.cast}&page=1&include_adult=false`)
+        .then(res => this.setState({ castId: res.data.results[0].id }))
+        .catch(err => {
+          this.notify()
+        })
+      await axios
+        .get(`https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=1&with_genres=${this.props.movieGenre}&with_cast=${this.state.castId}`)
+        .then(resMovie => {
+          let randomresult = Math.floor(Math.random() * resMovie.data.results.length)
+          resMovie.data.results[randomresult].poster_path !== null ?
+            this.setState({ movies: resMovie.data.results[randomresult] })
+            : this.getMovieFiltered()
+        })
+        .catch(err => {
+          this.notify()
+        })
     } else if (this.props.movieGenre && this.props.crew && !this.props.cast) {
-      return `https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=${pageMovie}&with_genres=${this.props.movieGenre}&with_crew=${this.state.crewId}`
+      await axios
+        .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.crew}&page=1&include_adult=false`)
+        .then(res => this.setState({ crewId: res.data.results[0].id }))
+        .catch(err => {
+          this.notify()
+        })
+      await axios
+        .get(`https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=1&with_genres=${this.props.movieGenre}&with_crew=${this.state.crewId}`)
+        .then(resMovie => {
+          let randomresult = Math.floor(Math.random() * resMovie.data.results.length)
+          resMovie.data.results[randomresult].poster_path !== null ?
+            this.setState({ movies: resMovie.data.results[randomresult] })
+            : this.getMovieFiltered()
+        })
+        .catch(err => {
+          this.notify()
+        })
     } else if (!this.props.movieGenre && !this.props.crew && this.props.cast) {
-      return `https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=${pageMovie}&with_cast=${this.state.castId}`
+      await axios
+        .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.cast}&page=1&include_adult=false`)
+        .then(res => this.setState({ castId: res.data.results[0].id }))
+        .catch(err => {
+          this.notify()
+        })
+      await axios
+        .get(`https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=1&with_cast=${this.state.castId}`)
+        .then(resMovie => {
+          let randomresult = Math.floor(Math.random() * resMovie.data.results.length)
+          resMovie.data.results[randomresult].poster_path !== null ?
+            this.setState({ movies: resMovie.data.results[randomresult] })
+            : this.getMovieFiltered()
+        })
+        .catch(err => {
+          this.notify()
+        })
     } else if (!this.props.movieGenre && this.props.crew && !this.props.cast) {
-      return `https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=${pageMovie}&with_crew=${this.state.crewId}`
+      await axios
+        .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.crew}&page=1&include_adult=false`)
+        .then(res => this.setState({ crewId: res.data.results[0].id }))
+        .catch(err => {
+          this.notify()
+        })
+      await axios
+        .get(`https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=1&with_crew=${this.state.crewId}`)
+        .then(resMovie => {
+          let randomresult = Math.floor(Math.random() * resMovie.data.results.length)
+          resMovie.data.results[randomresult].poster_path !== null ?
+            this.setState({ movies: resMovie.data.results[randomresult] })
+            : this.getMovieFiltered()
+        })
+        .catch(err => {
+          this.notify()
+        })
     } else if (!this.props.movieGenre && this.props.crew && this.props.cast) {
-      return `https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=${pageMovie}&with_crew=${this.state.crewId}&with_cast=${this.state.castId}`
+      await axios
+        .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.cast}&page=1&include_adult=false`)
+        .then(res => this.setState({ castId: res.data.results[0].id }))
+        .catch(err => {
+          this.notify()
+        })
+      await axios
+        .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.crew}&page=1&include_adult=false`)
+        .then(res => this.setState({ crewId: res.data.results[0].id }))
+        .catch(err => {
+          this.notify()
+        })
+      await axios
+        .get(`https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=1&with_crew=${this.state.crewId}&with_cast=${this.state.castId}`)
+        .then(resMovie => {
+          let randomresult = Math.floor(Math.random() * resMovie.data.results.length)
+          resMovie.data.results[randomresult].poster_path !== null ?
+            this.setState({ movies: resMovie.data.results[randomresult] })
+            : this.getMovieFiltered()
+        })
+        .catch(err => {
+          this.notify()
+        })
     } else if (!this.props.movieGenre && !this.props.crew && !this.props.cast) {
-      return `https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=${pageMovie}`
+      axios
+        .get(`https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=${pageMovie}`)
+        .then(resMovie => {
+          let randomresult = Math.floor(Math.random() * resMovie.data.results.length)
+          resMovie.data.results[randomresult].poster_path !== null ?
+            this.setState({ movies: resMovie.data.results[randomresult] })
+            : this.getMovieFiltered()
+        })
+        .catch(err => {
+          this.notify()
+        })
     }
   }
 
   notify = () => {
     toast.error("Il n'y a pas de résultat avec ces choix", { position: toast.POSITION.BOTTOM_RIGHT })
-  }
-
-  getMovieFiltered = async () => {
-    await axios
-      .get(this.getUrlMovie())
-      .then(resMovie => this.setState({ totalPages: resMovie.data.results.total_pages }))
-    await axios
-      .get(this.getUrlMovie())
-      .then(resMovie => {
-        let randomresult = Math.floor(Math.random() * resMovie.data.results.length)
-        resMovie.data.results[randomresult].poster_path !== null ?
-          this.setState({ movies: resMovie.data.results[randomresult] })
-          : this.getMovieFiltered()
-      })
-      .catch(err => {
-        this.notify()
-      })
-  }
-
-  getMovieByCast = () => {
-    axios
-      .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.cast}&page=1&include_adult=false`)
-      .then(res => this.setState({ castId: res.data.results[0].id }))
-      .catch(err => {
-        console.log(err)
-      })
-  }
-
-  getMovieByCrew = () => {
-    axios
-      .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.crew}&page=1&include_adult=false`)
-      .then(res => this.setState({ crewId: res.data.results[0].id }))
-      .catch(err => {
-        console.log(err)
-      })
   }
 
   getDate = () => {
