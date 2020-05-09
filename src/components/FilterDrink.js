@@ -4,20 +4,23 @@ import './FilterDrink.css'
 
 class FilterDrink extends Component {
   state = {
-    categories: []
+    categories: [],
+    isAlcohol: "all"
   }
 
   getCategoriesDrink = () => {
     axios.get('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list')
       .then(res => this.setState({ categories: res.data.drinks.map(c => c.strCategory) }))
   }
-  
+
   componentDidMount = () => {
     this.getCategoriesDrink()
   }
 
-  filterAlcohol = () => {
-    this.props.handleAlcoholChange(this.props.nonAlcohol)
+  filterAlcohol = (e) => {
+    this.setState ({ isAlcohol: e.target.value })
+    const isAlcohol = e.target.value
+    this.props.handleAlcoholChange(isAlcohol)
   }
 
   filterCategory = (event) => {
@@ -31,12 +34,14 @@ class FilterDrink extends Component {
           <option className="option" value="categories">All categories</option>
           {this.state.categories.map(cat => (<option className="option" value={cat} key={cat}>{cat}</option>))}
         </select>
-        <div className="checkbox">
-          <p>Sans alcool</p>
-          <label className="switch">
-            <input name="nonAlcohol" type="checkbox" value={this.props.nonAlcohol} onChange={this.filterAlcohol} />
-            <span className="slider round" />
-          </label>
+
+        <div className="switch-field">
+          <input type="radio" name="nonAlcohol" value="all" id="all" onChange={this.filterAlcohol} checked={this.state.isAlcohol === 'all'} />
+          <label htmlFor="all" className="radio-label">All types</label>
+          <input type="radio" name="nonAlcohol" value="alcohol" id="alcohol"  onChange={this.filterAlcohol} checked={this.state.isAlcohol === 'alcohol'} />
+          <label htmlFor="alcohol" className="radio-label">Alcoholic</label>
+          <input type="radio" name="nonAlcohol" value="nonAlcohol" id="nonAlcohol"  onChange={this.filterAlcohol} checked={this.state.isAlcohol === 'nonAlcohol'}/>
+          <label htmlFor="nonAlcohol" className="radio-label">Non alcoholic</label>
         </div>
       </div>
     );
