@@ -260,15 +260,9 @@ class CardsListFilter extends Component {
       await axios
         .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.cast}&page=1&include_adult=false`)
         .then(res => this.setState({ castId: res.data.results[0].id }))
-        .catch(err => {
-          this.notifyMovie()
-        })
       await axios
         .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.crew}&page=1&include_adult=false`)
         .then(res => this.setState({ crewId: res.data.results[0].id }))
-        .catch(err => {
-          this.notifyMovie()
-        })
       await axios
         .get(`https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=1&with_genres=${this.props.movieGenre}&with_crew=${this.state.crewId}&with_cast=${this.state.castId}`)
         .then(resMovie => {
@@ -279,6 +273,7 @@ class CardsListFilter extends Component {
         })
         .catch(err => {
           this.notifyMovie()
+          this.getRandomMovie()
         })
     } else if (this.props.movieGenre && !this.props.crew && !this.props.cast) {
       axios
@@ -291,14 +286,12 @@ class CardsListFilter extends Component {
         })
         .catch(err => {
           this.notifyMovie()
+          this.getRandomMovie()
         })
     } else if (this.props.movieGenre && !this.props.crew && this.props.cast) {
       await axios
         .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.cast}&page=1&include_adult=false`)
         .then(res => this.setState({ castId: res.data.results[0].id }))
-        .catch(err => {
-          this.notifyMovie()
-        })
       await axios
         .get(`https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=1&with_genres=${this.props.movieGenre}&with_cast=${this.state.castId}`)
         .then(resMovie => {
@@ -309,14 +302,12 @@ class CardsListFilter extends Component {
         })
         .catch(err => {
           this.notifyMovie()
+          this.getRandomMovie()
         })
     } else if (this.props.movieGenre && this.props.crew && !this.props.cast) {
       await axios
         .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.crew}&page=1&include_adult=false`)
         .then(res => this.setState({ crewId: res.data.results[0].id }))
-        .catch(err => {
-          this.notifyMovie()
-        })
       await axios
         .get(`https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=1&with_genres=${this.props.movieGenre}&with_crew=${this.state.crewId}`)
         .then(resMovie => {
@@ -327,14 +318,12 @@ class CardsListFilter extends Component {
         })
         .catch(err => {
           this.notifyMovie()
+          this.getRandomMovie()
         })
     } else if (!this.props.movieGenre && !this.props.crew && this.props.cast) {
       await axios
         .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.cast}&page=1&include_adult=false`)
         .then(res => this.setState({ castId: res.data.results[0].id }))
-        .catch(err => {
-          this.notifyMovie()
-        })
       await axios
         .get(`https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=1&with_cast=${this.state.castId}`)
         .then(resMovie => {
@@ -345,14 +334,12 @@ class CardsListFilter extends Component {
         })
         .catch(err => {
           this.notifyMovie()
+          this.getRandomMovie()
         })
     } else if (!this.props.movieGenre && this.props.crew && !this.props.cast) {
       await axios
         .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.crew}&page=1&include_adult=false`)
         .then(res => this.setState({ crewId: res.data.results[0].id }))
-        .catch(err => {
-          this.notifyMovie()
-        })
       await axios
         .get(`https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=1&with_crew=${this.state.crewId}`)
         .then(resMovie => {
@@ -363,20 +350,15 @@ class CardsListFilter extends Component {
         })
         .catch(err => {
           this.notifyMovie()
+          this.getRandomMovie()
         })
     } else if (!this.props.movieGenre && this.props.crew && this.props.cast) {
       await axios
         .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.cast}&page=1&include_adult=false`)
         .then(res => this.setState({ castId: res.data.results[0].id }))
-        .catch(err => {
-          this.notifyMovie()
-        })
       await axios
         .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.crew}&page=1&include_adult=false`)
         .then(res => this.setState({ crewId: res.data.results[0].id }))
-        .catch(err => {
-          this.notifyMovie()
-        })
       await axios
         .get(`https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=1&with_crew=${this.state.crewId}&with_cast=${this.state.castId}`)
         .then(resMovie => {
@@ -387,20 +369,26 @@ class CardsListFilter extends Component {
         })
         .catch(err => {
           this.notifyMovie()
+          this.getRandomMovie()
         })
     } else if (!this.props.movieGenre && !this.props.crew && !this.props.cast) {
-      axios
-        .get(`https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=${pageMovie}`)
-        .then(resMovie => {
-          let randomresult = Math.floor(Math.random() * resMovie.data.results.length)
-          resMovie.data.results[randomresult].poster_path !== null ?
-            this.setState({ movies: resMovie.data.results[randomresult] })
-            : this.getMovieFiltered()
-        })
-        .catch(err => {
-          this.notifyMovie()
-        })
+      this.getRandomMovie()
     }
+  }
+
+  getRandomMovie = () => {
+    let pageMovie = Math.floor(Math.random() * 500)
+    axios
+      .get(`https://api.themoviedb.org/3/discover/movie?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&page=${pageMovie}`)
+      .then(resMovie => {
+        let randomresult = Math.floor(Math.random() * resMovie.data.results.length)
+        resMovie.data.results[randomresult].poster_path !== null ?
+          this.setState({ movies: resMovie.data.results[randomresult] })
+          : this.getRandomMovie()
+      })
+      .catch(err => {
+        this.notifyMovie()
+      })
   }
 
   notifyMovie = () => {
