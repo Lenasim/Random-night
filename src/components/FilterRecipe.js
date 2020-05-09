@@ -33,11 +33,11 @@ class FilterRecipe extends Component {
     return (
       <div id="recipe" className="FilterRecipe">
         <select name="mealCat" id="recipe-categories" value={this.props.cat} onChange={(event) => this.filterCategory('mealCat', event.target.value)}>
-          <option className="option" value="categorie">Catégories</option>
+          <option className="option" value="categorie">Categories</option>
           {category.map((cat, id) => <option key={id}>{cat}</option>)}
         </select>
         <select name="mealAreas" id="recipe-countries" value={this.props.areas} onChange={(event) => this.filterCategory('mealAreas', event.target.value)}>
-          <option className="option" value="country">Pays</option>
+          <option className="option" value="country">Countries</option>
           {areas.map((area, id) => <option key={id}>{area}</option>)}
         </select>
       </div>
