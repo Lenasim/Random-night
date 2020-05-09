@@ -291,14 +291,14 @@ class CardsListFilter extends Component {
         .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.cast}&page=1&include_adult=false`)
         .then(res => this.setState({ castId: res.data.results[0].id }))
         .catch(err => {
-          this.notifyMovie()
+          this.notifyMovieActor()
           this.getRandomMovie()
         })
       await axios
         .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.crew}&page=1&include_adult=false`)
         .then(res => this.setState({ crewId: res.data.results[0].id }))
         .catch(err => {
-          this.notifyMovie()
+          this.notifyMovieDirector()
           this.getRandomMovie()
         })
       await axios
@@ -331,7 +331,7 @@ class CardsListFilter extends Component {
         .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.cast}&page=1&include_adult=false`)
         .then(res => this.setState({ castId: res.data.results[0].id }))
         .catch(err => {
-          this.notifyMovie()
+          this.notifyMovieActor()
           this.getRandomMovie()
         })
       await axios
@@ -351,7 +351,7 @@ class CardsListFilter extends Component {
         .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.crew}&page=1&include_adult=false`)
         .then(res => this.setState({ crewId: res.data.results[0].id }))
         .catch(err => {
-          this.notifyMovie()
+          this.notifyMovieDirector()
           this.getRandomMovie()
         })
       await axios
@@ -371,7 +371,7 @@ class CardsListFilter extends Component {
         .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.cast}&page=1&include_adult=false`)
         .then(res => this.setState({ castId: res.data.results[0].id }))
         .catch(err => {
-          this.notifyMovie()
+          this.notifyMovieActor()
           this.getRandomMovie()
         })
       await axios
@@ -391,7 +391,7 @@ class CardsListFilter extends Component {
         .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.crew}&page=1&include_adult=false`)
         .then(res => this.setState({ crewId: res.data.results[0].id }))
         .catch(err => {
-          this.notifyMovie()
+          this.notifyMovieDirector()
           this.getRandomMovie()
         })
       await axios
@@ -411,14 +411,14 @@ class CardsListFilter extends Component {
         .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.cast}&page=1&include_adult=false`)
         .then(res => this.setState({ castId: res.data.results[0].id }))
         .catch(err => {
-          this.notifyMovie()
+          this.notifyMovieActor()
           this.getRandomMovie()
         })
       await axios
         .get(`https://api.themoviedb.org/3/search/person?api_key=439ba5790e4522ad15e0c6a3574cd795&language=en-US&query=${this.props.crew}&page=1&include_adult=false`)
         .then(res => this.setState({ crewId: res.data.results[0].id }))
         .catch(err => {
-          this.notifyMovie()
+          this.notifyMovieDirector()
           this.getRandomMovie()
         })
       await axios
@@ -455,6 +455,14 @@ class CardsListFilter extends Component {
 
   notifyMovie = () => {
     toast.warn("Il n'y a pas de film avec ces choix, tu as eu une propositon aléatoire.", { position: toast.POSITION.BOTTOM_RIGHT })
+  }
+
+  notifyMovieActor = () => {
+    toast.warn("Il n'y a pas de film avec cet acteur, tu as eu une propositon aléatoire.", { position: toast.POSITION.BOTTOM_RIGHT })
+  }
+
+  notifyMovieDirector = () => {
+    toast.warn("Il n'y a pas de film avec ce réalisateur, tu as eu une propositon aléatoire.", { position: toast.POSITION.BOTTOM_RIGHT })
   }
 
   notifyMeal = () => {
