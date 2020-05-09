@@ -578,7 +578,7 @@ class CardsListFilter extends Component {
       <div>
          <div className="notice-button">
               <div onClick={this.getRandomFiltered} >
-                <Button text={!this.state.firstClick ? "Get your plan" : "Try again?"} />
+                <Button text="Try again?" loader={loading}/>
               </div>
               <div onClick={this.props.filterClick} >
                 <button className="button-filter"><i className="fas fa-sliders-h"></i></button>
