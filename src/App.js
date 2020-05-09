@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import Header from './components/Header'
 import CardsList from './components/CardsList'
 import FilterDisplay from './components/FilterDisplay'
-import Notice from './components/Notice'
+import Button from './components/Button'
 
 import './App.css';
+import './components/Notice.css'
+
 
 
 class App extends Component {
@@ -44,19 +46,27 @@ class App extends Component {
     return (
       <div className="App">
         <Header reset={this.handleReset} />
-        {
-          !this.state.firstClick && !this.state.filterClick &&
-          <Notice
-            isClicked={this.handleFirstClick}
-            text={this.state.textButton}
-            isClickedFilter={this.handleFilterClick}
-            textFilter={this.state.textFilterButton} />
-        }
+          <> 
+          <div className='notice-text'>
+            <h1>What's the game plan tonight ?</h1>
+          </div>
+          <div className="notice-button">
+            <div onClick={this.handleFirstClick} >
+              <Button text={!this.state.firstClick ? "Get your plan" : "Try again?"} />
+            </div>
+            <div onClick={this.handleFilterClick} >
+              <button className="button-filter"><i class="fas fa-sliders-h"></i></button>
+            </div>
+          </div>
+          </>
+        
         {this.state.firstClick && <CardsList />}
         {this.state.filterClick && <FilterDisplay />}
       </div>
     );
   }
 }
+
+
 
 export default App

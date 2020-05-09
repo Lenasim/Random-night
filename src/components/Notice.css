@@ -13,15 +13,13 @@
 }
 
 .notice-text h1 {
-  margin: 20px 0;
+  margin: 2rem 0;
   line-height: 50px;
-
-  font-weight: 400;
-  font-style: normal;
   color: white;
   text-transform: uppercase;
-  margin: 2rem 0;
   font-family: 'Permanent Marker', cursive !important;
+  font-size: 1.8rem;
+  font-weight: 400;
 }
 
 .notice-button {
