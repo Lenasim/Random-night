@@ -172,7 +172,7 @@ class CardsListFilter extends Component {
         .catch(err => console.log(err.config))
     } else {
       axios
-        .get(this.getUrlDrinks())
+        .get('https://www.thecocktaildb.com/api/json/v1/1/random.php')
         .then(resDrink => {
           let randomNumD = Math.floor(Math.random() * resDrink.data.drinks.length)
           this.setState({ drinks: resDrink.data.drinks[randomNumD] })
