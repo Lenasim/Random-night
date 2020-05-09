@@ -61,16 +61,16 @@ class CardsListFilter extends Component {
 
   componentDidMount = () => {
     this.getRandomFiltered()
-
   }
 
+
   getRandomFiltered = async () => {
-    this.setState({ loading: true })
-    await this.getCocktailFiltered()
-    this.getMealFiltered()
-    await this.getMovieFiltered()
-    this.getGenresList()
-    this.setState({ loaded: true, loading: false })
+      this.setState({ loading: true })
+      await this.getCocktailFiltered()
+      this.getMealFiltered()
+      await this.getMovieFiltered()
+      this.getGenresList()
+      this.setState({ loaded: true, loading: false })
   }
 
   getDetailsDrink = () => {
@@ -576,10 +576,15 @@ class CardsListFilter extends Component {
     const { drinks, meals, movies, categories, loading, loaded, detailsDrink, detailsMeal, ingDrink, measuresDrink, ingMeal, measuresMeal, video, date, genresMovie, actors, directors, trailer } = this.state
     return (
       <div>
-        <Button isClicked={this.getRandom}
-          text='Toujours Pas ?'
-          loader={loading}
-        />
+         <div className="notice-button">
+              <div onClick={this.getRandomFiltered} >
+                <Button text={!this.state.firstClick ? "Get your plan" : "Try again?"} />
+              </div>
+              <div onClick={this.props.filterClick} >
+                <button className="button-filter"><i className="fas fa-sliders-h"></i></button>
+              </div>
+            </div>
+
         {loaded &&
           <div className="card-container">
             <Card
