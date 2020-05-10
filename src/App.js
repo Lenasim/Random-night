@@ -66,13 +66,13 @@ class App extends Component {
       firstClick: false,
       filterClick: false,
       showFilterButton: true,
-      // drinkCat: 'categories',
-      // isAlcohol: 'all',
-      // mealCat: '',
-      // mealAreas: '',
-      // genresResult: '',
-      // queryCast: '',
-      // queryCrew: ''
+      drinkCat: 'categories',
+      isAlcohol: 'all',
+      mealCat: '',
+      mealAreas: '',
+      genresResult: '',
+      queryCast: '',
+      queryCrew: ''
     })
   }
 
