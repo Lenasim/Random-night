@@ -156,8 +156,7 @@ class App extends Component {
             mealAreas={this.state.mealAreas}
             movieGenre={this.state.genresResult}
             cast={this.state.queryCast}
-            crew={this.state.queryCrew} />}
-
+            crew={this.state.queryCrew} />}g
       </div>
     );
   }
