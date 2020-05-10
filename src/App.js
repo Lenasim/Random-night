@@ -32,23 +32,40 @@ class App extends Component {
     queryCrew: '',
   }
 
-
-
   handleFilterClick = () => {
     this.setState({ filterClick: !this.state.filterClick })
   }
 
-  handleReset = () => {
+  handleResetFilters = () => {
     this.setState({
-      firstClick: false,
-      filterClick: false,
       drinkCat: 'categories',
       isAlcohol: 'all',
       mealCat: '',
       mealAreas: '',
       genresResult: '',
       queryCast: '',
-      queryCrew: ''
+      queryCrew: '',
+    })
+  }
+
+  handleCloseFilters = () => {
+    this.setState({
+      drinkCat: 'categories',
+      isAlcohol: 'all',
+      mealCat: '',
+      mealAreas: '',
+      genresResult: '',
+      queryCast: '',
+      queryCrew: '',
+      filterClick: false,
+    })
+  }
+
+  handleReset = () => {
+    this.setState({
+      firstClick: false,
+      filterClick: false,
+      showFilterButton: true
     })
   }
 
@@ -118,7 +135,6 @@ class App extends Component {
   }
 
   render() {
-
     return (
       <div className="App">
         <Header reset={this.handleReset} />
@@ -126,30 +142,44 @@ class App extends Component {
           <div className='notice-text'>
             <h1>What's your game plan tonight ?</h1>
           </div>
-          {!this.state.firstClick &&
+          {
+            !this.state.firstClick &&
             <div className="notice-button">
-              <div onClick={this.handleButtonClick} >
-                <Button text={!this.state.firstClick ? "Get your plan" : "Try again?"} />
-              </div>
-              <div onClick={this.handleFilterClick} >
-                <button className="button-filter"><i className="fas fa-sliders-h"></i></button>
-              </div>
-            </div>}
-        </div>
+              <Button
+                text={!this.state.firstClick ? "Get your plan" : "Try again?"}
+                isClicked={this.handleButtonClick}
 
-        {this.state.filterClick &&
+              />
+              {
+                !this.state.filterClick &&
+                <button
+                  className="button-filter"
+                  onClick={this.handleFilterClick}>
+                  <i className="fas fa-sliders-h"></i>
+                </button>
+              }
+            </div>
+          }
+        </div>
+        {
+          this.state.filterClick &&
           <div>
             <div className="FilterDisplay">
               <FilterButtons
+                close={this.handleCloseFilters}
+                filter={this.state.filterClick}
+                reset={this.handleResetFilters}
                 handleChange={this.handleChangeItem}
                 activeId={this.state.activeId}
               />
               <div>{this.getItemContent()}</div>
             </div>
-          </div>}
-
-        {this.state.firstClick &&
+          </div>
+        }
+        {
+          this.state.firstClick &&
           <CardsListFilter
+            filter={this.state.filterClick}
             filterClick={this.handleFilterClick}
             drinkCategory={this.state.drinkCat}
             drinkAlcohol={this.state.isAlcohol}
@@ -158,7 +188,8 @@ class App extends Component {
             mealAreas={this.state.mealAreas}
             movieGenre={this.state.genresResult}
             cast={this.state.queryCast}
-            crew={this.state.queryCrew} />}g
+            crew={this.state.queryCrew} />
+        }
       </div>
     );
   }

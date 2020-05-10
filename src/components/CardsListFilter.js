@@ -65,12 +65,12 @@ class CardsListFilter extends Component {
 
 
   getRandomFiltered = async () => {
-      this.setState({ loading: true })
-      await this.getCocktailFiltered()
-      this.getMealFiltered()
-      await this.getMovieFiltered()
-      this.getGenresList()
-      this.setState({ loaded: true, loading: false })
+    this.setState({ loading: true })
+    await this.getCocktailFiltered()
+    this.getMealFiltered()
+    await this.getMovieFiltered()
+    this.getGenresList()
+    this.setState({ loaded: true, loading: false })
   }
 
   getDetailsDrink = () => {
@@ -124,9 +124,9 @@ class CardsListFilter extends Component {
 
   getCocktailFiltered = async () => {
     const { drinkCategory, drinkAlcohol } = this.props
-    if (!drinkCategory && !drinkAlcohol){
+    if (!drinkCategory && !drinkAlcohol) {
       this.getRandomDrink()
-    }else if(drinkAlcohol !== "all" && drinkCategory !== "categories") {
+    } else if (drinkAlcohol !== "all" && drinkCategory !== "categories") {
       const url = () => {
         if (drinkAlcohol === "alcohol") {
           return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic'
@@ -576,16 +576,36 @@ class CardsListFilter extends Component {
     const { drinks, meals, movies, categories, loading, loaded, detailsDrink, detailsMeal, ingDrink, measuresDrink, ingMeal, measuresMeal, video, date, genresMovie, actors, directors, trailer } = this.state
     return (
       <div>
-         <div className="notice-button">
-              <div onClick={this.getRandom} >
-                <Button text="Try again?" loader={loading}/>
-              </div>
-              <div onClick={this.props.filterClick} >
-                <button className="button-filter"><i className="fas fa-sliders-h"></i></button>
-              </div>
-            </div>
-
-        {loaded &&
+        <div className="notice-button">
+          <Button
+            text="Try again?"
+            loader={loading}
+            isClicked={this.getRandom} />
+          {
+            !this.props.filter &&
+            <button
+              className="button-filter"
+              onClick={this.props.filterClick}>
+              <i className="fas fa-sliders-h"></i>
+            </button>
+          }
+          {/* {
+            !this.props.filter ?
+              <button
+                className="button-filter"
+                onClick={this.props.filterClick}>
+                <i className="fas fa-sliders-h"></i>
+              </button>
+              :
+              <button
+                className="button-filter"
+                onClick={this.props.reset}>
+                <i className="fas fa-undo-alt"></i>
+              </button>
+          } */}
+        </div>
+        {
+          loaded &&
           <div className="card-container">
             <Card
               image={drinks.strDrinkThumb}
