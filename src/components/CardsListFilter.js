@@ -456,23 +456,23 @@ class CardsListFilter extends Component {
   }
 
   notifyMovie = () => {
-    toast.warn("Il n'y a pas de film avec ces choix, tu as eu une propositon aléatoire.", { position: toast.POSITION.BOTTOM_RIGHT })
+    toast.warn("There are no films matching your choice, check out our random result.", { position: toast.POSITION.BOTTOM_RIGHT })
   }
 
   notifyMovieActor = () => {
-    toast.warn("Il n'y a pas de film avec cet acteur, tu as eu une propositon aléatoire.", { position: toast.POSITION.BOTTOM_RIGHT })
+    toast.warn("There are no films matching the actor, check out our random result.", { position: toast.POSITION.BOTTOM_RIGHT })
   }
 
   notifyMovieDirector = () => {
-    toast.warn("Il n'y a pas de film avec ce réalisateur, tu as eu une propositon aléatoire.", { position: toast.POSITION.BOTTOM_RIGHT })
+    toast.warn("There are no films matching the director, check out our random result.", { position: toast.POSITION.BOTTOM_RIGHT })
   }
 
   notifyMeal = () => {
-    toast.warn("Il n'y a pas de recette avec ces choix, tu as eu une propositon aléatoire.", { position: toast.POSITION.BOTTOM_RIGHT })
+    toast.warn("There are no recipes matching your choice, check out our random result.", { position: toast.POSITION.BOTTOM_RIGHT })
   }
 
   notifyDrink = () => {
-    toast.warn("Il n'y a pas de boisson avec ces choix, tu as eu une propositon aléatoire.", { position: toast.POSITION.BOTTOM_RIGHT })
+    toast.warn("There are no drinks matching your choice, check out our random result.", { position: toast.POSITION.BOTTOM_RIGHT })
   }
 
   getDate = () => {
@@ -543,12 +543,11 @@ class CardsListFilter extends Component {
   }
 
   notifyAllFav = () => {
-    toast.warn("Toutes les cartes sont sélectionnées.", { position: toast.POSITION.BOTTOM_RIGHT })
+    toast.warn("You blocked all the results.", { position: toast.POSITION.BOTTOM_RIGHT })
   }
 
   getRandom = () => {
     const { isFavDrink, isFavMovie, isFavRecipe } = this.state
-    console.log(isFavDrink, isFavMovie, isFavRecipe)
     if (isFavDrink === false && isFavRecipe === false && isFavMovie === false) {
       this.getCocktailFiltered()
       this.getMealFiltered()
