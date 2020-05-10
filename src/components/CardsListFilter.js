@@ -548,6 +548,7 @@ class CardsListFilter extends Component {
 
   getRandom = () => {
     const { isFavDrink, isFavMovie, isFavRecipe } = this.state
+    console.log(isFavDrink, isFavMovie, isFavRecipe)
     if (isFavDrink === false && isFavRecipe === false && isFavMovie === false) {
       this.getCocktailFiltered()
       this.getMealFiltered()
@@ -577,7 +578,7 @@ class CardsListFilter extends Component {
     return (
       <div>
          <div className="notice-button">
-              <div onClick={this.getRandomFiltered} >
+              <div onClick={this.getRandom} >
                 <Button text="Try again?" loader={loading}/>
               </div>
               <div onClick={this.props.filterClick} >
