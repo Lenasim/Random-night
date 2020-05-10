@@ -44,7 +44,7 @@ class App extends Component {
       mealAreas: '',
       genresResult: '',
       queryCast: '',
-      queryCrew: '',
+      queryCrew: ''
     })
   }
 
@@ -57,7 +57,7 @@ class App extends Component {
       genresResult: '',
       queryCast: '',
       queryCrew: '',
-      filterClick: false,
+      filterClick: false
     })
   }
 
@@ -65,7 +65,14 @@ class App extends Component {
     this.setState({
       firstClick: false,
       filterClick: false,
-      showFilterButton: true
+      showFilterButton: true,
+      drinkCat: 'categories',
+      isAlcohol: 'all',
+      mealCat: '',
+      mealAreas: '',
+      genresResult: '',
+      queryCast: '',
+      queryCrew: ''
     })
   }
 
