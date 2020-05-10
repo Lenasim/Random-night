@@ -4,13 +4,13 @@ import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 import Card from './Card'
-import Button from './Button'
+import Button from '../General/Button'
 import Modal from './Modal'
 
 import './Card.css'
 
 toast.configure()
-class CardsListFilter extends Component {
+class Results extends Component {
 
   state = {
     loading: false,
@@ -659,4 +659,4 @@ class CardsListFilter extends Component {
   }
 }
 
-export default CardsListFilter
+export default Results
