@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Header.css'
 
-import logo from '../images/logo-RN.svg'
+import logo from '../../images/logo-RN.svg'
 
 const Header = ({reset}) => {
   return (
