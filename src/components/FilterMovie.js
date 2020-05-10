@@ -30,7 +30,6 @@ class FilterMovie extends Component {
 
   filterGenre = (event) => {
     this.props.handleGenreChange(event.target.value)
-    console.log(event.target.value)
   }
 
   render() {
