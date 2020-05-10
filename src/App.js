@@ -148,7 +148,6 @@ class App extends Component {
               <Button
                 text={!this.state.firstClick ? "Get your plan" : "Try again?"}
                 isClicked={this.handleButtonClick}
-
               />
               {
                 !this.state.filterClick &&
