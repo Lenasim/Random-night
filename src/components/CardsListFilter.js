@@ -589,20 +589,6 @@ class CardsListFilter extends Component {
               <i className="fas fa-sliders-h"></i>
             </button>
           }
-          {/* {
-            !this.props.filter ?
-              <button
-                className="button-filter"
-                onClick={this.props.filterClick}>
-                <i className="fas fa-sliders-h"></i>
-              </button>
-              :
-              <button
-                className="button-filter"
-                onClick={this.props.reset}>
-                <i className="fas fa-undo-alt"></i>
-              </button>
-          } */}
         </div>
         {
           loaded &&
