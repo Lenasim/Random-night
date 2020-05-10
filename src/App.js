@@ -42,7 +42,13 @@ class App extends Component {
     this.setState({
       firstClick: false,
       filterClick: false,
-      showFilterButton: true
+      drinkCat: 'categories',
+      isAlcohol: 'all',
+      mealCat: '',
+      mealAreas: '',
+      genresResult: '',
+      queryCast: '',
+      queryCrew: ''
     })
   }
 
@@ -92,7 +98,7 @@ class App extends Component {
           handleCategoryChange={this.handleDrinkCategory}
           handleAlcoholChange={this.handleDrinkAlcohol}
           cat={this.state.drinkCat}
-          alc={this.state.isAlcohol}/>;
+          alc={this.state.isAlcohol} />;
       case "movie":
         return <FilterMovie
           handleGenreChange={this.handleGenreChange}
@@ -103,9 +109,9 @@ class App extends Component {
           crew={this.state.queryCrew} />
       case "recipe":
         return <FilterRecipe
-          handleCategoryChange={this.handleMealCategory} 
+          handleCategoryChange={this.handleMealCategory}
           cat={this.state.mealCat}
-          area={this.state.mealAreas}/>;
+          area={this.state.mealAreas} />;
       default:
         return <Error />;
     }
