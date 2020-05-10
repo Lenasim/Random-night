@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import Card from './Card'
 import Button from '../General/Button'
 import Modal from './Modal'
+import ModalBack from './ModalBack'
 
 import './Card.css'
 
@@ -619,41 +620,56 @@ class Results extends Component {
             />
           </div>
         }
-        <Modal
-          show={this.state.modalDrink}
-          handleClose={this.toggleModalDrink}
-          name={detailsDrink.strDrink}
-          image={detailsDrink.strDrinkThumb}
-          genre={detailsDrink.strCategory}
-          alcoholic={detailsDrink.strAlcoholic}
-          glassType={detailsDrink.strGlass}
-          instructions={detailsDrink.strInstructions}
-          ingredients={ingDrink}
-          measures={measuresDrink} />
-        <Modal
-          show={this.state.modalMovie}
-          handleClose={this.toggleModalMovie}
-          name={movies.title}
-          image={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`}
-          rating={movies.vote_average}
-          overview={movies.overview}
-          genre={genresMovie}
-          date={date}
-          actors={actors}
-          directors={directors}
-          trailer={trailer} />
-        <Modal
-          show={this.state.modalMeal}
-          handleClose={this.toggleModalMeal}
-          name={detailsMeal.strMeal}
-          image={detailsMeal.strMealThumb}
-          genre={detailsMeal.strCategory}
-          area={detailsMeal.strArea}
-          instructions={detailsMeal.strInstructions}
-          ingredients={ingMeal}
-          measures={measuresMeal}
-          video={video}
-          tags={detailsMeal.strTags} />
+        {this.state.modalDrink &&
+          <>
+            <Modal
+              show={this.state.modalDrink}
+              handleClose={this.toggleModalDrink}
+              name={detailsDrink.strDrink}
+              image={detailsDrink.strDrinkThumb}
+              genre={detailsDrink.strCategory}
+              alcoholic={detailsDrink.strAlcoholic}
+              glassType={detailsDrink.strGlass}
+              instructions={detailsDrink.strInstructions}
+              ingredients={ingDrink}
+              measures={measuresDrink} />
+            <ModalBack handleClose={this.toggleModalDrink}/>
+          </>
+        }
+        {this.state.modalMovie &&
+          <>
+            <Modal
+              show={this.state.modalMovie}
+              handleClose={this.toggleModalMovie}
+              name={movies.title}
+              image={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`}
+              rating={movies.vote_average}
+              overview={movies.overview}
+              genre={genresMovie}
+              date={date}
+              actors={actors}
+              directors={directors}
+              trailer={trailer} />
+            <ModalBack handleClose={this.toggleModalMovie}/>
+          </>
+        }
+        {this.state.modalMeal &&
+          <>
+            <Modal
+              show={this.state.modalMeal}
+              handleClose={this.toggleModalMeal}
+              name={detailsMeal.strMeal}
+              image={detailsMeal.strMealThumb}
+              genre={detailsMeal.strCategory}
+              area={detailsMeal.strArea}
+              instructions={detailsMeal.strInstructions}
+              ingredients={ingMeal}
+              measures={measuresMeal}
+              video={video}
+              tags={detailsMeal.strTags} />
+            <ModalBack handleClose={this.toggleModalMeal}/>
+          </>
+        }
       </div>
     )
   }

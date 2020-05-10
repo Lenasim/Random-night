@@ -1,23 +1,14 @@
-/* The Modal (background) */
-.modal {
-  position: fixed; 
-  z-index: 1; 
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.7);
-}
-.display-none {
-  display: none;
-}
-
 /* Modal Content */
 .modal-content {
   background-color: #fefefe;
   border: 1px solid #888;
   width: 100%;
+  height: 100%;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: auto;
   display: flex;
   flex-direction: column;
 }
@@ -126,7 +117,7 @@
     text-decoration: underline;
   }
 
-  @media (max-width: 780px) {
+  @media (max-width: 767px) {
     .close {
       color: #aaaaaa;
       font-size: 3rem;
@@ -143,12 +134,26 @@
 
   @media (min-width: 768px) {
     .modal {
+      position: fixed; 
+      z-index: 1; 
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.7);
+    }
+    .modal {
       padding-top: 100px;
     }
     .modal-content {
       margin: auto;
       padding: 0 2rem 3rem 2rem;
       width: 80%;
+      z-index: 3;
+      position: fixed;
+      top: 10vh;
+      left: 10%;
     }
     .modal-body {
       display: flex;
