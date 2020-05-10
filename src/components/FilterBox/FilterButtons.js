@@ -28,14 +28,14 @@ const FilterButtons = ({ handleChange, activeId, filter, reset, close }) => {
       </button>
       {
         filter &&
-        <div>
+        <div className='button-filter-box'>
           <button
-            className="button-filter"
+            className="button-filter-menu"
             onClick={reset}>
             <i className="fas fa-undo-alt"></i>
           </button>
           <button
-            className="button-filter">
+            className="button-filter-menu">
             <i className="fas fa-times"
               onClick={close}></i>
           </button>
