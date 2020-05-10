@@ -8,7 +8,6 @@ const Notice = props => {
     <div>
       <div className='notice-text'>
         <h1>Tu sais pas quoi faire ce soir ?</h1>
-        {/* <h2>Envie de rester dans ton canapé en mode cocooning ?</h2> */}
       </div>
       <div className="notice-button">
         <div onClick={props.isClicked} >
