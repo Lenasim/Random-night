@@ -65,12 +65,12 @@ class Results extends Component {
 
 
   getRandomFiltered = async () => {
-      this.setState({ loading: true })
-      await this.getCocktailFiltered()
-      this.getMealFiltered()
-      await this.getMovieFiltered()
-      this.getGenresList()
-      this.setState({ loaded: true, loading: false })
+    this.setState({ loading: true })
+    await this.getCocktailFiltered()
+    this.getMealFiltered()
+    await this.getMovieFiltered()
+    this.getGenresList()
+    this.setState({ loaded: true, loading: false })
   }
 
   getDetailsDrink = () => {
@@ -124,9 +124,9 @@ class Results extends Component {
 
   getCocktailFiltered = async () => {
     const { drinkCategory, drinkAlcohol } = this.props
-    if (!drinkCategory && !drinkAlcohol){
+    if (!drinkCategory && !drinkAlcohol) {
       this.getRandomDrink()
-    }else if(drinkAlcohol !== "all" && drinkCategory !== "categories") {
+    } else if (drinkAlcohol !== "all" && drinkCategory !== "categories") {
       const url = () => {
         if (drinkAlcohol === "alcohol") {
           return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic'
@@ -576,21 +576,27 @@ class Results extends Component {
     const { drinks, meals, movies, categories, loading, loaded, detailsDrink, detailsMeal, ingDrink, measuresDrink, ingMeal, measuresMeal, video, date, genresMovie, actors, directors, trailer } = this.state
     return (
       <div>
-         <div className="notice-button">
-              <div onClick={this.getRandom} >
-                <Button text="Try again?" loader={loading}/>
-              </div>
-              <div onClick={this.props.filterClick} >
-                <button className="button-filter"><i className="fas fa-sliders-h"></i></button>
-              </div>
-            </div>
-
-        {loaded &&
+        <div className="notice-button">
+          <Button
+            text="Try again?"
+            loader={loading}
+            isClicked={this.getRandom} />
+          {
+            !this.props.filter &&
+            <button
+              className="button-filter"
+              onClick={this.props.filterClick}>
+              <i className="fas fa-sliders-h"></i>
+            </button>
+          }
+        </div>
+        {
+          loaded &&
           <div className="card-container">
             <Card
               image={drinks.strDrinkThumb}
               name={drinks.strDrink}
-              categorie={categories[0]}
+              category={categories[0]}
               onClick={this.toggleModalDrink}
               isFav={this.isFavDrink}
               class={this.state.isFavDrink ? "fas fa-lock" : "fas fa-lock-open"}
@@ -598,7 +604,7 @@ class Results extends Component {
             <Card
               image={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`}
               name={movies.title}
-              categorie={categories[1]}
+              category={categories[1]}
               onClick={this.toggleModalMovie}
               isFav={this.isFavMovie}
               class={this.state.isFavMovie ? "fas fa-lock" : "fas fa-lock-open"}
@@ -606,7 +612,7 @@ class Results extends Component {
             <Card
               image={meals.strMealThumb}
               name={meals.strMeal}
-              categorie={categories[2]}
+              category={categories[2]}
               onClick={this.toggleModalMeal}
               isFav={this.isFavRecipe}
               class={this.state.isFavRecipe ? "fas fa-lock" : "fas fa-lock-open"}

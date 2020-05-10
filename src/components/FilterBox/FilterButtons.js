@@ -2,7 +2,7 @@ import React from 'react';
 
 import './FilterButtons.css'
 
-const FilterButtons = ({ handleChange, activeId }) => {
+const FilterButtons = ({ handleChange, activeId, filter, reset, close }) => {
   return (
     <div className="FilterButtons">
       <button
@@ -26,6 +26,21 @@ const FilterButtons = ({ handleChange, activeId }) => {
       >
         Your Recipe
       </button>
+      {
+        filter &&
+        <div>
+          <button
+            className="button-filter"
+            onClick={reset}>
+            <i className="fas fa-undo-alt"></i>
+          </button>
+          <button
+            className="button-filter">
+            <i className="fas fa-times"
+              onClick={close}></i>
+          </button>
+        </div>
+      }
     </div>
   );
 };
