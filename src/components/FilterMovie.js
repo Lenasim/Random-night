@@ -30,6 +30,10 @@ class FilterMovie extends Component {
 
   filterGenre = (event) => {
     this.props.handleGenreChange(event.target.value)
+    const genreName = this.state.genres.filter(f => f.id === parseInt(event.target.value))[0].name 
+    this.setState({ genresResult: genreName }, ()=>{
+      console.log(this.state.genresResult)
+    })
   }
 
   render() {
