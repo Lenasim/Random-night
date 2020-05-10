@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import Header from './components/Header'
-import CardsListFilter from './components/CardsListFilter'
-import Button from './components/Button'
-import FilterButtons from './components/FilterButtons'
-import FilterDrink from './components/FilterDrink'
-import FilterMovie from './components/FilterMovie'
-import FilterRecipe from './components/FilterRecipe'
+import Header from './components/General/Header'
+import Results from './components/ResultView/Results'
+import Button from './components/General/Button'
+import FilterButtons from './components/FilterBox/FilterButtons'
+import FilterDrink from './components/FilterBox/FilterDrink'
+import FilterMovie from './components/FilterBox/FilterMovie'
+import FilterRecipe from './components/FilterBox/FilterRecipe'
 
 import './App.css';
-import './components/Notice.css'
-import './components/FilterDisplay.css'
 
 
 const Error = () => (
@@ -149,7 +147,7 @@ class App extends Component {
           </div>}
 
         {this.state.firstClick &&
-          <CardsListFilter
+          <Results
             filterClick={this.handleFilterClick}
             drinkCategory={this.state.drinkCat}
             drinkAlcohol={this.state.isAlcohol}
