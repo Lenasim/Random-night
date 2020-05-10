@@ -596,7 +596,7 @@ class CardsListFilter extends Component {
             <Card
               image={drinks.strDrinkThumb}
               name={drinks.strDrink}
-              categorie={categories[0]}
+              category={categories[0]}
               onClick={this.toggleModalDrink}
               isFav={this.isFavDrink}
               class={this.state.isFavDrink ? "fas fa-lock" : "fas fa-lock-open"}
@@ -604,7 +604,7 @@ class CardsListFilter extends Component {
             <Card
               image={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`}
               name={movies.title}
-              categorie={categories[1]}
+              category={categories[1]}
               onClick={this.toggleModalMovie}
               isFav={this.isFavMovie}
               class={this.state.isFavMovie ? "fas fa-lock" : "fas fa-lock-open"}
@@ -612,7 +612,7 @@ class CardsListFilter extends Component {
             <Card
               image={meals.strMealThumb}
               name={meals.strMeal}
-              categorie={categories[2]}
+              category={categories[2]}
               onClick={this.toggleModalMeal}
               isFav={this.isFavRecipe}
               class={this.state.isFavRecipe ? "fas fa-lock" : "fas fa-lock-open"}
