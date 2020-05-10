@@ -30,17 +30,17 @@ class FilterDrink extends Component {
   render() {
     return (
       <div className="FilterDrink">
-        <select name="selectedCategory" id="drink-categories" value={this.state.value} onChange={this.filterCategory}>
+        <select name="selectedCategory" id="drink-categories" value={this.props.cat} onChange={this.filterCategory}>
           <option className="option" value="categories">All categories</option>
           {this.state.categories.map(cat => (<option className="option" value={cat} key={cat}>{cat}</option>))}
         </select>
 
         <div className="switch-field">
-          <input type="radio" name="nonAlcohol" value="all" id="all" onChange={this.filterAlcohol} checked={this.state.isAlcohol === 'all'} />
+          <input type="radio" name="nonAlcohol" value="all" id="all" onChange={this.filterAlcohol} checked={this.props.alc === 'all'} />
           <label htmlFor="all" className="radio-label">All types</label>
-          <input type="radio" name="nonAlcohol" value="alcohol" id="alcohol"  onChange={this.filterAlcohol} checked={this.state.isAlcohol === 'alcohol'} />
+          <input type="radio" name="nonAlcohol" value="alcohol" id="alcohol"  onChange={this.filterAlcohol} checked={this.props.alc === 'alcohol'} />
           <label htmlFor="alcohol" className="radio-label">Alcoholic</label>
-          <input type="radio" name="nonAlcohol" value="nonAlcohol" id="nonAlcohol"  onChange={this.filterAlcohol} checked={this.state.isAlcohol === 'nonAlcohol'}/>
+          <input type="radio" name="nonAlcohol" value="nonAlcohol" id="nonAlcohol"  onChange={this.filterAlcohol} checked={this.props.alc === 'nonAlcohol'}/>
           <label htmlFor="nonAlcohol" className="radio-label">Non alcoholic</label>
         </div>
       </div>

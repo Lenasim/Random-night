@@ -61,16 +61,16 @@ class CardsListFilter extends Component {
 
   componentDidMount = () => {
     this.getRandomFiltered()
-
   }
 
+
   getRandomFiltered = async () => {
-    this.setState({ loading: true })
-    await this.getCocktailFiltered()
-    this.getMealFiltered()
-    await this.getMovieFiltered()
-    this.getGenresList()
-    this.setState({ loaded: true, loading: false })
+      this.setState({ loading: true })
+      await this.getCocktailFiltered()
+      this.getMealFiltered()
+      await this.getMovieFiltered()
+      this.getGenresList()
+      this.setState({ loaded: true, loading: false })
   }
 
   getDetailsDrink = () => {
@@ -124,7 +124,9 @@ class CardsListFilter extends Component {
 
   getCocktailFiltered = async () => {
     const { drinkCategory, drinkAlcohol } = this.props
-    if (drinkAlcohol !== "all" && drinkCategory !== "categories") {
+    if (!drinkCategory && !drinkAlcohol){
+      this.getRandomDrink()
+    }else if(drinkAlcohol !== "all" && drinkCategory !== "categories") {
       const url = () => {
         if (drinkAlcohol === "alcohol") {
           return 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic'
@@ -454,23 +456,23 @@ class CardsListFilter extends Component {
   }
 
   notifyMovie = () => {
-    toast.warn("Il n'y a pas de film avec ces choix, tu as eu une propositon aléatoire.", { position: toast.POSITION.BOTTOM_RIGHT })
+    toast.warn("There are no films matching your choice, check out our random result.", { position: toast.POSITION.BOTTOM_RIGHT })
   }
 
   notifyMovieActor = () => {
-    toast.warn("Il n'y a pas de film avec cet acteur, tu as eu une propositon aléatoire.", { position: toast.POSITION.BOTTOM_RIGHT })
+    toast.warn("There are no films matching the actor, check out our random result.", { position: toast.POSITION.BOTTOM_RIGHT })
   }
 
   notifyMovieDirector = () => {
-    toast.warn("Il n'y a pas de film avec ce réalisateur, tu as eu une propositon aléatoire.", { position: toast.POSITION.BOTTOM_RIGHT })
+    toast.warn("There are no films matching the director, check out our random result.", { position: toast.POSITION.BOTTOM_RIGHT })
   }
 
   notifyMeal = () => {
-    toast.warn("Il n'y a pas de recette avec ces choix, tu as eu une propositon aléatoire.", { position: toast.POSITION.BOTTOM_RIGHT })
+    toast.warn("There are no recipes matching your choice, check out our random result.", { position: toast.POSITION.BOTTOM_RIGHT })
   }
 
   notifyDrink = () => {
-    toast.warn("Il n'y a pas de boisson avec ces choix, tu as eu une propositon aléatoire.", { position: toast.POSITION.BOTTOM_RIGHT })
+    toast.warn("There are no drinks matching your choice, check out our random result.", { position: toast.POSITION.BOTTOM_RIGHT })
   }
 
   getDate = () => {
@@ -541,7 +543,7 @@ class CardsListFilter extends Component {
   }
 
   notifyAllFav = () => {
-    toast.warn("Toutes les cartes sont sélectionnées.", { position: toast.POSITION.BOTTOM_RIGHT })
+    toast.warn("You blocked all the results.", { position: toast.POSITION.BOTTOM_RIGHT })
   }
 
   getRandom = () => {
@@ -574,10 +576,15 @@ class CardsListFilter extends Component {
     const { drinks, meals, movies, categories, loading, loaded, detailsDrink, detailsMeal, ingDrink, measuresDrink, ingMeal, measuresMeal, video, date, genresMovie, actors, directors, trailer } = this.state
     return (
       <div>
-        <Button isClicked={this.getRandom}
-          text='Toujours Pas ?'
-          loader={loading}
-        />
+         <div className="notice-button">
+              <div onClick={this.getRandom} >
+                <Button text="Try again?" loader={loading}/>
+              </div>
+              <div onClick={this.props.filterClick} >
+                <button className="button-filter"><i className="fas fa-sliders-h"></i></button>
+              </div>
+            </div>
+
         {loaded &&
           <div className="card-container">
             <Card

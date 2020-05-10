@@ -73,7 +73,6 @@
   margin: auto 0 ;
 }
 .modal-detail {
-  font-family: "futura-pt", sans-serif;
   font-weight: 500;
   line-height: 22px;
   height: auto;
@@ -87,7 +86,6 @@
 .modal-detail h3 {
   color: #008CBA;
   border-bottom: 1px solid #eee;
-  font-family: "ff-tisa-web-pro";
   width: 100%;
   font-size: 18px;
   margin: 0px 0px 10px;

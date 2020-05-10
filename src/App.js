@@ -1,62 +1,169 @@
 import React, { Component } from 'react';
 import Header from './components/Header'
-import CardsList from './components/CardsList'
-import FilterDisplay from './components/FilterDisplay'
-import Notice from './components/Notice'
+import CardsListFilter from './components/CardsListFilter'
+import Button from './components/Button'
+import FilterButtons from './components/FilterButtons'
+import FilterDrink from './components/FilterDrink'
+import FilterMovie from './components/FilterMovie'
+import FilterRecipe from './components/FilterRecipe'
 
 import './App.css';
+import './components/Notice.css'
+import './components/FilterDisplay.css'
 
 
+const Error = () => (
+  <p>
+    Something went <strong>wrong</strong>!
+  </p>
+)
 class App extends Component {
   state = {
     firstClick: false,
-    textButton: 'Laisse toi faire !',
-    showButton: true,
     filterClick: false,
-    textFilterButton: 'Personnaliser',
-    showFilterButton: true
+    activeId: '',
+    isClicked: false,
+    drinkCat: 'categories',
+    isAlcohol: 'all',
+    mealCat: '',
+    mealAreas: '',
+    genresResult: '',
+    queryCast: '',
+    queryCrew: '',
   }
 
-  handleFirstClick = () => {
-    this.setState({
-      firstClick: true,
-      showFilterButton: false
-    })
-  }
+
 
   handleFilterClick = () => {
-    this.setState({
-      filterClick: true,
-      showButton: false
-    })
+    this.setState({ filterClick: !this.state.filterClick })
   }
 
   handleReset = () => {
     this.setState({
       firstClick: false,
       filterClick: false,
-      showButton: true,
-      showFilterButton: true
+      drinkCat: 'categories',
+      isAlcohol: 'all',
+      mealCat: '',
+      mealAreas: '',
+      genresResult: '',
+      queryCast: '',
+      queryCrew: ''
     })
   }
 
+  handleButtonClick = () => {
+    this.setState({ firstClick: true })
+  }
+
+  handleFirstClick = () => {
+    this.setState({ firstClick: true })
+  }
+
+  handleChangeItem = (event) => {
+    const buttonId = event.target.id;
+    this.setState({ activeId: buttonId });
+  }
+
+  componentDidMount() {
+    this.setState({ activeId: "drink" });
+  }
+  handleDrinkAlcohol = (isAlcohol) => {
+    this.setState({ isAlcohol: isAlcohol });
+  }
+  handleDrinkCategory = (drinkCat) => {
+    this.setState({ drinkCat });
+  }
+
+  handleMealCategory = (name, value) => {
+    this.setState({ [name]: value });
+  }
+
+  handleGenreChange = (genresResult) => {
+    this.setState({ genresResult });
+  }
+
+  handleCastChange = (queryCast) => {
+    this.setState({ queryCast })
+  }
+
+  handleCrewChange = (queryCrew) => {
+    this.setState({ queryCrew })
+  }
+
+  getItemContent() {
+    switch (this.state.activeId) {
+      case "drink":
+        return <FilterDrink
+          handleCategoryChange={this.handleDrinkCategory}
+          handleAlcoholChange={this.handleDrinkAlcohol}
+          cat={this.state.drinkCat}
+          alc={this.state.isAlcohol} />;
+      case "movie":
+        return <FilterMovie
+          handleGenreChange={this.handleGenreChange}
+          handleCastChange={this.handleCastChange}
+          handleCrewChange={this.handleCrewChange}
+          genre={this.state.genresResult}
+          cast={this.state.queryCast}
+          crew={this.state.queryCrew} />
+      case "recipe":
+        return <FilterRecipe
+          handleCategoryChange={this.handleMealCategory}
+          cat={this.state.mealCat}
+          area={this.state.mealAreas} />;
+      default:
+        return <Error />;
+    }
+  }
+
   render() {
+
     return (
       <div className="App">
         <Header reset={this.handleReset} />
-        {
-          !this.state.firstClick && !this.state.filterClick &&
-          <Notice
-            isClicked={this.handleFirstClick}
-            text={this.state.textButton}
-            isClickedFilter={this.handleFilterClick}
-            textFilter={this.state.textFilterButton} />
-        }
-        {this.state.firstClick && <CardsList />}
-        {this.state.filterClick && <FilterDisplay />}
+        <div>
+          <div className='notice-text'>
+            <h1>What's your game plan tonight ?</h1>
+          </div>
+          {!this.state.firstClick &&
+            <div className="notice-button">
+              <div onClick={this.handleButtonClick} >
+                <Button text={!this.state.firstClick ? "Get your plan" : "Try again?"} />
+              </div>
+              <div onClick={this.handleFilterClick} >
+                <button className="button-filter"><i className="fas fa-sliders-h"></i></button>
+              </div>
+            </div>}
+        </div>
+
+        {this.state.filterClick &&
+          <div>
+            <div className="FilterDisplay">
+              <FilterButtons
+                handleChange={this.handleChangeItem}
+                activeId={this.state.activeId}
+              />
+              <div>{this.getItemContent()}</div>
+            </div>
+          </div>}
+
+        {this.state.firstClick &&
+          <CardsListFilter
+            filterClick={this.handleFilterClick}
+            drinkCategory={this.state.drinkCat}
+            drinkAlcohol={this.state.isAlcohol}
+            mealCat={this.state.mealCat}
+            mealIngr={this.state.mealIngr}
+            mealAreas={this.state.mealAreas}
+            movieGenre={this.state.genresResult}
+            cast={this.state.queryCast}
+            crew={this.state.queryCrew} />}g
       </div>
     );
   }
 }
+
+
 
 export default App

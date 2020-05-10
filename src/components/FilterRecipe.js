@@ -32,12 +32,12 @@ class FilterRecipe extends Component {
     const { category, areas } = this.state
     return (
       <div id="recipe" className="FilterRecipe">
-        <select name="mealCat" id="recipe-categories" value={this.state.mealCat} onChange={(event) => this.filterCategory('mealCat', event.target.value)}>
-          <option className="option" value="categorie">Catégories</option>
+        <select name="mealCat" id="recipe-categories" value={this.props.cat} onChange={(event) => this.filterCategory('mealCat', event.target.value)}>
+          <option className="option" value="categorie">Categories</option>
           {category.map((cat, id) => <option key={id}>{cat}</option>)}
         </select>
-        <select name="mealAreas" id="recipe-countries" value={this.state.mealAreas} onChange={(event) => this.filterCategory('mealAreas', event.target.value)}>
-          <option className="option" value="country">Pays</option>
+        <select name="mealAreas" id="recipe-countries" value={this.props.areas} onChange={(event) => this.filterCategory('mealAreas', event.target.value)}>
+          <option className="option" value="country">Countries</option>
           {areas.map((area, id) => <option key={id}>{area}</option>)}
         </select>
       </div>

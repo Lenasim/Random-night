@@ -1,5 +1,7 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
 .Notice {
-  background-color: rgba(255, 255, 255, 0.644);
   width: 80%;
   margin: 0 auto 20px auto;
   padding: 5rem 0;
@@ -10,15 +12,24 @@
   align-items: center;
 }
 
-.notice-text {
-  margin: 20px 0;
+.notice-text h1 {
+  margin: 2rem 0;
   line-height: 50px;
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Permanent Marker', cursive !important;
+  font-size: 1.8rem;
+  font-weight: 400;
 }
 
 .notice-button {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.notice-button span {
+  color: white;
 }
 
 @media (max-width: 415px) {
