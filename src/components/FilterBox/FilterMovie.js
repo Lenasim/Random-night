@@ -37,7 +37,6 @@ class FilterMovie extends Component {
   render() {
     return (
       <div className="FilterMovie">
-        {this.props.genreName}
         <select
           name="genresResult"
           id="movie-genres"
@@ -45,7 +44,7 @@ class FilterMovie extends Component {
           onChange={this.filterGenre}
         >
           <option className="option" value="genre">
-            Genres
+          {this.props.genreName}
           </option>
           {
             this.state.genres.map(g =>
