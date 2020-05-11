@@ -34,6 +34,11 @@
     padding: 1.5rem;
     width: 10rem;
 }
+
+.card-details:hover {
+    cursor: pointer;
+}
+
 .card-category {
     display: inline-block;
     text-transform: uppercase;
@@ -56,6 +61,7 @@
 
 
 .fa-lock-open, .fa-lock {
+    z-index: 1;
     font-size: 15px;
     position: absolute;
     top: 15px;
@@ -67,7 +73,7 @@
 }
 
 .fa-lock {
-    color: #1d5fb1;
+    color: rgb(7, 7, 105);
 }
 
 @supports (display: grid) {
