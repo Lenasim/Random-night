@@ -11,12 +11,18 @@ button {
 }
 
 .notice-text h1 {
-  margin: 2rem 0;
+  margin: 1.3rem 0 0 0;
   line-height: 50px;
   color: white;
   text-transform: uppercase;
   font-family: 'Permanent Marker', cursive !important;
-  font-size: 1.8rem;
+  font-size: 1.7rem;
+  font-weight: 400;
+}
+.notice-text h4 {
+  margin: 0 0 2rem 0;
+  color: rgb(255, 255, 255);
+  font-size: 1.2rem;
   font-weight: 400;
 }
 
