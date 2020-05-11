@@ -145,7 +145,7 @@ class App extends Component {
         <Header reset={this.handleReset} />
         <div>
           <div className='notice-text'>
-            <h1>What's your game plan tonight ?</h1>
+            <h1>Wanna chill on your couch tonight?</h1>
             <h4>We suggest you what to drink, watch and eat!</h4>
           </div>
           {
