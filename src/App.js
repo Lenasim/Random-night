@@ -26,6 +26,7 @@ class App extends Component {
     mealCat: '',
     mealAreas: '',
     genresResult: '',
+    genreName: 'Genres',
     queryCast: '',
     queryCrew: '',
   }
@@ -41,6 +42,7 @@ class App extends Component {
       mealCat: '',
       mealAreas: '',
       genresResult: '',
+      genreName: 'Genres',
       queryCast: '',
       queryCrew: ''
     })
@@ -53,6 +55,7 @@ class App extends Component {
       mealCat: '',
       mealAreas: '',
       genresResult: '',
+      genreName: 'Genres',
       queryCast: '',
       queryCrew: '',
       filterClick: false
@@ -69,6 +72,7 @@ class App extends Component {
       mealCat: '',
       mealAreas: '',
       genresResult: '',
+      genreName: 'Genres',
       queryCast: '',
       queryCrew: ''
     })
@@ -101,8 +105,8 @@ class App extends Component {
     this.setState({ [name]: value });
   }
 
-  handleGenreChange = (genresResult) => {
-    this.setState({ genresResult });
+  handleGenreChange = (genresResult, genreName) => {
+    this.setState({ genresResult, genreName });
   }
 
   handleCastChange = (queryCast) => {
@@ -127,6 +131,7 @@ class App extends Component {
           handleCastChange={this.handleCastChange}
           handleCrewChange={this.handleCrewChange}
           genre={this.state.genresResult}
+          genreName={this.state.genreName}
           cast={this.state.queryCast}
           crew={this.state.queryCrew} />
       case "recipe":
