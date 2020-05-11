@@ -2,7 +2,7 @@ import React from 'react';
 
 import './FilterButtons.css'
 
-const FilterButtons = ({ handleChange, activeId }) => {
+const FilterButtons = ({ handleChange, activeId, filter, reset, close }) => {
   return (
     <div className="FilterButtons">
       <button
@@ -10,22 +10,37 @@ const FilterButtons = ({ handleChange, activeId }) => {
         onClick={handleChange}
         className={activeId === "drink" ? "active" : ""}
       >
-        Ta boisson
+        Your Cocktail
       </button>
       <button
         id="movie"
         onClick={handleChange}
         className={activeId === "movie" ? "active" : ""}
       >
-        Ton film
+        Your Movie
       </button>
       <button
         id="recipe"
         onClick={handleChange}
         className={activeId === "recipe" ? "active" : ""}
       >
-        Ta recette
+        Your Recipe
       </button>
+      {
+        filter &&
+        <div className='button-filter-box'>
+          <button
+            className="button-filter-menu"
+            onClick={reset}>
+            <i className="fas fa-undo-alt"></i>
+          </button>
+          <button
+            className="button-filter-menu">
+            <i className="fas fa-times"
+              onClick={close}></i>
+          </button>
+        </div>
+      }
     </div>
   );
 };

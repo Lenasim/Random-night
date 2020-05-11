@@ -1,17 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
 .App {
   text-align: center;
-}
-
-.punchline {
-  font-weight: 400;
-  font-style: normal;
-  color: white;
-  font-size: 25px;
-  text-transform: uppercase;
-  margin: 2rem 0;
-  
+  display: flex;
+  flex-direction: column;
 }
 
 button {
   outline: transparent;
+}
+
+.notice-text h1 {
+  margin: 2rem 0;
+  line-height: 50px;
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Permanent Marker', cursive !important;
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+.button-filter {
+  margin: 0 0 10px 10px;
+}
+
+.FilterDisplay {
+  background-color:rgba(255, 255, 255, 0.7);
+  width: 90%;
+  max-width: 48rem;
+  padding-bottom: 1rem;
+  border-radius: 12px;
+  margin: 50px auto;
+  position: relative;
 }

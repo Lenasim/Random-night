@@ -1,26 +1,25 @@
-.FilterRecipe {
+.FilterMovie {
   display: flex;
   margin-top: 25px;
-  padding: 10px;
+  padding: 10px 20px;
   align-items: baseline;
   justify-content: space-around;
 }
 
-select {
-  margin: 25px;
-  width:20%;
-  padding:12px;
-  margin-top:8px;
+.FilterMovie select {
+  margin: 1.2rem;
+  margin-top:0.5rem;
+  width:24%;
+  padding: 0.8rem;
   line-height:1;
   border-radius: 10px;
   background-color: white;
   color: black;
   border: none;
   font-size:16px;
-  -webkit-box-shadow: 10px 10px 33px -2px rgba(0,0,0,0.44);
-  -moz-box-shadow: 10px 10px 33px -2px rgba(0,0,0,0.44);
   box-shadow: 10px 10px 33px -2px rgba(0,0,0,0.44);
-  outline:none
+  outline:none;
+  cursor: pointer;
 }
 
 .checkbox {
@@ -35,22 +34,35 @@ select {
   padding: 10px;
 }
 
-.FilterRecipe button {
-  background: #245275;
+.input-movies {
+  border-radius: 0 13px 13px 0;
+  border: 1px solid  rgb(7, 7, 105);
+  height: 37px;
+  width: 150px;
+  font-size: 16px;
+  padding-left: 10px;
+  outline: transparent;
+}
+
+.label-movies {
+  border-radius: 13px 0 0 13px;
+  border: 3px solid  rgb(7, 7, 105);
+  background-color:  rgb(7, 7, 105);
   color: white;
-  width: 20%;
-  border-radius: 12px;
-  padding: 10px 0;
-  font-size: 15px;
+  padding: 4px 10px 4px 10px;
 }
 
 @media screen and (max-width: 800px) {
-  .FilterRecipe {
+  .FilterMovie {
     flex-direction: column;
   }
 
-  select {
-    width: 90%;
+  .search-movies {
+    margin: 10px auto;
+  }
+
+  .FilterMovie select {
+    width: 80%;
     margin: 10px auto;
   }
 
@@ -66,7 +78,7 @@ select {
     margin: 10px 0;
   }
 
-  .FilterRecipe button {
+  .FilterMovie button {
     width: 100%;
   }
 }

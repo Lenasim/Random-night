@@ -30,6 +30,10 @@ class FilterMovie extends Component {
 
   filterGenre = (event) => {
     this.props.handleGenreChange(event.target.value)
+    const genreName = this.state.genres.filter(f => f.id === parseInt(event.target.value))[0].name 
+    this.setState({ genresResult: genreName }, ()=>{
+      console.log(this.state.genresResult)
+    })
   }
 
   render() {
@@ -57,7 +61,7 @@ class FilterMovie extends Component {
             id="queryCast"
             name="queryCast"
             onChange={this.handleCastChange}
-            value={this.queryCast}
+            value={this.props.cast}
           />
         </div>
         <div className="search-movies">
@@ -68,7 +72,7 @@ class FilterMovie extends Component {
             id="queryCrew"
             name="queryCrew"
             onChange={this.handleCrewChange}
-            value={this.queryCrew}
+            value={this.props.crew}
           />
         </div>
       </div>

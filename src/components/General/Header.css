@@ -2,9 +2,14 @@
   margin: 30px 0;
   width: 90%;
 }
+
+.brand:hover {
+  cursor: pointer;
+}
+
 @media (min-width: 800px) {
   .brand {
     margin: 30px 0;
-    width: 500px;
+    width: 480px;
   }
 }

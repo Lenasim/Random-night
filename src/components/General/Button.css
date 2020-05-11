@@ -1,8 +1,8 @@
 .button {
-  --c: #245275;
-  color: var(--c);
+  color: rgb(7, 7, 105);
   font-size: 16px;
-  border: 0.1em solid var(--c);
+  border: 0.1em solid rgb(7, 7, 105);
+  background-color: white;
   border-radius: 0.5em;
   width: 15em;
   height: 3em;
@@ -18,11 +18,31 @@
   margin: 1em;
 }
 
+.button-filter {
+  color: white;
+  font-size: 16px;
+  border: 0.1em solid white;
+  background-color: rgb(7, 7, 105);
+  border-radius: 2em;
+  width: 2.8em;
+  height: 2.8em;
+}
+.button-filter:hover {
+  color: rgb(7, 7, 105);
+  font-size: 16px;
+  border: 0.1em solid rgb(7, 7, 105);
+  background-color: white;
+  border-radius: 2em;
+  width: 2.8em;
+  height: 2.8em;
+  cursor: pointer;
+}
+
 .button span {
   position: absolute;
   width: 25%;
   height: 100%;
-  background-color: var(--c);
+  background-color: rgb(7, 7, 105);
   transform: translateY(150%);
   border-radius: 50%;
   left: calc((var(--n) - 1) * 25%);
@@ -33,6 +53,7 @@
 
 .button:hover {
   color: white;
+  cursor: pointer;
 }
 
 .button:hover span {
