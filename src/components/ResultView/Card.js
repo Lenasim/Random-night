@@ -5,7 +5,7 @@ const Card = props => {
         <div>
             <div className="card">
                 <i onClick={props.isFav} className={props.class}></i>
-                <div className="card-details">
+                <div className="card-details" onClick={props.onClick} >
                     <h4 className="card-category">{props.category}</h4>
                     <h3 className="card-title"> {props.name}</h3>
                 </div>
