@@ -106,11 +106,11 @@ class App extends Component {
   }
 
   handleCastChange = (queryCast) => {
-    this.setState({ queryCast })
+    this.setState({ queryCast: queryCast.replace('%20', ' ') })
   }
 
   handleCrewChange = (queryCrew) => {
-    this.setState({ queryCrew })
+    this.setState({ queryCrew: queryCrew.replace('%20', ' ') })
   }
 
   getItemContent() {
