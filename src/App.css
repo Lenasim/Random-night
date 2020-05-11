@@ -10,18 +10,6 @@ button {
   outline: transparent;
 }
 
-.Notice {
-  /* background-color: rgba(255, 255, 255, 0.644); */
-  width: 80%;
-  margin: 0 auto 20px auto;
-  padding: 5rem 0;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .notice-text h1 {
   margin: 2rem 0;
   line-height: 50px;
@@ -32,45 +20,9 @@ button {
   font-weight: 400;
 }
 
-.notice-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.button-filter {
+  margin: 0 0 10px 10px;
 }
-
-.notice-button span {
-  color: white;
-}
-
-@media (max-width: 415px) {
-  .Notice {
-    width: 95%;
-    padding: 1rem 0;
-  }
-
-  .notice-button {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .Notice span {
-    padding-top: 10px;
-  }
-
-  .notice-text {
-    margin: 10px 0;
-    padding: 0 10px;
-  }
-}
-
-@media (max-width: 321px) {
-  .notice-text {
-    font-size: 12px;
-    line-height: 35px;
-  }
-}
-
 
 .FilterDisplay {
   background-color:rgba(255, 255, 255, 0.7);
@@ -80,16 +32,4 @@ button {
   border-radius: 12px;
   margin: 50px auto;
   position: relative;
-
-}
-
-.top-box {
-  margin-left: 25px;
-  text-align: left !important;
-  display: flex;
-  font-size: 20px;
-}
-
-.title-box {
-  padding: 10px 25px;
 }
