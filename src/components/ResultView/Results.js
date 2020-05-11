@@ -20,7 +20,7 @@ class Results extends Component {
     meals: '',
     movies: '',
     categories: [
-      'cocktail',
+      'drink',
       'movie',
       'recipe'
     ],
@@ -633,7 +633,7 @@ class Results extends Component {
               instructions={detailsDrink.strInstructions}
               ingredients={ingDrink}
               measures={measuresDrink} />
-            <ModalBack handleClose={this.toggleModalDrink}/>
+            <ModalBack handleClose={this.toggleModalDrink} />
           </>
         }
         {this.state.modalMovie &&
@@ -650,7 +650,7 @@ class Results extends Component {
               actors={actors}
               directors={directors}
               trailer={trailer} />
-            <ModalBack handleClose={this.toggleModalMovie}/>
+            <ModalBack handleClose={this.toggleModalMovie} />
           </>
         }
         {this.state.modalMeal &&
@@ -667,7 +667,7 @@ class Results extends Component {
               measures={measuresMeal}
               video={video}
               tags={detailsMeal.strTags} />
-            <ModalBack handleClose={this.toggleModalMeal}/>
+            <ModalBack handleClose={this.toggleModalMeal} />
           </>
         }
       </div>

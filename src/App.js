@@ -6,6 +6,7 @@ import FilterButtons from './components/FilterBox/FilterButtons'
 import FilterDrink from './components/FilterBox/FilterDrink'
 import FilterMovie from './components/FilterBox/FilterMovie'
 import FilterRecipe from './components/FilterBox/FilterRecipe'
+import Footer from './components/General/Footer'
 
 import './App.css';
 
@@ -179,7 +180,6 @@ class App extends Component {
               <div>{this.getItemContent()}</div>
             </div>
           </div>}
-
         {
           this.state.firstClick &&
           <Results
@@ -194,6 +194,7 @@ class App extends Component {
             cast={this.state.queryCast}
             crew={this.state.queryCrew} />
         }
+        <Footer />
       </div>
     );
   }
