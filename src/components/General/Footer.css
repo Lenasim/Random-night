@@ -76,9 +76,9 @@
   align-items: center;
 }
 
-@media (max-width: 1025px) {
+@media (max-width: 1238px) {
   .Footer, .footer-bottom {
-    font-size: 10px;
+    font-size: 12px;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -86,20 +86,40 @@
 }
 
 @media (max-width: 770px) {
+  .Footer, .footer-bottom {
+    font-size: 12px;
+    flex-direction: row;
+    padding: 1em;
+  }
+
   .footer-bottom {
     position: relative;
     bottom: 0;
-    color: black;
     font-size: 10px;
+  }
+
+  .mentions, .credits {
+    width: 50%;
+    margin: auto;
   }
 
   .mentions {
     padding-left: 1em;
     padding-right: 1em;
+    text-align: justify;
   }
 
   .credits {
-    align-items: baseline;
+    flex-direction: column;
+  }
+
+  .intro {
+    text-decoration: underline;
+    margin: auto;
+  }
+
+  .team-group {
+    text-align: left;
   }
 
   .team {

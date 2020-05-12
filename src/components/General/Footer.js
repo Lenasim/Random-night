@@ -5,7 +5,7 @@ const Footer = ({ classFooter }) => {
   return (
     <div className={classFooter}>
       <div className='credits'>
-        <p>Made with <i className="fas fa-heart"></i> by </p>
+        <p className='intro'>Made with <i className="fas fa-heart"></i> by </p>
         <div className='team-group'>
           <div className="team">
             <p> • Mohamed Abidi</p>
