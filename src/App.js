@@ -194,7 +194,7 @@ class App extends Component {
             cast={this.state.queryCast}
             crew={this.state.queryCrew} />
         }
-        <Footer />
+        <Footer classFooter={this.state.firstClick ? "footer-bottom" : "Footer"} />
       </div>
     );
   }
