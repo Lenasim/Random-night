@@ -33,3 +33,9 @@ button {
   margin: 50px auto;
   position: relative;
 }
+
+@media(max-width: 500px) {
+  .notice-text h1 {
+    margin: 0;
+  }
+}

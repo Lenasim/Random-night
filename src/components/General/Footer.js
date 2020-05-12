@@ -7,27 +7,37 @@ const Footer = ({ classFooter }) => {
       <div className='credits'>
         <p>Made with <i className="fas fa-heart"></i> by </p>
         <div className='team-group'>
-          <p className="team">Mohamed Abidi</p>
-          <div className='footer-social'>
-            <a href="https://www.linkedin.com/in/mohamedabidi-paris/" target="_blank" className='footer-link'><i className="fab fa-linkedin"></i></a>
-            <a href="https://github.com/mohamedabidi1105" target="_blank" className='footer-link'><i className="fab fa-github-square"></i></a>
+          <div className="team">
+            <p> • Mohamed Abidi</p>
+            <div className='footer-social'>
+              <a href="https://www.linkedin.com/in/mohamedabidi-paris/" target="_blank" className='footer-link'><i className="fab fa-linkedin"></i></a>
+              <a href="https://github.com/mohamedabidi1105" target="_blank" className='footer-link'><i className="fab fa-github-square"></i></a>
+            </div>
           </div>
-          <p className="team">\  Lola Donval</p>
-          <div className='footer-social'>
-            <a href="https://www.linkedin.com/in/lola-donval" target="_blank" className='footer-link'><i className="fab fa-linkedin"></i></a>
-            <a href="https://github.com/Lola-D" target="_blank"><i className="fab fa-github-square"></i></a>
+          <div className="team">
+            <p> • Lola Donval</p>
+            <div className='footer-social'>
+              <a href="https://www.linkedin.com/in/lola-donval" target="_blank" className='footer-link'><i className="fab fa-linkedin"></i></a>
+              <a href="https://github.com/Lola-D" target="_blank"><i className="fab fa-github-square"></i></a>
+            </div>
           </div>
         </div>
         <div className='team-group'>
-          <p className="team">\ Lena Hailin Sim</p>
-          <div className='footer-social'>
-            <a href="https://www.linkedin.com/in/lena-hailin-sim/" target="_blank" className='footer-link'><i className="fab fa-linkedin"></i></a>
-            <a href="https://github.com/lenasim" target="_blank" className='footer-link'><i className="fab fa-github-square"></i></a>
+          <div className="team">
+            <p> • Lena Hailin Sim</p>
+            <div className='footer-social'>
+              <a href="https://www.linkedin.com/in/lena-hailin-sim/" target="_blank" className='footer-link'><i className="fab fa-linkedin"></i></a>
+              <a href="https://github.com/lenasim" target="_blank" className='footer-link'><i className="fab fa-github-square"></i></a>
+            </div>
           </div>
-          <p className="team">\  Jérémie Néret</p>
-          <div className='footer-social'>
-            <a href="https://github.com/" target="_blank" className='footer-link'><i className="fab fa-linkedin"></i></a>
-            <a href="https://github.com/jeremierenoir" target="_blank" className='footer-link'><i className="fab fa-github-square"></i></a>
+          <div className='team-group'>
+            <div className="team">
+              <p> • Jérémie Néret</p>
+              <div className='footer-social'>
+                <a href="https://github.com/" target="_blank" className='footer-link'><i className="fab fa-linkedin"></i></a>
+                <a href="https://github.com/jeremierenoir" target="_blank" className='footer-link'><i className="fab fa-github-square"></i></a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

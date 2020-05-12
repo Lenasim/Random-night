@@ -1,6 +1,5 @@
  .Footer {
   background-color: rgba(255, 255, 255, 0.548);
-  height: 5em;
   color: white;
   display: flex;
   flex-direction: column;
@@ -8,12 +7,13 @@
   position: absolute;
   bottom: 0;
   width: 100%;
+  padding-bottom: 1em;
 }
 
 .credits {
   margin-top: 0.5em;
   display: flex;
-  align-items: center;
+  align-items: baseline;
 }
 
 .mentions {
@@ -23,11 +23,11 @@
 
 .footer-bottom {
   background-color: rgba(255, 255, 255, 0.548);
-  height: 5em;
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 1em;
 } 
 
 .footer-link {
@@ -67,6 +67,8 @@
 
 .team {
   margin-left: 5px;
+  display: flex;
+  align-items: center;
 }
 
 .team-group {
@@ -74,25 +76,33 @@
   align-items: center;
 }
 
-/* @media (max-width: 769px) {
-  .Footer, .footer-bottom {
-    font-size: 11px;
+@media (max-width: 1025px) {
+  .footer-bottom {
+    font-size: 10px;
   }
-} */
+}
 
-/* @media (max-width: 500px) {
+@media (max-width: 500px) {
   .Footer, .footer-bottom {
-    background-color: white;
-    position: fixed;
-    z-index: 100;
-    overflow: hidden;
-    transition: width 0.3s ease;
-    cursor: pointer;
     bottom: 0;
     color: black;
+    font-size: 10px;
   }
 
-  .Footer:hover, .footer-bottom:hover {
-    height: 15em;
+  .mentions {
+    padding-left: 1em;
+    padding-right: 1em;
   }
-} */
+
+  .credits {
+    align-items: baseline;
+  }
+
+  .team {
+    display: block;
+  }
+
+  .footer-social {
+    font-size: 1.8em;
+  }
+}
