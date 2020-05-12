@@ -148,6 +148,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <div className="main">
         <Header reset={this.handleReset} />
         <div>
           <div className='notice-text'>
@@ -201,7 +202,8 @@ class App extends Component {
             cast={this.state.queryCast}
             crew={this.state.queryCrew} />
         }
-          <Footer classFooter={this.state.firstClick ? "footer-bottom" : "Footer"} />
+        </div>
+        <Footer />
       </div>
     );
   }

@@ -94,23 +94,6 @@ iframe {
   justify-content: center;
 }
 
-.tag {
-  background: #eee;
-  font-size: 0.8rem;
-  border-radius: 5px;
-  color: #999;
-  display: inline-block;
-  padding: 0.4rem 0.8rem;
-  position: relative;
-  margin: 0 10px 10px 0;
-  text-decoration: none;
-}
-
-.tag:hover {
-  background-color: rgb(7, 7, 105);
-  color: white;
-}
-
 .modal-detail h3 {
   color: rgb(7, 7, 105);
   border-bottom: 1px solid #eee;
