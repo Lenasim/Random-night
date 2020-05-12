@@ -3,8 +3,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
-  bottom: 0;
   width: 100%;
   padding-bottom: 1em;
 }
@@ -77,8 +75,6 @@
 @media (max-width: 1238px) {
   .Footer, .footer-bottom {
     font-size: 12px;
-    position: fixed;
-    bottom: 0;
     width: 100%;
   }
 
