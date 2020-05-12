@@ -86,7 +86,7 @@
 }
 
 @media (max-width: 770px) {
-  .Footer, .footer-bottom {
+  .footer-bottom {
     position: relative;
     bottom: 0;
     color: black;
