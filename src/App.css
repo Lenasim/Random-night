@@ -43,3 +43,29 @@ button {
   margin: 50px auto;
   position: relative;
 }
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  animation: fadeIn 700ms ease-in-out 1s both;
+  cursor: pointer;
+}
+
+.fa-arrow-up {
+  color: rgb(7, 7, 105);
+  font-size: 30px;
+  background-color: white;
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
