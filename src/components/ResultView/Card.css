@@ -90,6 +90,7 @@
 @media(max-width: 500px) {
     .card-container {
         flex-direction: column;
+        margin: 0 0 2em 0;
     }
 
     .center {
