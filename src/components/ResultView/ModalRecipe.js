@@ -21,15 +21,11 @@ function ModalRecipe(props) {
                 </div>
                 <div className='right'>
                     <div className='modal-types'>
-                        <p>{props.genre}</p>
-                        <hr />
-                        {props.tags === null &&
-                            <>
-                                <p>{props.tags}</p>
-                                <hr />
-                            </>
+                        <p className="tag">{props.genre}</p>
+                        {props.tags &&
+                            props.tags.split(",").map((t, i)=> <p key={i} className="tag">{t}</p>)
                         }
-                        <p>{props.area}</p>
+                        <p className="tag">{props.area}</p>
                     </div>
                     <div className='modal-detail'>
                         <h3>INGREDIENTS</h3>

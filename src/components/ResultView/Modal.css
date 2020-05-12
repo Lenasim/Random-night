@@ -73,6 +73,29 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
+/* tag div */
+.modal-types {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tag {
+  background: #eee;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  color: #999;
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  position: relative;
+  margin: 0 10px 10px 0;
+  text-decoration: none;
+}
+
+.tag:hover {
+  background-color: rgb(7, 7, 105);
+  color: white;
+}
 
 .modal-detail h3 {
   color: rgb(7, 7, 105);
@@ -83,9 +106,33 @@
   padding-bottom: 10px;
 }
 
-.modal-detail p {
+/* .modal-detail p {
   padding: 0px;
   font-size: 14px;
+} */
+.list-box {
+  margin-left: 5%;
+  text-align: left;
+}
+
+.li-title {
+  text-align: left;
+
+  background: #eee;
+  font-size: 0.8rem;
+  color: rgb(7, 7, 105);
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  position: relative;
+  margin: 0 10px 10px 0;
+  text-decoration: none;
+}
+
+.list-item{
+    display: inline-block;
+    margin-right: 0.4rem;
+    position: relative;
+    font-size: 0.9rem;
 }
 
 .modal-group-list {
@@ -95,27 +142,18 @@
 }
 
 .modal-lists {
-    padding: 15px 0px;
+    padding: 15px 0;
   }
 .modal-lists li {
     list-style: none;
-    padding: 0px;
-    margin: 0px;
-    text-indent: 0px;
+    padding: 0;
+    margin: 0;
+    text-indent: 0;
     font-weight: 500;
     font-size: 14px;
     line-height: 22px;
-  }
+  } 
 
-  .modal-types {
-    display: flex;
-    justify-content: space-around;
-  }
-
-  .li-title {
-    font-weight: 900 !important;
-    text-decoration: underline;
-  }
 
   @media (max-width: 767px) {
     .close {
@@ -149,16 +187,17 @@
     .modal-content {
       margin: auto;
       padding: 0 2rem 3rem 2rem;
-      width: 80%;
+      width: 90%;
       z-index: 3;
       position: fixed;
-      top: 10vh;
-      left: 10%;
+      top: 0;
+      left: 5%;
     }
     .modal-body {
       display: flex;
       flex-direction: row;
       align-items: flex-start;
+      margin: 1rem 2rem;
     }
     .left {
       width: 50%;

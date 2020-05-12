@@ -5,30 +5,30 @@ import './Modal.css'
 
 function ModalCocktail(props) {
 
-
     return (
         <Modal>
             <div className="modal-top">
                 <span className="close" onClick={props.handleClose}>&times;</span>
             </div>
             <div className="modal-body">
+
                 <div className='left'>
                     <h2 className='modal-title'>{props.name}</h2>
                     <img className='modal-img' src={props.image} alt={props.name} />
                 </div>
+
                 <div className='right'>
-                    <div className='modal-types'>
-                        <p>{props.genre}</p>
-                        <hr />
-                        {
-                            props.alcoholic ?
-                                props.alcoholic === "Alcoholic" ?
-                                    <p>Alcoolisé</p>
-                                    : <p>Sans alcool</p>
-                                : <p>{props.tags}</p>
-                        }
-                        <hr />
-                        <p>{props.glassType}{props.area}</p>
+                    <div className='modal-detail'>
+                        <h3>Detail</h3>
+                        <div className="list-box">
+                        <h4 className="li-title">Type of drink</h4>
+                            <p className="list-item">{props.genre} &</p>
+                            <p className="list-item">{props.alcoholic}</p>
+                        </div>
+                        <div className="list-box">
+                            <h4 className="li-title">Drinkware</h4>
+                            <p className="list-item">{props.glassType}</p>
+                        </div>
                     </div>
                     <div className='modal-detail'>
                         <h3>INGREDIENTS</h3>
