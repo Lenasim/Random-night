@@ -83,11 +83,21 @@
     bottom: 0;
     width: 100%;
   }
+
+  .credits {
+    align-items: center;
+  }
+  
+  .team {
+    margin: 0 1em;
+    text-align: center;
+    width: 8em;
+  }
 }
 
 @media (max-width: 770px) {
   .Footer, .footer-bottom {
-    font-size: 12px;
+    font-size: 10px;
     flex-direction: row;
     padding: 1em;
   }
@@ -95,7 +105,6 @@
   .footer-bottom {
     position: relative;
     bottom: 0;
-    font-size: 10px;
   }
 
   .mentions, .credits {
@@ -124,6 +133,7 @@
 
   .team {
     display: block;
+    margin: 0;
   }
 
   .footer-social {
