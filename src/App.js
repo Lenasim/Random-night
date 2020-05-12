@@ -147,7 +147,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header reset={this.handleReset} />
+        <Header reset={this.handleReset}
+          scale={this.state.firstClick || this.state.filterClick ? 'small-brand' : 'brand'}
+        />
         <div>
           <div className='notice-text'>
             <h1>Wanna chill on your couch tonight?</h1>
