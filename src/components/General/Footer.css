@@ -1,0 +1,140 @@
+.Footer {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 1em;
+}
+
+.credits {
+  margin-top: 0.5em;
+  display: flex;
+  align-items: baseline;
+}
+
+.mentions {
+  font-size: 0.8em;
+  margin-top: 0.5em;
+}
+
+.footer-bottom {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1em;
+} 
+
+.footer-link {
+  color: white;
+  text-decoration-line: none;
+  margin: 0 5px;
+}
+
+.fa-heart {
+  color: rgb(192, 9, 9);
+  margin: 0 5px;
+}
+
+.footer-social {
+  font-size: 1.5em;
+}
+
+.fa-github-square, .fa-linkedin {
+  cursor: pointer;
+}
+
+.fa-linkedin {
+  color: rgb(56, 118, 233);
+}
+
+.fa-github-square {
+  color: rgb(197, 197, 197);
+}
+
+.fa-linkedin:hover {
+  color: white;
+}
+
+.fa-github-square:hover {
+  color: white;
+}
+
+.team {
+  margin-left: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.team-group {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 1238px) {
+  .Footer, .footer-bottom {
+    font-size: 12px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .credits {
+    align-items: center;
+  }
+  
+  .team {
+    margin: 0 1em;
+    text-align: center;
+    width: 8em;
+  }
+}
+
+@media (max-width: 770px) {
+  .Footer, .footer-bottom {
+    font-size: 10px;
+    flex-direction: row;
+    padding: 1em;
+  }
+
+  .footer-bottom {
+    position: relative;
+    bottom: 0;
+  }
+
+  .mentions, .credits {
+    width: 50%;
+    margin: auto;
+  }
+
+  .mentions {
+    padding-left: 1em;
+    padding-right: 1em;
+    text-align: justify;
+  }
+
+  .credits {
+    flex-direction: column;
+  }
+
+  .intro {
+    text-decoration: underline;
+    margin: auto;
+  }
+
+  .team-group {
+    text-align: left;
+  }
+
+  .team {
+    display: block;
+    margin: 0;
+  }
+
+  .footer-social {
+    font-size: 1.8em;
+  }
+}
