@@ -17,6 +17,15 @@ function ModalMovie(props) {
                     <img className='modal-img' src={props.image} alt={props.name} />
                 </div>
                 <div className='right'>
+                    {props.trailer &&
+                        <div className='modal-detail'>
+                            <h3>TRAILER</h3>
+                            <div className="modal-video">
+                            <iframe title={props.name} src={props.trailer} width="100%" height="100%" frameBorder="0" allow="encrypted-media" allowFullScreen>
+                            </iframe>
+                            </div>
+                        </div>
+                    }
                     <div className='modal-detail'>
                         <h3>Movie Info</h3>
                         <div className="list-box">
@@ -49,15 +58,7 @@ function ModalMovie(props) {
                         <h3>SYNOPSIS</h3>
                         <p>{props.overview}</p>
                     </div>
-                    {props.trailer && 
-                        <div className='modal-detail'>
-                            <h3>TRAILER</h3>
 
-                            <iframe className='modal-video' title={props.name}
-                                src={props.trailer} frameBorder="0" allow="encrypted-media" allowFullScreen>
-                            </iframe>
-                        </div>
-                    }
                 </div>
             </div>
         </Modal>

@@ -15,17 +15,29 @@ function ModalRecipe(props) {
                 <div className='left'>
                     <h2 className='modal-title'>{props.name}</h2>
                     <img className='modal-img' src={props.image} alt={props.name} />
-                    <iframe className='modal-video' title={props.name}
-                        src={props.video} frameBorder="0" allow="encrypted-media" allowFullScreen>
-                    </iframe>
+                    <div className="modal-video">
+                        <iframe title={props.name}
+                            src={props.video} frameBorder="0" allow="encrypted-media" allowFullScreen>
+                        </iframe>
+                    </div>
                 </div>
                 <div className='right'>
-                    <div className='modal-types'>
-                        <p className="tag">{props.genre}</p>
+                    <div className='modal-detail'>
+                        <h3>Detailed Info</h3>
+                        <div className="list-box">
+                            <h4 className="li-title">Category</h4>
+                            <p className="list-item">{props.genre}</p>
+                        </div>
                         {props.tags &&
-                            props.tags.split(",").map((t, i)=> <p key={i} className="tag">{t}</p>)
+                            <div className="list-box">
+                                <h4 className="li-title">Keywords</h4>
+                                {props.tags.split(",").map((t, i) => <p key={i} className="list-item">{t}</p>)}
+                        </div>
                         }
-                        <p className="tag">{props.area}</p>
+                        <div className="list-box">
+                            <h4 className="li-title">Origine</h4>
+                            <p className="list-item">{props.area}</p>
+                        </div>
                     </div>
                     <div className='modal-detail'>
                         <h3>INGREDIENTS</h3>
