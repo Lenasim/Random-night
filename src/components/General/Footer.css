@@ -1,5 +1,4 @@
  .Footer {
-  background-color: rgba(255, 255, 255, 0.548);
   color: white;
   display: flex;
   flex-direction: column;
@@ -22,7 +21,6 @@
 }
 
 .footer-bottom {
-  background-color: rgba(255, 255, 255, 0.548);
   color: white;
   display: flex;
   flex-direction: column;
@@ -54,7 +52,7 @@
 }
 
 .fa-github-square {
-  color: black;
+  color: rgb(197, 197, 197);
 }
 
 .fa-linkedin:hover {
