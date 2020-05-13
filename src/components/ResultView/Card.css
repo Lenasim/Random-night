@@ -33,6 +33,7 @@
 .property-card {
     height:23rem;
     margin: 1rem;
+    width: 100%;
     display:-webkit-box;
     display:-ms-flexbox;
     display:flex;
