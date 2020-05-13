@@ -193,7 +193,6 @@ class App extends Component {
               <div>{this.getItemContent()}</div>
             </div>
           </div>}
-
         {
           this.state.firstClick &&
           <Results
@@ -207,8 +206,9 @@ class App extends Component {
             movieGenre={this.state.genresResult}
             cast={this.state.queryCast}
             crew={this.state.queryCrew} />
-        }
-        <ScrollToTop />
+          }
+          <ScrollToTop />
+          </div>
         <Footer />
       </div>
     );
