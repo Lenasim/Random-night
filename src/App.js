@@ -149,12 +149,10 @@ class App extends Component {
       <div className="App">
         <Header reset={this.handleReset}
           scale={this.state.firstClick || this.state.filterClick ? 'small-brand' : 'brand'}
+          notice={this.state.firstClick || this.state.filterClick ? 'notice-small' : 'notice-text'}
+          header={this.state.firstClick || this.state.filterClick ? 'header-small' : 'Header'}
         />
         <div>
-          <div className='notice-text'>
-            <h1>Wanna chill on your couch tonight?</h1>
-            <h4>We suggest you what to drink, watch and eat!</h4>
-          </div>
           {
             !this.state.firstClick &&
             <div className="notice-button">
@@ -187,7 +185,6 @@ class App extends Component {
               <div>{this.getItemContent()}</div>
             </div>
           </div>}
-
         {
           this.state.firstClick &&
           <Results

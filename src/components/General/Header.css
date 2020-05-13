@@ -1,3 +1,7 @@
+.header-small {
+  padding: 0 1em 1em;
+}
+
 .brand {
   margin: 30px 0;
   width: 90%;
@@ -8,14 +12,56 @@
   margin: 20px 0 0 0 ;
 }
 
+.notice-text h1, .notice-small h1 {
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Permanent Marker', cursive !important;
+  font-weight: 400;
+}
+
+.notice-text h4, .notice-small h4 {
+  color: white;
+  font-weight: 400;
+}
+
+.notice-text h1 {
+  margin: 2rem 0 0 0;
+  font-size: 1.8rem;
+  line-height: 50px;
+}
+
+.notice-text h4 {
+  font-size: 1.2rem;
+  margin: 0 0 2rem 0;
+}
+
+.notice-small h1 {
+  margin: 1rem 0 0 0;
+  font-size: 1.1rem;
+}
+
+.notice-small h4 {
+  font-size: 0.9rem;
+}
+
 @media (min-width: 800px) {
+  .header-small {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .notice-small {
+    margin-top: 30px;
+  }
+
   .brand {
     margin: 30px 0;
     width: 480px;
   }
 
   .small-brand {
-    width: 200px;
+    width: 300px;
   }
 
   .brand:hover, .small-brand:hover {
