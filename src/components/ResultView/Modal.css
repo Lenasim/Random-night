@@ -146,7 +146,7 @@ iframe {
 
   @media (max-width: 767px) {
     .close {
-      color: #aaaaaa;
+      color: white;
       font-size: 3rem;
       font-weight: bold;
       position: fixed;
