@@ -38,7 +38,7 @@
   padding: 20px;
 }
 .modal-title {
-  margin: 1rem auto;
+  margin: 0 auto;
   font-weight: 600;
   font-size: 2rem;
   margin-bottom: 2rem;
@@ -182,19 +182,20 @@ iframe {
       padding-top: 100px;
     }
     .modal-content {
-      margin: auto;
-      padding: 0 2rem 3rem 2rem;
+      padding: 0 ;
       width: 90%;
+      height: fit-content;
+      max-height: 90vh;
       z-index: 3;
       position: fixed;
-      top: 0;
+      top: 5vh;
       left: 5%;
     }
     .modal-body {
+      margin: 0;
       display: flex;
       flex-direction: row;
       align-items: flex-start;
-      margin: 1rem 2rem;
     }
     .left {
       width: 50%;
@@ -209,5 +210,6 @@ iframe {
       font-size: 3rem;
       font-weight: bold;
       align-self: flex-start;
+      padding-right: 2rem;
     }
   }
