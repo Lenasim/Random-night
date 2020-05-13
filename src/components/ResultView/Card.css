@@ -125,7 +125,7 @@
     .property-description {
         height: 100%;
         width: 40%;
-        padding: 1em 0.5em;
+        padding:0.5em;
     }
 
     .property-social-icons {
