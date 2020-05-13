@@ -29,16 +29,20 @@ button {
 
 .scroll-to-top {
   position: fixed;
-  bottom: 7rem;
+  bottom: 8.4rem;
   right: 0.5rem;
   animation: fadeIn 700ms ease-in-out 1s both;
   cursor: pointer;
   margin: 0 0.5em 0 0;
+  background-color: white;
+  border-radius: 50%;
 }
 
 .fa-arrow-alt-circle-up {
-  color: white;
+  color: rgb(7, 7, 105);
   font-size: 2rem;
+  border: solid 1px white;
+  border-radius: 50%;
 }
 
 @keyframes fadeIn {
@@ -51,19 +55,14 @@ button {
 }
 
 @media(max-width: 500px) {
+  .FilterDisplay {
+    margin: 10px auto;
+  }
+
   .notice-text h1 {
     margin: 0;
   }
-}.fa-arrow-alt-circle-up {
-  color: white;
-  font-size: 2rem;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
+  .fa-arrow-alt-circle-up {
+    font-size: 2rem;
   }
 }

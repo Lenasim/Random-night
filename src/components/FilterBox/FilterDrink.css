@@ -118,6 +118,7 @@
 @media screen and (max-width: 500px) {
   .FilterDrink {
     flex-direction: column;
+    margin-top: 6px;
   }
   
   .FilterDrink select {

@@ -14,9 +14,7 @@
 }
 
 .FilterButtons button:hover {
-  border: none;
-  padding: 10px 25px;
-  font-size: 20px;
+  color: white;
 }
 
 .active {
