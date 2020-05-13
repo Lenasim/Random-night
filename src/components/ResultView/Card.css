@@ -112,8 +112,9 @@
 
     .property-image {
         position: relative;
-        left: 5.5em;
-        width: 85%;
+        left: 3.5em;
+        width: 65%;
+        height: 14rem;
     }
 
     .property-card {
