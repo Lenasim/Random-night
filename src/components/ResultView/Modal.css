@@ -38,7 +38,7 @@
   padding: 20px;
 }
 .modal-title {
-  margin: 1rem auto;
+  margin: 0 auto;
   font-weight: 600;
   font-size: 2rem;
   margin-bottom: 2rem;
@@ -46,8 +46,20 @@
 }
 
 .modal-video {
-  margin: 1em auto;
+  position: relative;
+  overflow: hidden;
   width: 90%;
+  margin-left: 5%;
+  padding-top: 56.25%;
+}
+
+iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
   height: 100%;
 }
 
@@ -56,6 +68,7 @@
   height: auto;
   margin-right: auto;
   margin-left: auto;
+  margin-bottom: 2rem;
   border-radius: 5px;
 }
 
@@ -74,6 +87,13 @@
   padding-bottom: 1rem;
 }
 
+/* tag div */
+.modal-types {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .modal-detail h3 {
   color: rgb(7, 7, 105);
   border-bottom: 1px solid #eee;
@@ -83,9 +103,33 @@
   padding-bottom: 10px;
 }
 
-.modal-detail p {
+/* .modal-detail p {
   padding: 0px;
   font-size: 14px;
+} */
+.list-box {
+  margin-left: 5%;
+  text-align: left;
+}
+
+.li-title {
+  text-align: left;
+
+  background: #eee;
+  font-size: 0.8rem;
+  color: rgb(7, 7, 105);
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  position: relative;
+  margin: 0 10px 10px 0;
+  text-decoration: none;
+}
+
+.list-item{
+    display: inline-block;
+    margin-right: 0.4rem;
+    position: relative;
+    font-size: 0.9rem;
 }
 
 .modal-group-list {
@@ -95,27 +139,18 @@
 }
 
 .modal-lists {
-    padding: 15px 0px;
+    padding: 15px 0;
   }
 .modal-lists li {
     list-style: none;
-    padding: 0px;
-    margin: 0px;
-    text-indent: 0px;
+    padding: 0;
+    margin: 0;
+    text-indent: 0;
     font-weight: 500;
     font-size: 14px;
     line-height: 22px;
-  }
+  } 
 
-  .modal-types {
-    display: flex;
-    justify-content: space-around;
-  }
-
-  .li-title {
-    font-weight: 900 !important;
-    text-decoration: underline;
-  }
 
   @media (max-width: 767px) {
     .close {
@@ -147,15 +182,17 @@
       padding-top: 100px;
     }
     .modal-content {
-      margin: auto;
-      padding: 0 2rem 3rem 2rem;
-      width: 80%;
+      padding: 0 ;
+      width: 90%;
+      height: fit-content;
+      max-height: 90vh;
       z-index: 3;
       position: fixed;
-      top: 10vh;
-      left: 10%;
+      top: 5vh;
+      left: 5%;
     }
     .modal-body {
+      margin: 0;
       display: flex;
       flex-direction: row;
       align-items: flex-start;
@@ -173,5 +210,6 @@
       font-size: 3rem;
       font-weight: bold;
       align-self: flex-start;
+      padding-right: 2rem;
     }
   }

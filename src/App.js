@@ -7,6 +7,7 @@ import FilterDrink from './components/FilterBox/FilterDrink'
 import FilterMovie from './components/FilterBox/FilterMovie'
 import FilterRecipe from './components/FilterBox/FilterRecipe'
 import ScrollToTop from './components/General/ScrollToTop'
+import Footer from './components/General/Footer'
 
 import './App.css';
 
@@ -153,6 +154,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <div className="main">
         <Header reset={this.handleReset} />
         <div>
           <div className='notice-text'>
@@ -207,6 +209,7 @@ class App extends Component {
             crew={this.state.queryCrew} />
         }
         <ScrollToTop />
+        <Footer />
       </div>
     );
   }

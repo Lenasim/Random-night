@@ -5,7 +5,9 @@ import 'react-toastify/dist/ReactToastify.css'
 
 import Card from './Card'
 import Button from '../General/Button'
-import Modal from './Modal'
+import ModalCocktail from './ModalCocktail'
+import ModalRecipe from './ModalRecipe'
+import ModalMovie from './ModalMovie'
 import ModalBack from './ModalBack'
 
 import './Card.css'
@@ -622,7 +624,7 @@ class Results extends Component {
         }
         {this.state.modalDrink &&
           <>
-            <Modal
+            <ModalCocktail
               show={this.state.modalDrink}
               handleClose={this.toggleModalDrink}
               name={detailsDrink.strDrink}
@@ -638,7 +640,7 @@ class Results extends Component {
         }
         {this.state.modalMovie &&
           <>
-            <Modal
+            <ModalMovie
               show={this.state.modalMovie}
               handleClose={this.toggleModalMovie}
               name={movies.title}
@@ -655,7 +657,7 @@ class Results extends Component {
         }
         {this.state.modalMeal &&
           <>
-            <Modal
+            <ModalRecipe
               show={this.state.modalMeal}
               handleClose={this.toggleModalMeal}
               name={detailsMeal.strMeal}
