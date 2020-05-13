@@ -50,15 +50,12 @@ button {
   right: 0.5rem;
   animation: fadeIn 700ms ease-in-out 1s both;
   cursor: pointer;
+  margin: 0 0.5em 0 0;
 }
 
-.fa-arrow-up {
-  color: rgb(7, 7, 105);
-  font-size: 30px;
-  background-color: white;
-  border-radius: 50%;
-  width: 1em;
-  height: 1em;
+.fa-arrow-alt-circle-up {
+  color: white;
+  font-size: 2rem;
 }
 
 @keyframes fadeIn {
