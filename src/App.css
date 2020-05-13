@@ -4,8 +4,11 @@
   text-align: center;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
-
+.body {
+  flex: 1;
+}
 button {
   outline: transparent;
 }
@@ -22,4 +25,27 @@ button {
   border-radius: 12px;
   margin: 50px auto;
   position: relative;
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 7rem;
+  right: 0.5rem;
+  animation: fadeIn 700ms ease-in-out 1s both;
+  cursor: pointer;
+  margin: 0 0.5em 0 0;
+}
+
+.fa-arrow-alt-circle-up {
+  color: white;
+  font-size: 2rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

@@ -6,6 +6,8 @@ import FilterButtons from './components/FilterBox/FilterButtons'
 import FilterDrink from './components/FilterBox/FilterDrink'
 import FilterMovie from './components/FilterBox/FilterMovie'
 import FilterRecipe from './components/FilterBox/FilterRecipe'
+import ScrollToTop from './components/General/ScrollToTop'
+import Footer from './components/General/Footer'
 
 import './App.css';
 
@@ -29,6 +31,11 @@ class App extends Component {
     genreName: 'Genres',
     queryCast: '',
     queryCrew: '',
+  }
+
+  scrollToTop() {
+    let intervalId = setInterval(this.scrollStep.bind(this), this.props.delayInMs);
+    this.setState({ intervalId: intervalId });
   }
 
   handleFilterClick = () => {
@@ -147,6 +154,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <div className="body">
         <Header reset={this.handleReset}
           scale={this.state.firstClick || this.state.filterClick ? 'small-brand' : 'brand'}
           notice={this.state.firstClick || this.state.filterClick ? 'notice-small' : 'notice-text'}
@@ -199,6 +207,9 @@ class App extends Component {
             cast={this.state.queryCast}
             crew={this.state.queryCrew} />
         }
+        <ScrollToTop />
+        </div>
+        <Footer />
       </div>
     );
   }
