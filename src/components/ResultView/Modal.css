@@ -1,4 +1,3 @@
-/* Modal Content */
 .modal-content {
   background-color: #fefefe;
   border: 1px solid #888;
@@ -18,8 +17,6 @@
   justify-content: flex-end;
   max-height: 3rem;
 }
-
-/* Close Button */
 
 .close:hover,
 .close:focus {
@@ -87,7 +84,6 @@ iframe {
   padding-bottom: 1rem;
 }
 
-/* tag div */
 .modal-types {
   display: flex;
   flex-wrap: wrap;
@@ -103,10 +99,6 @@ iframe {
   padding-bottom: 10px;
 }
 
-/* .modal-detail p {
-  padding: 0px;
-  font-size: 14px;
-} */
 .list-box {
   margin-left: 5%;
   text-align: left;
@@ -167,49 +159,49 @@ iframe {
     }
   }
 
-  @media (min-width: 768px) {
-    .modal {
-      position: fixed; 
-      z-index: 1; 
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0,0,0,0.7);
-    }
-    .modal {
-      padding-top: 100px;
-    }
-    .modal-content {
-      padding: 0 ;
-      width: 90%;
-      height: fit-content;
-      max-height: 90vh;
-      z-index: 3;
-      position: fixed;
-      top: 5vh;
-      left: 5%;
-    }
-    .modal-body {
-      margin: 0;
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-    }
-    .left {
-      width: 50%;
-    }
-    .right {
-      border-radius: 0 6px 6px 0;
-      width: 50%;
-    }
-    .close {
-      color: #aaaaaa;
-      float: right;
-      font-size: 3rem;
-      font-weight: bold;
-      align-self: flex-start;
-      padding-right: 2rem;
-    }
+@media (min-width: 768px) {
+  .modal {
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7);
   }
+  .modal {
+    padding-top: 100px;
+  }
+  .modal-content {
+    padding: 0 ;
+    width: 90%;
+    height: fit-content;
+    max-height: 90vh;
+    z-index: 3;
+    position: fixed;
+    top: 5vh;
+    left: 5%;
+  }
+  .modal-body {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .left {
+    width: 50%;
+  }
+  .right {
+    border-radius: 0 6px 6px 0;
+    width: 50%;
+  }
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 3rem;
+    font-weight: bold;
+    align-self: flex-start;
+    padding-right: 2rem;
+  }
+}
