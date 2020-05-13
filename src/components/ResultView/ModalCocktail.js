@@ -3,20 +3,17 @@ import Modal from './Modal'
 
 import './Modal.css'
 
-function ModalCocktail(props) {
-
+const  ModalCocktail = props => {
     return (
         <Modal>
             <div className="modal-top">
                 <span className="close" onClick={props.handleClose}>&times;</span>
             </div>
             <div className="modal-body">
-
                 <div className='left'>
                     <h2 className='modal-title'>{props.name}</h2>
                     <img className='modal-img' src={props.image} alt={props.name} />
                 </div>
-
                 <div className='right'>
                     <div className='modal-detail'>
                         <div className="list-box">
@@ -54,7 +51,7 @@ function ModalCocktail(props) {
                     </div>
                 </div>
             </div>
-        </Modal >
+        </Modal>
     )
 }
 

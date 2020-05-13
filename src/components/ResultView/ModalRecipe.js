@@ -3,9 +3,7 @@ import Modal from './Modal'
 
 import './Modal.css'
 
-function ModalRecipe(props) {
-
-
+const ModalRecipe = props => {
     return (
         <Modal>
             <div className="modal-top">

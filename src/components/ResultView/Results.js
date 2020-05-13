@@ -14,7 +14,6 @@ import './Card.css'
 
 toast.configure()
 class Results extends Component {
-
   state = {
     loading: false,
     loaded: false,
@@ -65,7 +64,6 @@ class Results extends Component {
   componentDidMount = () => {
     this.getRandomFiltered()
   }
-
 
   getRandomFiltered = async () => {
     this.setState({ loading: true })

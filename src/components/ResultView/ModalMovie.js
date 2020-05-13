@@ -3,9 +3,7 @@ import Modal from './Modal'
 
 import './Modal.css'
 
-function ModalMovie(props) {
-
-
+const ModalMovie = props => {
     return (
         <Modal>
             <div className="modal-top">
@@ -46,7 +44,6 @@ function ModalMovie(props) {
                             <h4 className="li-title">Director(s)</h4>
                             <p className="list-item">{props.directors.map(d => d)}</p>
                         </div>
-
                         <div className="list-box">
                             <h4 className="li-title">Main Casting</h4>
                             <p className="list-item">{props.actors[0]}</p>
@@ -58,7 +55,6 @@ function ModalMovie(props) {
                         <h3>SYNOPSIS</h3>
                         <p>{props.overview}</p>
                     </div>
-
                 </div>
             </div>
         </Modal>

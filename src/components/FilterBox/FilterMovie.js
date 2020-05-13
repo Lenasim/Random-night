@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 
 import './FilterMovie.css'
+
 class FilterMovie extends Component {
   state = {
     genres: [],
@@ -31,7 +32,6 @@ class FilterMovie extends Component {
   filterGenre = (event) => {
     const genreName = this.state.genres.filter(f => f.id === parseInt(event.target.value))[0].name 
     this.props.handleGenreChange(event.target.value, genreName)
-
   }
 
   render() {
