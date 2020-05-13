@@ -25,14 +25,14 @@
 }
 
 .notice-text h1 {
-  margin: 2rem 0 0 0;
-  font-size: 1.8rem;
-  line-height: 50px;
+  margin: 2rem 0.2rem 0 0.2rem;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
 }
 
 .notice-text h4 {
   font-size: 1.2rem;
-  margin: 0 0 2rem 0;
+  margin: 0.2rem 0.2rem 2rem 0.2rem;
 }
 
 .notice-small h1 {
@@ -49,6 +49,10 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+  }
+
+  .notice-text h1 {
+    font-size: 1.8rem;
   }
 
   .notice-small {
