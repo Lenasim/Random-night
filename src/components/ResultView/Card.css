@@ -112,7 +112,8 @@
 
     .property-image {
         position: relative;
-        left: 6.5em;
+        left: 5.5em;
+        width: 85%;
     }
 
     .property-card {
@@ -123,7 +124,7 @@
     .property-description {
         height: 100%;
         width: 40%;
-        padding: 0.5em;
+        padding: 1em 0.5em;
     }
 
     .card-title {
