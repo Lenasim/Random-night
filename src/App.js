@@ -6,6 +6,7 @@ import FilterButtons from './components/FilterBox/FilterButtons'
 import FilterDrink from './components/FilterBox/FilterDrink'
 import FilterMovie from './components/FilterBox/FilterMovie'
 import FilterRecipe from './components/FilterBox/FilterRecipe'
+import Footer from './components/General/Footer'
 
 import './App.css';
 
@@ -202,6 +203,7 @@ class App extends Component {
             cast={this.state.queryCast}
             crew={this.state.queryCrew} />
         }
+          <Footer classFooter={this.state.firstClick ? "footer-bottom" : "Footer"} />
       </div>
     );
   }
