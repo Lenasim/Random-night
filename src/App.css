@@ -53,6 +53,27 @@ button {
   position: relative;
 }
 
+.scroll-to-top {
+  position: fixed;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  animation: fadeIn 700ms ease-in-out 1s both;
+  cursor: pointer;
+  margin: 0 0.5em 0 0;
+}
+
+.fa-arrow-alt-circle-up {
+  color: white;
+  font-size: 2rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+
 @media(max-width: 500px) {
   .notice-text h1 {
     margin: 0;
