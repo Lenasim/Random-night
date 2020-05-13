@@ -13,6 +13,7 @@
   display: flex;
   align-items: baseline;
   width: 100%;
+  justify-content: center;
 }
 .intro {
   color:white;
@@ -21,12 +22,14 @@
   text-transform:uppercase;
   letter-spacing:2px;
   margin: 0 0.2rem;
-  width: 20%;
+  padding-top: 0.6rem;
+  /* width: 20%; */
 }
 .team-group-group{
-  width: 80%;
+  /* width: 80%; */
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .team {
   margin-left: 0.8rem;
@@ -119,11 +122,11 @@
 } 
 
 @media (max-width: 600px) {
-  .intro {
+  /* .intro {
     width: 10%;
-  }
+  } */
   .team-group-group{
-    width: 90%;
+    /* width: 90%; */
     justify-content: space-around;
   }
 
