@@ -550,11 +550,11 @@ class Results extends Component {
     if (window.innerWidth < 508) {
       this.setState({
         mobile: true
-      }, console.log(window.innerWidth));
+      });
     } else {
       this.setState({
         mobile: false
-      }, console.log(window.innerWidth));
+      });
     }
   }
 
