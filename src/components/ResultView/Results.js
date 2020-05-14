@@ -58,7 +58,8 @@ class Results extends Component {
     mealsFiltered: '',
     drinksFilteredByCat: [],
     drinksFilteredByAlc: [],
-    drinkFilteredList: []
+    drinkFilteredList: [],
+    mobile: false
   }
 
   getRandomFiltered = async () => {
@@ -545,16 +546,30 @@ class Results extends Component {
     }
   }
 
+  isMobile() {
+    if (window.innerWidth < 508) {
+      this.setState({
+        mobile: true
+      }, console.log(window.innerWidth));
+    } else {
+      this.setState({
+        mobile: false
+      }, console.log(window.innerWidth));
+    }
+  }
+
   componentDidMount = () => {
     this.getRandomFiltered()
+    this.isMobile()
   }
 
   render() {
-    const { drinks, meals, movies, categories, loading, loaded, detailsDrink, detailsMeal, ingDrink, measuresDrink, ingMeal, measuresMeal, video, date, genresMovie, actors, directors, trailer } = this.state
+    const { mobile, drinks, meals, movies, categories, loading, loaded, detailsDrink, detailsMeal, ingDrink, measuresDrink, ingMeal, measuresMeal, video, date, genresMovie, actors, directors, trailer } = this.state
     return (
       <div>
         <div className="notice-button">
           <Button
+            classButton={!mobile ? "button" : "button-mobile"}
             text="Try again?"
             loader={loading}
             isClicked={this.getRandom} />
@@ -596,7 +611,16 @@ class Results extends Component {
             />
           </div>
         }
-        {this.state.modalDrink &&
+        {
+          mobile &&
+          <Button
+            classButton={!mobile ? "button" : "button-mobile"}
+            text="Try again?"
+            loader={loading}
+            isClicked={this.getRandom} />
+        }
+        {
+          this.state.modalDrink &&
           <>
             <ModalCocktail
               show={this.state.modalDrink}
@@ -612,7 +636,8 @@ class Results extends Component {
             <ModalBack handleClose={this.toggleModalDrink} />
           </>
         }
-        {this.state.modalMovie &&
+        {
+          this.state.modalMovie &&
           <>
             <ModalMovie
               show={this.state.modalMovie}
@@ -629,7 +654,8 @@ class Results extends Component {
             <ModalBack handleClose={this.toggleModalMovie} />
           </>
         }
-        {this.state.modalMeal &&
+        {
+          this.state.modalMeal &&
           <>
             <ModalRecipe
               show={this.state.modalMeal}
