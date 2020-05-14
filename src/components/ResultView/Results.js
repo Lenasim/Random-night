@@ -42,6 +42,7 @@ class Results extends Component {
     video: '',
     ingMeal: [],
     measuresMeal: [],
+    instructionsMeal: [],
     date: '',
     genresList: '',
     genresMovie: [],
@@ -58,7 +59,8 @@ class Results extends Component {
     mealsFiltered: '',
     drinksFilteredByCat: [],
     drinksFilteredByAlc: [],
-    drinkFilteredList: []
+    drinkFilteredList: [],
+    mobile: false
   }
 
   getRandomFiltered = async () => {
@@ -114,7 +116,8 @@ class Results extends Component {
           measuresMeal: listMeasures,
           ingMeal: listIng,
           detailsMeal: res.data.meals[0],
-          video: res.data.meals[0].strYoutube.replace('watch?v=', 'embed/')
+          video: res.data.meals[0].strYoutube.replace('watch?v=', 'embed/'),
+          instructionsMeal: res.data.meals[0].strInstructions.split('.')
         })
       })
   }
@@ -545,16 +548,30 @@ class Results extends Component {
     }
   }
 
+  isMobile() {
+    if (window.innerWidth < 508) {
+      this.setState({
+        mobile: true
+      });
+    } else {
+      this.setState({
+        mobile: false
+      });
+    }
+  }
+
   componentDidMount = () => {
     this.getRandomFiltered()
+    this.isMobile()
   }
 
   render() {
-    const { drinks, meals, movies, categories, loading, loaded, detailsDrink, detailsMeal, ingDrink, measuresDrink, ingMeal, measuresMeal, video, date, genresMovie, actors, directors, trailer } = this.state
+    const { mobile, drinks, meals, movies, categories, loading, loaded, detailsDrink, detailsMeal, ingDrink, measuresDrink, ingMeal, measuresMeal, video, date, genresMovie, actors, directors, trailer } = this.state
     return (
       <div>
         <div className="notice-button">
           <Button
+            classButton={!mobile ? "button" : "button-mobile"}
             text="Try again?"
             loader={loading}
             isClicked={this.getRandom} />
@@ -596,7 +613,16 @@ class Results extends Component {
             />
           </div>
         }
-        {this.state.modalDrink &&
+        {
+          mobile &&
+          <Button
+            classButton={!mobile ? "button" : "button-mobile"}
+            text="Try again?"
+            loader={loading}
+            isClicked={this.getRandom} />
+        }
+        {
+          this.state.modalDrink &&
           <>
             <ModalCocktail
               show={this.state.modalDrink}
@@ -612,7 +638,8 @@ class Results extends Component {
             <ModalBack handleClose={this.toggleModalDrink} />
           </>
         }
-        {this.state.modalMovie &&
+        {
+          this.state.modalMovie &&
           <>
             <ModalMovie
               show={this.state.modalMovie}
@@ -629,7 +656,8 @@ class Results extends Component {
             <ModalBack handleClose={this.toggleModalMovie} />
           </>
         }
-        {this.state.modalMeal &&
+        {
+          this.state.modalMeal &&
           <>
             <ModalRecipe
               show={this.state.modalMeal}
@@ -638,7 +666,7 @@ class Results extends Component {
               image={detailsMeal.strMealThumb}
               genre={detailsMeal.strCategory}
               area={detailsMeal.strArea}
-              instructions={detailsMeal.strInstructions}
+              instructions={instructionsMeal}
               ingredients={ingMeal}
               measures={measuresMeal}
               video={video}

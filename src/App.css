@@ -29,7 +29,7 @@ button {
 
 .scroll-to-top {
   position: fixed;
-  bottom: 8.4rem;
+  bottom: 9.8rem;
   right: 0.5rem;
   animation: fadeIn 700ms ease-in-out 1s both;
   cursor: pointer;
