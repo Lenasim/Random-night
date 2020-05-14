@@ -566,7 +566,7 @@ class Results extends Component {
   }
 
   render() {
-    const { mobile, drinks, meals, movies, categories, loading, loaded, detailsDrink, detailsMeal, ingDrink, measuresDrink, ingMeal, measuresMeal, video, date, genresMovie, actors, directors, trailer } = this.state
+    const { instructionsMeal, mobile, drinks, meals, movies, categories, loading, loaded, detailsDrink, detailsMeal, ingDrink, measuresDrink, ingMeal, measuresMeal, video, date, genresMovie, actors, directors, trailer } = this.state
     return (
       <div>
         <div className="notice-button">
