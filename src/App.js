@@ -30,6 +30,7 @@ class App extends Component {
     genreName: 'Genres',
     queryCast: '',
     queryCrew: '',
+    mobile: ''
   }
 
   scrollToTop() {
@@ -121,10 +122,6 @@ class App extends Component {
     this.setState({ queryCrew: queryCrew.replace('%20', ' ') })
   }
 
-  componentDidMount() {
-    this.setState({ activeId: "drink" });
-  }
-
   getItemContent() {
     switch (this.state.activeId) {
       case "drink":
@@ -152,6 +149,23 @@ class App extends Component {
     }
   }
 
+  isMobile() {
+    if (window.innerWidth < 508) {
+      this.setState({
+        mobile: true
+      });
+    } else {
+      this.setState({
+        mobile: false
+      });
+    }
+  }
+
+  componentDidMount() {
+    this.setState({ activeId: "drink" });
+    this.isMobile()
+  }
+
   render() {
     return (
       <div className="App">
@@ -166,6 +180,7 @@ class App extends Component {
               !this.state.firstClick &&
               <div className="notice-button">
                 <Button
+                  classButton={!this.state.mobile ? "button" : "button-mobile"}
                   text={!this.state.firstClick ? "Get your plan" : "Try again?"}
                   isClicked={this.handleButtonClick}
                 />
