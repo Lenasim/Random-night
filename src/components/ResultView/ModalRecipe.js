@@ -21,7 +21,7 @@ const ModalRecipe = props => {
         </div>
         <div className='right'>
           <div className='modal-detail'>
-            <h3>Detailed Info</h3>
+            <h3>DETAILED INFO</h3>
             <div className="list-box">
               <h4 className="li-title">Category</h4>
               <p className="list-item">{props.genre}</p>

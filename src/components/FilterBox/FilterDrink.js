@@ -43,7 +43,7 @@ class FilterDrink extends Component {
             className="option"
             value="categories"
           >
-            All categories
+            Categories
             </option>
           {
             this.state.categories.map(cat => (
@@ -97,7 +97,7 @@ class FilterDrink extends Component {
             htmlFor="nonAlcohol"
             className="radio-label"
           >
-            Non
+            Non-alcoholic
           </label>
         </div>
       </div>

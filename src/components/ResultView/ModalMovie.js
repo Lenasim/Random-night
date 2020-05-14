@@ -25,7 +25,7 @@ const ModalMovie = props => {
             </div>
           }
           <div className='modal-detail'>
-            <h3>Movie Info</h3>
+            <h3>MOVIE INFO</h3>
             <div className="list-box">
               <h4 className="li-title">Genres</h4>
               {props.genre.map((g, i) => (

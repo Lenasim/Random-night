@@ -16,6 +16,7 @@ const ModalCocktail = props => {
         </div>
         <div className='right'>
           <div className='modal-detail'>
+            <h3>DETAILED INFO</h3>
             <div className="list-box">
               <h4 className="li-title">Type of drink</h4>
               <p className="list-item">{props.genre} &</p>
