@@ -55,6 +55,7 @@
 @media screen and (max-width: 800px) {
   .FilterMovie {
     flex-direction: column;
+    margin-top: 6px;
   }
 
   .search-movies {

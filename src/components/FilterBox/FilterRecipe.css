@@ -37,6 +37,7 @@
 @media screen and (max-width: 800px) {
   .FilterRecipe {
     flex-direction: column;
+    margin-top: 6px;
   }
 
   .FilterRecipe select {

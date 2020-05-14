@@ -6,6 +6,8 @@ import FilterButtons from './components/FilterBox/FilterButtons'
 import FilterDrink from './components/FilterBox/FilterDrink'
 import FilterMovie from './components/FilterBox/FilterMovie'
 import FilterRecipe from './components/FilterBox/FilterRecipe'
+import ScrollToTop from './components/General/ScrollToTop'
+import Footer from './components/General/Footer'
 
 import './App.css';
 
@@ -26,8 +28,14 @@ class App extends Component {
     mealCat: '',
     mealAreas: '',
     genresResult: '',
+    genreName: 'Genres',
     queryCast: '',
     queryCrew: '',
+  }
+
+  scrollToTop() {
+    let intervalId = setInterval(this.scrollStep.bind(this), this.props.delayInMs);
+    this.setState({ intervalId: intervalId });
   }
 
   handleFilterClick = () => {
@@ -41,6 +49,7 @@ class App extends Component {
       mealCat: '',
       mealAreas: '',
       genresResult: '',
+      genreName: 'Genres',
       queryCast: '',
       queryCrew: ''
     })
@@ -53,6 +62,7 @@ class App extends Component {
       mealCat: '',
       mealAreas: '',
       genresResult: '',
+      genreName: 'Genres',
       queryCast: '',
       queryCrew: '',
       filterClick: false
@@ -69,6 +79,7 @@ class App extends Component {
       mealCat: '',
       mealAreas: '',
       genresResult: '',
+      genreName: 'Genres',
       queryCast: '',
       queryCrew: ''
     })
@@ -101,8 +112,8 @@ class App extends Component {
     this.setState({ [name]: value });
   }
 
-  handleGenreChange = (genresResult) => {
-    this.setState({ genresResult });
+  handleGenreChange = (genresResult, genreName) => {
+    this.setState({ genresResult, genreName });
   }
 
   handleCastChange = (queryCast) => {
@@ -127,6 +138,7 @@ class App extends Component {
           handleCastChange={this.handleCastChange}
           handleCrewChange={this.handleCrewChange}
           genre={this.state.genresResult}
+          genreName={this.state.genreName}
           cast={this.state.queryCast}
           crew={this.state.queryCrew} />
       case "recipe":
@@ -142,11 +154,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header reset={this.handleReset} />
+        <div className="body">
+        <Header reset={this.handleReset}
+          scale={this.state.firstClick || this.state.filterClick ? 'small-brand' : 'brand'}
+          notice={this.state.firstClick || this.state.filterClick ? 'notice-small' : 'notice-text'}
+          header={this.state.firstClick || this.state.filterClick ? 'header-small' : 'Header'}
+        />
         <div>
-          <div className='notice-text'>
-            <h1>What's your game plan tonight ?</h1>
-          </div>
           {
             !this.state.firstClick &&
             <div className="notice-button">
@@ -179,7 +193,6 @@ class App extends Component {
               <div>{this.getItemContent()}</div>
             </div>
           </div>}
-
         {
           this.state.firstClick &&
           <Results
@@ -194,11 +207,12 @@ class App extends Component {
             cast={this.state.queryCast}
             crew={this.state.queryCrew} />
         }
+        <ScrollToTop />
+        </div>
+        <Footer />
       </div>
     );
   }
 }
-
-
 
 export default App

@@ -4,20 +4,13 @@
   text-align: center;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
-
+.body {
+  flex: 1;
+}
 button {
   outline: transparent;
-}
-
-.notice-text h1 {
-  margin: 2rem 0;
-  line-height: 50px;
-  color: white;
-  text-transform: uppercase;
-  font-family: 'Permanent Marker', cursive !important;
-  font-size: 1.8rem;
-  font-weight: 400;
 }
 
 .button-filter {
@@ -32,4 +25,71 @@ button {
   border-radius: 12px;
   margin: 50px auto;
   position: relative;
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 8.4rem;
+  right: 0.5rem;
+  animation: fadeIn 700ms ease-in-out 1s both;
+  cursor: pointer;
+  margin: 0 0.5em 0 0;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.fa-arrow-alt-circle-up {
+  color: rgb(7, 7, 105);
+  font-size: 2rem;
+  border: solid 1px white;
+  border-radius: 50%;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media(max-width: 500px) {
+  .FilterDisplay {
+    margin: 10px auto;
+  }
+
+  .notice-text h1 {
+    margin: 0;
+  }
+  .fa-arrow-alt-circle-up {
+    font-size: 2rem;
+  }
 }
