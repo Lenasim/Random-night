@@ -15,6 +15,7 @@ html {
   background-attachment: fixed;
   background-position: bottom; 
   background-size: cover;
+  backdrop-filter: saturate(80%)
 }
 
 body {
