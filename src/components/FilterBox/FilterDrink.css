@@ -1,6 +1,6 @@
 .FilterDrink {
   display: flex;
-  margin-top: 25px;
+  /* margin-top: 25px; */
   padding: 10px;
   align-items: baseline;
   justify-content: space-around;
@@ -64,7 +64,7 @@
 @media (min-width: 481px) and (max-width: 699px) {
   .FilterDrink {
     flex-direction: column;
-    height: 12rem;
+    align-items: center;
   }
   .FilterDrink select {
     width: 20rem;
@@ -81,13 +81,12 @@
 @media screen and (max-width: 480px) {
   .FilterDrink {
     flex-direction: column;
+    align-items: center;
   }
-  .FilterDrink select {
-    width: 80%;
-    margin: 10px auto;
-  }
+
   .switch-field {
-    margin: 1rem auto;
+    margin: auto;
+    margin-bottom: 0.7rem;
     width: 55%;
     display: flex;
     flex-direction: column;

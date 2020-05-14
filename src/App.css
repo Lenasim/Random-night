@@ -21,7 +21,7 @@ button {
   background-color:rgba(255, 255, 255, 0.7);
   width: 90%;
   max-width: 48rem;
-  padding-bottom: 1rem;
+  margin-bottom: 0.7rem;
   border-radius: 12px;
   margin: 50px auto;
   position: relative;
@@ -29,7 +29,7 @@ button {
 
 .scroll-to-top {
   position: fixed;
-  bottom: 9.8rem;
+  bottom: 6.5rem;
   right: 0.5rem;
   animation: fadeIn 700ms ease-in-out 1s both;
   cursor: pointer;

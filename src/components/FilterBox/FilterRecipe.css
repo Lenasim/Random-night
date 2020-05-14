@@ -1,6 +1,5 @@
 .FilterRecipe {
   display: flex;
-  margin-top: 25px;
   padding: 10px;
   align-items: baseline;
   justify-content: space-around;
@@ -38,7 +37,7 @@
   .FilterRecipe {
     flex-direction: column;
     margin-top: 6px;
-    height: 12rem;
+    align-content: center;
   }
 
   .FilterRecipe select {
