@@ -74,6 +74,9 @@
   background-color: white;
   border-radius: 50%;
   padding-top: 0.2em;
+  -webkit-box-shadow: -4px 3px 18px -4px rgba(133,129,133,1);
+  -moz-box-shadow: -4px 3px 18px -4px rgba(133,129,133,1);
+  box-shadow: -4px 3px 18px -4px rgba(133,129,133,1);
 }
 
 .property-card:hover .property-description {
