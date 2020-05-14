@@ -17,6 +17,7 @@ const ModalRecipe = props => {
             <iframe title={props.name}
               src={props.video} frameBorder="0" allow="encrypted-media" allowFullScreen>
             </iframe>
+            <p>{console.log(props.video)}</p>
           </div>
         </div>
         <div className='right'>
@@ -58,7 +59,11 @@ const ModalRecipe = props => {
           </div>
           <div className='modal-detail'>
             <h3>HOW TO MAKE</h3>
-            <p>{props.instructions}</p>
+            {
+              props.instructions.map((instr, index) => (
+                <p key={index} className='modal-instr'>{instr}</p>
+              ))
+            }
           </div>
         </div>
       </div>
