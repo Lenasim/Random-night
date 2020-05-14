@@ -42,6 +42,7 @@ class Results extends Component {
     video: '',
     ingMeal: [],
     measuresMeal: [],
+    instructionsMeal: [],
     date: '',
     genresList: '',
     genresMovie: [],
@@ -115,7 +116,8 @@ class Results extends Component {
           measuresMeal: listMeasures,
           ingMeal: listIng,
           detailsMeal: res.data.meals[0],
-          video: res.data.meals[0].strYoutube.replace('watch?v=', 'embed/')
+          video: res.data.meals[0].strYoutube.replace('watch?v=', 'embed/'),
+          instructionsMeal: res.data.meals[0].strInstructions.split('.')
         })
       })
   }
@@ -664,7 +666,7 @@ class Results extends Component {
               image={detailsMeal.strMealThumb}
               genre={detailsMeal.strCategory}
               area={detailsMeal.strArea}
-              instructions={detailsMeal.strInstructions}
+              instructions={instructionsMeal}
               ingredients={ingMeal}
               measures={measuresMeal}
               video={video}
