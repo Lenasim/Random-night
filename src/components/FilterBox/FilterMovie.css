@@ -21,19 +21,9 @@
   outline:none;
   cursor: pointer;
 }
-
-.checkbox {
-  display: flex;
-}
-
-.checkbox-group {
-  margin: 0 15px;
-}
-
-.checkbox-item{
-  padding: 10px;
-}
-
+/* .search-movies{
+  width: ;
+} */
 .input-movies {
   border-radius: 0 13px 13px 0;
   border: 1px solid  rgb(7, 7, 105);
@@ -50,6 +40,7 @@
   background-color:  rgb(7, 7, 105);
   color: white;
   padding: 4px 10px 4px 10px;
+  width: 100rem;
 }
 
 @media screen and (max-width: 800px) {

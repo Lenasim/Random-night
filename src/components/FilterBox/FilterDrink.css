@@ -22,7 +22,7 @@
   cursor: pointer;
 }
 
-@media screen and (min-width: 800px){
+/* @media screen and (min-width: 700px){ */
   .switch-field input {
     position: absolute !important;
     clip: rect(0, 0, 0, 0);
@@ -61,10 +61,29 @@
   .switch-field label:last-of-type {
     border-radius: 0 15px 15px 0;
   }
+/* } */
+
+@media (min-width: 501px) and (max-width: 699px) {
+  .FilterDrink {
+    flex-direction: column;
+  }
+
+  .FilterDrink select {
+    width: 80%;
+    margin: 10px auto;
+  }
+
+  .switch-field {
+    margin: 1rem auto;
+    width: 80%;
+  }
 }
 
-@media screen and (max-width: 800px) and (min-width: 500px) {
+@media screen and (max-width: 500px) {
   .FilterDrink {
+    flex-direction: column;
+  }
+  /* .FilterDrink {
     flex-direction: column;
   }
   
@@ -112,9 +131,9 @@
   }
   .switch-field input[type="radio"] + .radio-label:empty:before {
     margin-right: 0;
-  }
+  } */
 }
-
+/* 
 @media screen and (max-width: 500px) {
   .FilterDrink {
     flex-direction: column;
@@ -168,4 +187,4 @@
   .switch-field input[type="radio"] + .radio-label:empty:before {
     margin-right: 0;
   }
-}
+} */
