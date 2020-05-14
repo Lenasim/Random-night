@@ -193,7 +193,8 @@ class App extends Component {
                 />
                 <div>{this.getItemContent()}</div>
               </div>
-            </div>}
+            </div>
+          }
           {
             this.state.firstClick &&
             <Results
