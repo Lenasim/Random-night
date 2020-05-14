@@ -42,6 +42,7 @@ class Results extends Component {
     video: '',
     ingMeal: [],
     measuresMeal: [],
+    instructionsMeal: [],
     date: '',
     genresList: '',
     genresMovie: [],
@@ -114,7 +115,8 @@ class Results extends Component {
           measuresMeal: listMeasures,
           ingMeal: listIng,
           detailsMeal: res.data.meals[0],
-          video: res.data.meals[0].strYoutube.replace('watch?v=', 'embed/')
+          video: res.data.meals[0].strYoutube.replace('watch?v=', 'embed/'),
+          instructionsMeal: res.data.meals[0].strInstructions.split('.')
         })
       })
   }
@@ -550,7 +552,7 @@ class Results extends Component {
   }
 
   render() {
-    const { drinks, meals, movies, categories, loading, loaded, detailsDrink, detailsMeal, ingDrink, measuresDrink, ingMeal, measuresMeal, video, date, genresMovie, actors, directors, trailer } = this.state
+    const { drinks, meals, movies, categories, loading, loaded, detailsDrink, detailsMeal, ingDrink, measuresDrink, ingMeal, measuresMeal, video, date, genresMovie, actors, directors, trailer, instructionsMeal } = this.state
     return (
       <div>
         <div className="notice-button">
@@ -638,7 +640,7 @@ class Results extends Component {
               image={detailsMeal.strMealThumb}
               genre={detailsMeal.strCategory}
               area={detailsMeal.strArea}
-              instructions={detailsMeal.strInstructions}
+              instructions={instructionsMeal}
               ingredients={ingMeal}
               measures={measuresMeal}
               video={video}

@@ -49,6 +49,14 @@
   padding-top: 56.25%;
 }
 
+.modal-detail {
+  text-align: left;
+}
+
+.modal-instr {
+  padding-bottom: 1em;
+}
+
 iframe {
   position: absolute;
   top: 0;
@@ -145,16 +153,16 @@ iframe {
 
   @media (max-width: 767px) {
     .close {
-      color: white;
       font-size: 3rem;
       font-weight: bold;
       position: fixed;
-      background-color: rgb(10, 10, 116);
-      border-radius: 0 0 0 5px;
-      width: 30px;
-      height: 75px;
-      top: 0;
-      bottom: 0;
+      top: -17px;
+      color: #aaaaaa;
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+      margin: 1em auto;
     }
   }
 
