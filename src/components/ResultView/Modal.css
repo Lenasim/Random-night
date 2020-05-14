@@ -53,6 +53,10 @@
   text-align: left;
 }
 
+.modal-detail h3 {
+  text-align: center;
+}
+
 .modal-instr {
   padding-bottom: 1em;
 }
@@ -107,20 +111,20 @@ iframe {
 }
 
 .list-box {
-  margin-left: 5%;
+  margin-left: 18%;
+  margin-right: 10%;
   text-align: left;
 }
 
 .li-title {
   text-align: left;
-
   background: #eee;
   font-size: 0.8rem;
   color: rgb(7, 7, 105);
   display: inline-block;
   padding: 0.1rem 0.4rem;
   position: relative;
-  margin: 0 10px 10px 0;
+  margin: 8px 10px 8px 0;
   text-decoration: none;
 }
 
@@ -159,10 +163,13 @@ iframe {
       top: -17px;
       color: #aaaaaa;
     }
-
     .modal-title {
       font-size: 1.5rem;
       margin: 1em auto;
+    }
+    .list-box {
+      margin-left: 13%;
+      text-align: left;
     }
   }
 
