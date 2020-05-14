@@ -178,7 +178,7 @@ class App extends Component {
           <div>
             {
               !this.state.firstClick &&
-              <div className="notice-button">
+              <div>
                 <Button
                   classButton={!this.state.mobile ? "button" : "button-mobile"}
                   text={!this.state.firstClick ? "Get your plan" : "Try again?"}
