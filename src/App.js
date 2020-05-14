@@ -30,7 +30,7 @@ class App extends Component {
     genreName: 'Genres',
     queryCast: '',
     queryCrew: '',
-    mobile: ''
+    mobile: false
   }
 
   scrollToTop() {
@@ -177,7 +177,7 @@ class App extends Component {
           />
           <div>
             {
-              !this.state.firstClick &&
+              !this.state.firstClick && !this.state.filterClick &&
               <div>
                 <Button
                   classButton={!this.state.mobile ? "button" : "button-mobile"}
@@ -194,37 +194,45 @@ class App extends Component {
                 }
               </div>
             }
-          </div>
-          {
-            this.state.filterClick &&
-            <div>
-              <div className="FilterDisplay">
-                <FilterButtons
-                  close={this.handleCloseFilters}
-                  filter={this.state.filterClick}
-                  reset={this.handleResetFilters}
-                  handleChange={this.handleChangeItem}
-                  activeId={this.state.activeId}
-                />
-                <div>{this.getItemContent()}</div>
+            {
+              this.state.filterClick &&
+              <div>
+                <div className="FilterDisplay">
+                  <FilterButtons
+                    close={this.handleCloseFilters}
+                    filter={this.state.filterClick}
+                    reset={this.handleResetFilters}
+                    handleChange={this.handleChangeItem}
+                    activeId={this.state.activeId}
+                  />
+                  <div>{this.getItemContent()}</div>
+                </div>
+                {
+                  !this.state.firstClick &&
+                  <Button
+                    classButton={!this.state.mobile ? "button" : "button-mobile"}
+                    text={!this.state.firstClick ? "Get your plan" : "Try again?"}
+                    isClicked={this.handleButtonClick}
+                  />
+                }
               </div>
-            </div>
-          }
-          {
-            this.state.firstClick &&
-            <Results
-              filter={this.state.filterClick}
-              filterClick={this.handleFilterClick}
-              drinkCategory={this.state.drinkCat}
-              drinkAlcohol={this.state.isAlcohol}
-              mealCat={this.state.mealCat}
-              mealIngr={this.state.mealIngr}
-              mealAreas={this.state.mealAreas}
-              movieGenre={this.state.genresResult}
-              cast={this.state.queryCast}
-              crew={this.state.queryCrew} />
-          }
-          <ScrollToTop />
+            }
+            {
+              this.state.firstClick &&
+              <Results
+                filter={this.state.filterClick}
+                filterClick={this.handleFilterClick}
+                drinkCategory={this.state.drinkCat}
+                drinkAlcohol={this.state.isAlcohol}
+                mealCat={this.state.mealCat}
+                mealIngr={this.state.mealIngr}
+                mealAreas={this.state.mealAreas}
+                movieGenre={this.state.genresResult}
+                cast={this.state.queryCast}
+                crew={this.state.queryCrew} />
+            }
+            <ScrollToTop />
+          </div>
         </div>
         <Footer />
       </div>
