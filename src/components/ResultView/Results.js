@@ -579,7 +579,7 @@ class Results extends Component {
               class={this.state.isFavDrink ? "fas fa-lock" : "fas fa-lock-open"}
             />
             <Card
-              image={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`}
+              poster={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`}
               name={movies.title}
               category={categories[1]}
               onClick={this.toggleModalMovie}

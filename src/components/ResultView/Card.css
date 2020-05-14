@@ -46,7 +46,7 @@
   overflow:hidden;
 }
 
-.property-image {
+.property-image, .poster {
   height:23rem;
   width: 100%;
   object-fit: cover;
@@ -99,7 +99,7 @@
   }
 }
 
-@media(max-width: 500px) {
+@media(max-width: 508px) {
   .card-container {
     flex-direction: column;
     margin: 0 0 2em 0;
@@ -112,10 +112,16 @@
 
   .property-image {
     position: relative;
-    left: 4em;
-    width: 65%;
+    left: 3.5em;
+    width: 75%;
     height: 14rem;
   }
+
+  .poster {
+    position: relative;
+    width: 75%;
+    left: 3.5em;
+}
 
   .property-card {
     height: auto;
