@@ -10,7 +10,7 @@ const FilterButtons = ({ handleChange, activeId, filter, reset, close }) => {
         onClick={handleChange}
         className={activeId === "drink" ? "active" : ""}
       >
-        Your Cocktail
+        Your Drink
       </button>
       <button
         id="movie"
