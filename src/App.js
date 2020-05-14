@@ -6,11 +6,10 @@ import FilterButtons from './components/FilterBox/FilterButtons'
 import FilterDrink from './components/FilterBox/FilterDrink'
 import FilterMovie from './components/FilterBox/FilterMovie'
 import FilterRecipe from './components/FilterBox/FilterRecipe'
-import ScrollToTop from './components/General/ScrollToTop'
 import Footer from './components/General/Footer'
+import ScrollToTop from './components/General/ScrollToTop'
 
 import './App.css';
-
 
 const Error = () => (
   <p>
@@ -98,12 +97,10 @@ class App extends Component {
     this.setState({ activeId: buttonId });
   }
 
-  componentDidMount() {
-    this.setState({ activeId: "drink" });
-  }
   handleDrinkAlcohol = (isAlcohol) => {
     this.setState({ isAlcohol: isAlcohol });
   }
+
   handleDrinkCategory = (drinkCat) => {
     this.setState({ drinkCat });
   }
@@ -122,6 +119,10 @@ class App extends Component {
 
   handleCrewChange = (queryCrew) => {
     this.setState({ queryCrew: queryCrew.replace('%20', ' ') })
+  }
+
+  componentDidMount() {
+    this.setState({ activeId: "drink" });
   }
 
   getItemContent() {
@@ -155,59 +156,59 @@ class App extends Component {
     return (
       <div className="App">
         <div className="body">
-        <Header reset={this.handleReset}
-          scale={this.state.firstClick || this.state.filterClick ? 'small-brand' : 'brand'}
-          notice={this.state.firstClick || this.state.filterClick ? 'notice-small' : 'notice-text'}
-          header={this.state.firstClick || this.state.filterClick ? 'header-small' : 'Header'}
-        />
-        <div>
-          {
-            !this.state.firstClick &&
-            <div className="notice-button">
-              <Button
-                text={!this.state.firstClick ? "Get your plan" : "Try again?"}
-                isClicked={this.handleButtonClick}
-              />
-              {
-                !this.state.filterClick &&
-                <button
-                  className="button-filter"
-                  onClick={this.handleFilterClick}>
-                  <i className="fas fa-sliders-h"></i>
-                </button>
-              }
-            </div>
-          }
-        </div>
-        {
-          this.state.filterClick &&
+          <Header reset={this.handleReset}
+            scale={this.state.firstClick || this.state.filterClick ? 'small-brand' : 'brand'}
+            notice={this.state.firstClick || this.state.filterClick ? 'notice-small' : 'notice-text'}
+            header={this.state.firstClick || this.state.filterClick ? 'header-small' : 'Header'}
+          />
           <div>
-            <div className="FilterDisplay">
-              <FilterButtons
-                close={this.handleCloseFilters}
-                filter={this.state.filterClick}
-                reset={this.handleResetFilters}
-                handleChange={this.handleChangeItem}
-                activeId={this.state.activeId}
-              />
-              <div>{this.getItemContent()}</div>
-            </div>
-          </div>}
-        {
-          this.state.firstClick &&
-          <Results
-            filter={this.state.filterClick}
-            filterClick={this.handleFilterClick}
-            drinkCategory={this.state.drinkCat}
-            drinkAlcohol={this.state.isAlcohol}
-            mealCat={this.state.mealCat}
-            mealIngr={this.state.mealIngr}
-            mealAreas={this.state.mealAreas}
-            movieGenre={this.state.genresResult}
-            cast={this.state.queryCast}
-            crew={this.state.queryCrew} />
-        }
-        <ScrollToTop />
+            {
+              !this.state.firstClick &&
+              <div className="notice-button">
+                <Button
+                  text={!this.state.firstClick ? "Get your plan" : "Try again?"}
+                  isClicked={this.handleButtonClick}
+                />
+                {
+                  !this.state.filterClick &&
+                  <button
+                    className="button-filter"
+                    onClick={this.handleFilterClick}>
+                    <i className="fas fa-sliders-h"></i>
+                  </button>
+                }
+              </div>
+            }
+          </div>
+          {
+            this.state.filterClick &&
+            <div>
+              <div className="FilterDisplay">
+                <FilterButtons
+                  close={this.handleCloseFilters}
+                  filter={this.state.filterClick}
+                  reset={this.handleResetFilters}
+                  handleChange={this.handleChangeItem}
+                  activeId={this.state.activeId}
+                />
+                <div>{this.getItemContent()}</div>
+              </div>
+            </div>}
+          {
+            this.state.firstClick &&
+            <Results
+              filter={this.state.filterClick}
+              filterClick={this.handleFilterClick}
+              drinkCategory={this.state.drinkCat}
+              drinkAlcohol={this.state.isAlcohol}
+              mealCat={this.state.mealCat}
+              mealIngr={this.state.mealIngr}
+              mealAreas={this.state.mealAreas}
+              movieGenre={this.state.genresResult}
+              cast={this.state.queryCast}
+              crew={this.state.queryCrew} />
+          }
+          <ScrollToTop />
         </div>
         <Footer />
       </div>
