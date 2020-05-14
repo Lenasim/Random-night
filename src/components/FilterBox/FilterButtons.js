@@ -35,9 +35,9 @@ const FilterButtons = ({ handleChange, activeId, filter, reset, close }) => {
             <i className="fas fa-undo-alt"></i>
           </button>
           <button
-            className="button-filter-menu">
-            <i className="fas fa-times"
-              onClick={close}></i>
+            className="button-filter-menu"
+            onClick={close}>
+            <i className="fas fa-times"></i>
           </button>
         </div>
       }
