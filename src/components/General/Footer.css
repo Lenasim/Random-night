@@ -127,3 +127,9 @@
     margin-top: 0.3rem;
   }
 }
+
+@media(max-width: 400px) {
+  .Footer {
+    background-color: black;
+  }
+}
