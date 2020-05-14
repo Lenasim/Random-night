@@ -8,12 +8,14 @@
 }
 
 html {
+  background-color: black;
   height: 100%;  
   background-image: url(./images/jr-korpa-stwHyPWNtbI-unsplash.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: bottom; 
   background-size: cover;
+  backdrop-filter: saturate(80%)
 }
 
 body {

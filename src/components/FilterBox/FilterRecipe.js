@@ -23,13 +23,13 @@ class FilterRecipe extends Component {
       }));
   }
 
-  componentDidMount = () => {
-    this.getList();
-  }
-
   filterCategory = (name, value) => {
     this.setState({ [name]: value });
     this.props.handleCategoryChange(name, value);
+  }
+
+  componentDidMount = () => {
+    this.getList();
   }
 
   render() {
