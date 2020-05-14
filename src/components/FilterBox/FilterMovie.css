@@ -35,18 +35,20 @@
 }
 
 .label-movies {
+  display: inline-block;
+  width: 5rem;
   border-radius: 13px 0 0 13px;
   border: 3px solid  rgb(7, 7, 105);
   background-color:  rgb(7, 7, 105);
   color: white;
   padding: 4px 10px 4px 10px;
-  width: 100rem;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 799px) {
   .FilterMovie {
     flex-direction: column;
     margin-top: 6px;
+    height: 12rem;
   }
 
   .search-movies {
@@ -54,7 +56,8 @@
   }
 
   .FilterMovie select {
-    width: 80%;
+    width: 15rem;
+    max-width: 80%;
     margin: 10px auto;
   }
 
