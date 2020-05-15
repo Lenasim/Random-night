@@ -14,8 +14,8 @@ const Card = props => {
           <h4 className="card-category">{props.category}</h4>
           <h3 className="card-title">{props.name}</h3>
         </div>
-        <div className="property-social-icons">
-          <i onClick={props.isFav} className={props.class}></i>
+        <div className="property-social-icons" onClick={props.isFav} >
+          <i className={props.class}></i>
         </div>
       </div>
     </div>
