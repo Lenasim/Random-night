@@ -1,0 +1,155 @@
+.card-category {
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.0625rem;
+  margin: 0 0 0.75rem 0;
+  padding: 0 0 0.25rem 0;
+  border-bottom: 0.125rem solid #ebebeb;
+}
+
+.card-title {
+  transition: color 0.3s ease;
+  font-size: 1.3rem;
+  line-height: 1.4;
+  color: #121212;
+  font-weight: 700;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  /* margin: 2em 0; */
+}
+
+.center {
+  display: flex;
+  width: 30vw;
+}
+
+.property-card {
+  height:23rem;
+  margin: 1rem;
+  width: 100%;
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display:flex;
+  -webkit-box-orient:vertical;
+  -webkit-box-direction:normal;
+  -ms-flex-direction:column;
+  flex-direction:column;
+  position:relative;
+  border-radius:16px;
+  overflow:hidden;
+}
+
+.property-image, .poster {
+  height:23rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+.property-description {
+  background-color: #FAFAFC;
+  height:10rem;
+  width: 100%;
+  position:absolute;
+  bottom:0em;
+  -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  padding: 0.5em 1em;
+  text-align:center;
+}
+
+.property-social-icons {
+  width:2em;
+  height:2em;
+  position:absolute;
+  bottom:1.8em;
+  left:1em;
+  background-color: white;
+  border-radius: 50%;
+  padding-top: 0.2em;
+  -webkit-box-shadow: -4px 3px 18px -4px rgba(133,129,133,1);
+  -moz-box-shadow: -4px 3px 18px -4px rgba(133,129,133,1);
+  box-shadow: -4px 3px 18px -4px rgba(133,129,133,1);
+}
+
+.property-card:hover .property-description {
+  height:0em;
+  padding:0px 1em;
+}
+
+.center:hover {
+  cursor: pointer;
+}
+
+.fa-lock-open {
+  color: grey;
+}
+
+.fa-lock {
+  color: rgb(7, 7, 105);
+}
+
+@media(max-width: 769px) {
+  .center {
+      width: 33vw;
+  }
+}
+
+@media(max-width: 508px) {
+  .card-container {
+    flex-direction: column;
+    /* margin: 0 0 2em 0; */
+  }
+
+  .center {
+    width: 100%;
+    height: 15em;
+  }
+
+  .property-image {
+    position: relative;
+    left: 3.5em;
+    width: 75%;
+    height: 14rem;
+  }
+
+  .poster {
+    position: relative;
+    width: 75%;
+    left: 3.5em;
+}
+
+  .property-card {
+    height: auto;
+    display: block;
+  }
+
+  .property-description {
+    height: 100%;
+    width: 40%;
+    padding:0.3em;
+  }
+
+  .property-social-icons {
+    background-color: transparent;
+    left: 0.8em;
+    bottom: 0.8em;
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .property-card:hover .property-description {
+    height: 100%;
+    width: 40%;
+    padding: 0.5em;
+  } 
+}
