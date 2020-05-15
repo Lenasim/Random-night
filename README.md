@@ -24,13 +24,7 @@ Le but était de créer une application avec React.js et d'apprendre à manipule
 * [The Movie Database](https://www.themoviedb.org/)
 
 ### Captures d'écran
-#### Desktop
-<img src="/public/img/home.png" alt="home" width="50%" />
-<img src="/public/img/results.png" alt="results" width="50%" />
-<img src="/public/img/filter.png" alt="filter"width="50%" />
-<img src="/public/img/filter2.png" alt="filter2" width="50%" />
-
-#### Mobile
+<img src="/public/img/dekstop.png" alt="desktop"/>
 <img src="/public/img/mobile.png" alt="mobile" />
 
 ### In the project directory, you can run:
