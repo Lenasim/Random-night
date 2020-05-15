@@ -24,12 +24,12 @@ Le but était de créer une application avec React.js et d'apprendre à manipule
 * [The Movie Database](https://www.themoviedb.org/)
 
 ### Captures d'écran
-![home](/public/img/home.png) ![results](/public/img/results.png) ![filter](/public/img/filter.png) ![filter2](/public/img/filter2.png)
-![home mobile](/public/img/home-mobile.png) ![search mobile](/public/img/search-mobile.png) ![filter mobile](/public/img/filter-mobile.png)
+![home | 20%](/public/img/home.png) ![results | 20%](/public/img/results.png) ![filter | 20%](/public/img/filter.png) ![filter2 | 20%](/public/img/filter2.png)
+![home mobile | 20%](/public/img/home-mobile.png) ![search mobile | 20%](/public/img/search-mobile.png) ![filter mobile | 20%](/public/img/filter-mobile.png)
 
-##### In the project directory, you can run:
-`npm install`
-`npm start`
+### In the project directory, you can run:
+* `npm install`
+* `npm start`
 Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.
