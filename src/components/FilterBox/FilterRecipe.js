@@ -7,9 +7,6 @@ class FilterRecipe extends Component {
   state = {
     category: [],
     areas: [],
-    mealCat: 'all',
-    mealIngr: 'all',
-    mealAreas: 'all'
   }
 
   getList = () => {
@@ -56,14 +53,14 @@ class FilterRecipe extends Component {
         <select
           name="mealAreas"
           id="recipe-countries"
-          value={this.props.areas}
+          value={this.props.area}
           onChange={event => this.filterCategory('mealAreas', event.target.value)}
         >
           <option
             className="option"
             value="country"
           >
-            Countries
+            Country
           </option>
           {
             areas.map((area, id) =>

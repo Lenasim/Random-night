@@ -1,6 +1,6 @@
 .FilterMovie {
   display: flex;
-  padding: 10px 20px;
+  padding: 10px;
   align-items: baseline;
   justify-content: space-around;
 }
@@ -8,7 +8,7 @@
 .FilterMovie select {
   margin: 1.2rem;
   margin-top:0.5rem;
-  /* width: 24%; */
+  width: 28%;
   padding: 0.8rem;
   line-height:1;
   border-radius: 10px;
@@ -21,11 +21,15 @@
   cursor: pointer;
 }
 
+.search-movies {
+  width: 36%;
+}
+
 .input-movies {
   border-radius: 0 13px 13px 0;
   border: 1px solid  rgb(7, 7, 105);
   height: 37px;
-  width: 150px;
+  width: 60%;
   font-size: 16px;
   padding-left: 10px;
   outline: transparent;
@@ -49,6 +53,8 @@
   }
 
   .search-movies {
+    width: 25rem;
+    max-width: 92%;
     margin: 10px auto;
   }
 

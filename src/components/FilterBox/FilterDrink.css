@@ -1,6 +1,5 @@
 .FilterDrink {
   display: flex;
-  /* margin-top: 25px; */
   padding: 10px;
   align-items: baseline;
   justify-content: space-around;
@@ -9,6 +8,7 @@
 .FilterDrink select {
   margin: 1.2rem;
   margin-top:0.5rem;
+  width: 28%;
   padding: 0.8rem;
   line-height:1;
   border-radius: 10px;
@@ -61,11 +61,12 @@
 }
 
 
-@media (min-width: 481px) and (max-width: 699px) {
+@media (min-width: 401px) and (max-width: 699px) {
   .FilterDrink {
     flex-direction: column;
     align-items: center;
   }
+
   .FilterDrink select {
     width: 20rem;
     max-width: 80%;
@@ -74,20 +75,26 @@
 
   .switch-field {
     margin: 1rem auto;
-    width: 80%;
+    width: 100%;
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 400px) {
   .FilterDrink {
     flex-direction: column;
     align-items: center;
+  }
+  
+  .FilterDrink select {
+    width: 20rem;
+    max-width: 80%;
+    margin: 10px auto;
   }
 
   .switch-field {
     margin: auto;
     margin-bottom: 0.7rem;
-    width: 55%;
+    width: 8.4rem;
     display: flex;
     flex-direction: column;
   }

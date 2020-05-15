@@ -15,7 +15,7 @@
   overflow: hidden;
   z-index: 1;
   transition: 0.5s;
-  margin: 1em;
+  margin: 1rem;
 }
 
 .button-mobile {
@@ -29,6 +29,7 @@
   letter-spacing: 0.1em;
   font-weight: bold;
   border: 0.1em solid rgb(7, 7, 105);
+  margin-top: 0.5rem;
   margin-bottom: 1rem;
 }
 
