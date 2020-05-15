@@ -24,11 +24,16 @@ Le but était de créer une application avec React.js et d'apprendre à manipule
 * [The Movie Database](https://www.themoviedb.org/)
 
 ### Captures d'écran
-<img src="/public/img/home.png" alt="home"
-	title="A cute kitten" width="50%" />
+#### Desktop
+<img src="/public/img/home.png" alt="home" width="50%" />
+<img src="/public/img/results.png" alt="results" width="50%" />
+<img src="/public/img/filter.png" alt="filter"width="50%" />
+<img src="/public/img/filter2.png" alt="filter2" width="50%" />
 
- ![results](/public/img/results.png) ![filter](/public/img/filter.png) ![filter2](/public/img/filter2.png)
-![home mobile](/public/img/home-mobile.png) ![search mobile](/public/img/search-mobile.png) ![filter mobile](/public/img/filter-mobile.png)
+#### Mobile
+<img src="/public/img/home-mobile.png" alt="results" width="50%" />
+<img src="/public/img/search-mobile.png" alt="filter"width="50%" />
+<img src="/public/img/filter-mobile.png" alt="filter2" width="50%" />
 
 ### In the project directory, you can run:
 * `npm install`
