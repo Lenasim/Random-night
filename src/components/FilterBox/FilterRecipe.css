@@ -1,6 +1,5 @@
 .FilterRecipe {
   display: flex;
-  margin-top: 25px;
   padding: 10px;
   align-items: baseline;
   justify-content: space-around;
@@ -9,7 +8,7 @@
 .FilterRecipe select {
   margin: 1.2rem;
   margin-top:0.5rem;
-  width:24%;
+  width: 28%;
   padding: 0.8rem;
   line-height:1;
   border-radius: 10px;
@@ -34,14 +33,16 @@
   padding: 10px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 699px) {
   .FilterRecipe {
     flex-direction: column;
     margin-top: 6px;
+    align-content: center;
   }
 
   .FilterRecipe select {
-    width: 80%;
+    width: 20rem;
+    max-width: 80%;
     margin: 10px auto;
   }
 

@@ -11,7 +11,11 @@ const Footer = () => {
         <div className='group'>
           <div className='team-group'>
             <div className="team">
-              <p> Mohamed Abidi</p>
+            <a
+                  href="https://www.linkedin.com/in/mohamedabidi-paris/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  > Mohamed Abidi</a>
               <div className='footer-social'>
                 <a
                   href="https://www.linkedin.com/in/mohamedabidi-paris/"
@@ -30,7 +34,10 @@ const Footer = () => {
               </div>
             </div>
             <div className="team">
-              <p> Lola Donval</p>
+            <a
+                  href="https://www.linkedin.com/in/lola-donval"
+                  target="_blank"
+                  rel="noopener noreferrer"> Lola Donval</a>
               <div className='footer-social'>
                 <a
                   href="https://www.linkedin.com/in/lola-donval"
@@ -50,7 +57,10 @@ const Footer = () => {
           </div>
           <div className='team-group'>
             <div className="team">
-              <p> Lena Hailin Sim</p>
+            <a
+                  href="https://www.linkedin.com/in/lena-hailin-sim/"
+                  target="_blank"
+                  rel="noopener noreferrer"> Lena Hailin Sim</a>
               <div className='footer-social'>
                 <a
                   href="https://www.linkedin.com/in/lena-hailin-sim/"
@@ -69,7 +79,10 @@ const Footer = () => {
               </div>
             </div>
             <div className="team">
-              <p> Jérémie Néret</p>
+            <a
+                  href="https://github.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"> Jérémie Néret</a>
               <div className='footer-social'>
                 <a
                   href="https://github.com/"

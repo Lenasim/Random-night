@@ -17,11 +17,15 @@ button {
   margin: 0 0 10px 10px;
 }
 
+.notice-button {
+  margin-top: 5rem;
+}
+
 .FilterDisplay {
   background-color:rgba(255, 255, 255, 0.7);
   width: 90%;
   max-width: 48rem;
-  padding-bottom: 1rem;
+  margin-bottom: 1.2rem;
   border-radius: 12px;
   margin: 50px auto;
   position: relative;
@@ -29,7 +33,7 @@ button {
 
 .scroll-to-top {
   position: fixed;
-  bottom: 8.4rem;
+  bottom: 6.5rem;
   right: 0.5rem;
   animation: fadeIn 700ms ease-in-out 1s both;
   cursor: pointer;
@@ -91,5 +95,9 @@ button {
   }
   .fa-arrow-alt-circle-up {
     font-size: 2rem;
+  }
+
+  .notice-button {
+    margin-top: 0;
   }
 }
