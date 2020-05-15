@@ -31,9 +31,9 @@ Le but était de créer une application avec React.js et d'apprendre à manipule
 <img src="/public/img/filter2.png" alt="filter2" width="50%" />
 
 #### Mobile
-<img src="/public/img/home-mobile.png" alt="results" width="50%" />
-<img src="/public/img/search-mobile.png" alt="filter"width="50%" />
-<img src="/public/img/filter-mobile.png" alt="filter2" width="50%" />
+<img src="/public/img/home-mobile.png" alt="results" width="20%" />
+<img src="/public/img/search-mobile.png" alt="filter"width="20%" />
+<img src="/public/img/filter-mobile.png" alt="filter2" width="20%" />
 
 ### In the project directory, you can run:
 * `npm install`
