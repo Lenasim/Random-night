@@ -32,5 +32,5 @@ Le but était de créer une application avec React.js et d'apprendre à manipule
 * `npm start`
   
 
-Ca lance l'app en mode développement.
+Ces commandes intallent les différents modules et lancent l'app en mode développement.
 Ouvrez [http://localhost:3000](http://localhost:3000) pour la voir dans votre navigateur.
