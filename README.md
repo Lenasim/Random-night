@@ -1,7 +1,7 @@
 ![random night](/public/img/header.png)
 # Random Night
-##### => [Go visit our website](https://random-night.netlify.app/) <=
-*Random Night* est application qui permet de trouver sa soirée idéale quand on a envie de rester dan son canapé. Elle propose, de façon alétoire, une boisson, un film et recette. Des filtres sont également disponible pour adapter les résultats à ses envies.
+##### => [Allez visiter notre site](https://random-night.netlify.app/) <=
+*Random Night* est application qui permet de trouver sa soirée idéale quand on a envie de rester dan son canapé. Elle propose, de façon alétoire, une boisson, un film et une recette. Des filtres sont également disponibles pour adapter les résultats à ses envies.
 
 ### La team
 * Mohamed Abidi [Github](https://github.com/mohamedabidi1105) [LinkedIn](https://www.linkedin.com/in/mohamedabidi-paris/)
@@ -27,10 +27,10 @@ Le but était de créer une application avec React.js et d'apprendre à manipule
 <img src="/public/img/dekstop.png" alt="desktop"/>
 <img src="/public/img/mobile.png" alt="mobile" />
 
-### In the project directory, you can run:
+### Dans le dossier du projet, Vous pouvez lancer:
 * `npm install`
 * `npm start`
-Runs the app in the development mode.
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-The page will reload if you make edits.
-You will also see any lint errors in the console.
+  
+
+Ca lance l'app en mode développement.
+Ouvrez [http://localhost:3000](http://localhost:3000) pour la voir dans votre navigateur.
