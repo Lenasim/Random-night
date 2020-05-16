@@ -11,11 +11,11 @@ const Footer = () => {
         <div className='group'>
           <div className='team-group'>
             <div className="team">
-            <a
-                  href="https://www.linkedin.com/in/mohamedabidi-paris/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  > Mohamed Abidi</a>
+              <a
+                href="https://www.linkedin.com/in/mohamedabidi-paris/"
+                target="_blank"
+                rel="noopener noreferrer"
+              > Mohamed Abidi</a>
               <div className='footer-social'>
                 <a
                   href="https://www.linkedin.com/in/mohamedabidi-paris/"
@@ -34,10 +34,10 @@ const Footer = () => {
               </div>
             </div>
             <div className="team">
-            <a
-                  href="https://www.linkedin.com/in/lola-donval"
-                  target="_blank"
-                  rel="noopener noreferrer"> Lola Donval</a>
+              <a
+                href="https://www.linkedin.com/in/lola-donval"
+                target="_blank"
+                rel="noopener noreferrer"> Lola Donval</a>
               <div className='footer-social'>
                 <a
                   href="https://www.linkedin.com/in/lola-donval"
@@ -57,10 +57,10 @@ const Footer = () => {
           </div>
           <div className='team-group'>
             <div className="team">
-            <a
-                  href="https://www.linkedin.com/in/lena-hailin-sim/"
-                  target="_blank"
-                  rel="noopener noreferrer"> Lena Hailin Sim</a>
+              <a
+                href="https://www.linkedin.com/in/lena-hailin-sim/"
+                target="_blank"
+                rel="noopener noreferrer"> Lena Hailin Sim</a>
               <div className='footer-social'>
                 <a
                   href="https://www.linkedin.com/in/lena-hailin-sim/"
@@ -79,13 +79,13 @@ const Footer = () => {
               </div>
             </div>
             <div className="team">
-            <a
-                  href="https://github.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"> Jérémie Néret</a>
+              <a
+                href="https://www.linkedin.com/in/j%C3%A9r%C3%A9mie-renoir-667214142/"
+                target="_blank"
+                rel="noopener noreferrer"> Jérémie Néret</a>
               <div className='footer-social'>
                 <a
-                  href="https://github.com/"
+                  href="https://www.linkedin.com/in/j%C3%A9r%C3%A9mie-renoir-667214142/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className='footer-link'>
